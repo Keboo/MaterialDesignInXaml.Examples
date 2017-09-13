@@ -1,0 +1,91 @@
+﻿<Window x:Class="DialogHost.Example.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogHost.Example"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <md:DialogHost>
+        <md:DialogHost.DialogContentTemplate>
+            <DataTemplate DataType="local:LoginViewModel">
+                <StackPanel Margin="20" MinWidth="300">
+                    <TextBlock Text="Username:" />
+                    <TextBox Text="{Binding Username}"/>
+                    <TextBlock Text="Password" Margin="0,10,0,0"/>
+                    <TextBox Text="{Binding Password}"/>
+
+                    <Grid Margin="0,10,0,-10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatAccentButton}" IsCancel="True" Command="{x:Static md:DialogHost.CloseDialogCommand}"/>
+                        <Button Content="Login" Grid.Column="1" IsDefault="True" 
+                                Command="{Binding LoginCommand}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsValidating}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <ProgressBar Value="0" IsIndeterminate="True" Grid.Column="1"
+                                     VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ProgressBar.Style>
+                                <Style TargetType="ProgressBar" BasedOn="{StaticResource MaterialDesignCircularProgressBar}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsValidating}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ProgressBar.Style>
+                        </ProgressBar>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+        </md:DialogHost.DialogContentTemplate>
+        <!--<md:DialogHost.DialogContent>
+            <StackPanel Margin="20" MinWidth="300">
+                <TextBlock Text="Username:" />
+                <TextBox />
+                <TextBlock Text="Password" Margin="0,10,0,0"/>
+                <PasswordBox />
+
+                <Grid Margin="0,10,0,-10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="Cancel" Style="{StaticResource MaterialDesignFlatAccentButton}" IsCancel="True" Command="{x:Static md:DialogHost.CloseDialogCommand}"/>
+                    <Button Content="Login" Grid.Column="1" Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" 
+                            Command="{Binding LoginCommand}"/>
+                </Grid>
+            </StackPanel>
+        </md:DialogHost.DialogContent>-->
+        <Grid>
+            <Button Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding ShowLoginFormCommand}" />
+        </Grid>
+    </md:DialogHost>
+</Window>
+ 
