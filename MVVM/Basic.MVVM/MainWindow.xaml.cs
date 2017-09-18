@@ -5,16 +5,15 @@
     /// </summary>
     public partial class MainWindow
     {
-public MainWindow()
-{
-    var viewModel = new ViewModel();
-    viewModel.FirstName = "Kevin";
+        public MainWindow()
+        {
+            var viewModel = new ViewModel();
+            viewModel.FirstName = "Kevin";
 
-    DataContext = viewModel;
-    InitializeComponent();
+            DataContext = viewModel;
+            InitializeComponent();
 
-    viewModel.FirstName = "Mark";
-    viewModel.OnPropertyChanged(nameof(ViewModel.FirstName));
-}
+            viewModel.FirstName = "Mark";
+        }
     }
 }
