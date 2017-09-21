@@ -1,0 +1,38 @@
+﻿<Window x:Class="DrawerHost.Simple.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <!--Typically you place the DrawerHost neer the root of your view-->
+    <!-- Any content that you want the side drawers to cover needs to be inside of the DrawerHost -->
+    <md:DrawerHost LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
+        <md:DrawerHost.LeftDrawerContent>
+            <StackPanel Width="150">
+                <TextBlock Text="Some left content" HorizontalAlignment="Center"/>
+                <md:PackIcon Kind="Headset" Height="Auto" Width="Auto" />
+            </StackPanel>
+        </md:DrawerHost.LeftDrawerContent>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- Binding the Is*DrawerOpen, you can also bind this to a boolean in your view model -->
+            <ToggleButton Content="L" IsChecked="{Binding IsLeftDrawerOpen, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type md:DrawerHost}}}" 
+                          Style="{StaticResource MaterialDesignActionLightToggleButton}" ToolTip="Open Left Drawer"/>
+            <!-- Open the drawer with a routed command -->
+            <!-- You can either specify a specific side by passing a Dock command parameter, or null to open all sides -->
+            <Button Content="Open Left Drawer" Margin="10" Command="{x:Static md:DrawerHost.OpenDrawerCommand}" CommandParameter="{x:Static Dock.Left}"/>
+        </StackPanel>
+
+    </md:DrawerHost>
+</Window>
