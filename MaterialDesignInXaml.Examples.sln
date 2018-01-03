@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DialogHost", "DialogHost", "{6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}"
 EndProject
@@ -41,6 +41,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomControlTemplate", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomListBoxItem", "Styling\CustomControlTemplate\CustomListBoxItem\CustomListBoxItem.csproj", "{ED08B337-2DF3-42F2-9DCA-7019A6AA17A1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TreeView", "TreeView", "{44692A44-739E-4161-98A7-3DCB1AD30C40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewMenu", "Styling\TreeView\TreeViewMenu\TreeViewMenu.csproj", "{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,10 @@ Global
 		{ED08B337-2DF3-42F2-9DCA-7019A6AA17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED08B337-2DF3-42F2-9DCA-7019A6AA17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED08B337-2DF3-42F2-9DCA-7019A6AA17A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +105,8 @@ Global
 		{88B486B7-2B9F-4BF9-93A8-F987DD58DC35} = {FBE93520-5392-4286-8730-9C260C704854}
 		{23034A97-0C49-4C2A-8CF3-A3E1EBDBE650} = {79522AC3-05A6-4374-B157-7F12A58FF5A5}
 		{ED08B337-2DF3-42F2-9DCA-7019A6AA17A1} = {23034A97-0C49-4C2A-8CF3-A3E1EBDBE650}
+		{44692A44-739E-4161-98A7-3DCB1AD30C40} = {79522AC3-05A6-4374-B157-7F12A58FF5A5}
+		{CCAAAC24-9925-4EAE-8BB6-316F83CEBF41} = {44692A44-739E-4161-98A7-3DCB1AD30C40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
