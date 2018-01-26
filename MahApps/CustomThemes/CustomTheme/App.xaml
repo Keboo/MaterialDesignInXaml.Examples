@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:CustomTheme"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-                <ResourceDictionary>
-
+        <ResourceDictionary>
+            <!-- The order of these dictionaries matters -->
             <ResourceDictionary.MergedDictionaries>
 
                 <!-- MahApps -->

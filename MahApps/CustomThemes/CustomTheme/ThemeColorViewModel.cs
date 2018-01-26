@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Windows.Media;
-using MaterialDesignColors;
 
 namespace CustomTheme
 {
     public class ThemeColorViewModel
     {
-        private readonly Swatch _Swatch;
-
-        public ThemeColorViewModel(Swatch swatch)
+        public ThemeColorViewModel(Theme theme)
         {
-            _Swatch = swatch ?? throw new ArgumentNullException(nameof(swatch));
+            Theme = theme ?? throw new ArgumentNullException(nameof(theme));
             SampleBrush = new SolidColorBrush
             {
-                Color = swatch.ExemplarHue.Color
+                Color = theme.PrimayMidHue.Color
             };
-            Name = swatch.Name;
+            Name = theme.Name;
         }
 
         public Brush SampleBrush { get; }
 
         public string Name { get; }
+
+        public Theme Theme { get; }
     }
 }

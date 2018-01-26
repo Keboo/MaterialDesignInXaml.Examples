@@ -5,11 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomTheme"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        mc:Ignorable="d"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" x:Name="MetroWindow"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        GlowBrush="{DynamicResource AccentColorBrush}"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.togglebutton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <ItemsControl ItemsSource="{Binding ThemeColors}" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <ToggleButton IsChecked="{Binding IsLightTheme}"
+                          Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+            <TextBlock>
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                        <Setter Property="Text" Value="Light Theme" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsLightTheme}" Value="False">
+                                <Setter Property="Text" Value="Dark Theme" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </StackPanel>
+
+
+        <ItemsControl ItemsSource="{Binding ThemeColors}" VerticalAlignment="Center" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -18,10 +53,11 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type local:ThemeColorViewModel}">
-                    <Button Command="{Binding SetThemeCommand}" CommandBindings="{Binding}">
+                    <Button Command="{Binding DataContext.SetThemeCommand, ElementName=MetroWindow}" CommandParameter="{Binding}"
+                            Style="{StaticResource MaterialDesignFlatButton}" Height="{x:Static system:Double.NaN}">
                         <StackPanel>
                             <Ellipse Fill="{Binding SampleBrush}" Height="50" Width="50" />
-                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBody}"/>
                         </StackPanel>
                     </Button>
                 </DataTemplate>

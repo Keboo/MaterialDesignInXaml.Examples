@@ -1,24 +1,43 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.CommandWpf;
-using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
 
 namespace CustomTheme
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
-        public List<ThemeColorViewModel> ThemeColors { get; } = new List<ThemeColorViewModel>();
+        private readonly PaletteHelper _PaletteHelper = new PaletteHelper();
 
+        public List<ThemeColorViewModel> ThemeColors { get; } = new List<ThemeColorViewModel>();
+        
         public ICommand SetThemeCommand { get; }
+
+        //The starting value of this must match which resource dictionary we loaded in the App.xaml, in this case the light MDIX theme
+        private bool _IsLightTheme = true;
+        public bool IsLightTheme
+        {
+            get => _IsLightTheme;
+            set
+            {
+                if (Set(ref _IsLightTheme, value))
+                {
+                    _PaletteHelper.SetLightDark(!value);
+                }
+            }
+        }
 
         public MainWindowViewModel()
         {
             var swatchProvider = new SwatchesProvider();
-            ThemeColors.AddRange(swatchProvider.Swatches.Select(x => new ThemeColorViewModel(x)));
+            ThemeColors.AddRange(swatchProvider.Swatches
+                .Where(x => x.IsAccented) //This sample assumes all colors have accents
+                .Select(x => new ThemeColorViewModel(new Theme(x))));
             //ThemeColors.Add(new ThemeColorViewModel(CustomCodeTheme.GetSwatch()));
             ResourceDictionary rd = new ResourceDictionary
             {
@@ -26,17 +45,23 @@ namespace CustomTheme
             };
             //ThemeColors.Add(new ThemeColorViewModel(GetSwatchFromDictionary(rd)));
 
-            SetThemeCommand = new RelayCommand<Swatch>(OnSetTheme);
+            SetThemeCommand = new RelayCommand<ThemeColorViewModel>(OnSetTheme);
         }
 
-        private void OnSetTheme(Swatch swatch)
+        private void OnSetTheme(ThemeColorViewModel theme)
         {
-            if (swatch == null) throw new ArgumentNullException(nameof(swatch));
-            new PaletteHelper().ReplacePalette(new Palette(swatch, swatch, swatch.));
+            if (theme == null) throw new ArgumentNullException(nameof(theme));
+
+            _PaletteHelper.ReplacePalette(theme.Theme.GetPalette());
         }
 
         //TODO: This could easily be an extension method
-        private static Swatch GetSwatchFromDictionary(ResourceDictionary resourceDictionary)
+        private static Theme GetThemeFromDictionary(ResourceDictionary resourceDictionary)
+        {
+            return null;
+        }
+
+        private static Theme GetThemeFromCode()
         {
             return null;
         }
