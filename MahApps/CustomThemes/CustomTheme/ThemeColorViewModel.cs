@@ -10,7 +10,7 @@ namespace CustomTheme
             Theme = theme ?? throw new ArgumentNullException(nameof(theme));
             SampleBrush = new SolidColorBrush
             {
-                Color = theme.PrimayMidHue.Color
+                Color = theme.PrimaryMidHue.Color
             };
             Name = theme.Name;
         }

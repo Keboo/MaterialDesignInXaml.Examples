@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 
@@ -17,9 +16,9 @@ namespace CustomTheme
             int lightIndex = Math.Min(primaryHues.Count - 1, 1);
             int midIndex = Math.Min(primaryHues.Count - 1, 5);
             int darkIndex = Math.Min(primaryHues.Count - 1, 7);
-            PrimayLightHue = primaryHues[lightIndex];
-            PrimayMidHue = primaryHues[midIndex];
-            PrimayDarkHue = primaryHues[darkIndex];
+            PrimaryLightHue = primaryHues[lightIndex];
+            PrimaryMidHue = primaryHues[midIndex];
+            PrimaryDarkHue = primaryHues[darkIndex];
             SecondaryAccentHue = swatch.AccentExemplarHue;
         }
 
@@ -30,19 +29,19 @@ namespace CustomTheme
 
         public string Name { get; }
 
-        public Hue PrimayLightHue { get; set; }
-        public Hue PrimayMidHue { get; set; }
-        public Hue PrimayDarkHue { get; set; }
+        public Hue PrimaryLightHue { get; set; }
+        public Hue PrimaryMidHue { get; set; }
+        public Hue PrimaryDarkHue { get; set; }
 
         public Hue SecondaryAccentHue { get; set; }
 
         public Palette GetPalette()
         {
-            if (PrimayLightHue == null) throw new InvalidOperationException($"{nameof(PrimayLightHue)} is required");
-            if (PrimayMidHue == null) throw new InvalidOperationException($"{nameof(PrimayMidHue)} is required");
-            if (PrimayDarkHue == null) throw new InvalidOperationException($"{nameof(PrimayDarkHue)} is required");
+            if (PrimaryLightHue == null) throw new InvalidOperationException($"{nameof(PrimaryLightHue)} is required");
+            if (PrimaryMidHue == null) throw new InvalidOperationException($"{nameof(PrimaryMidHue)} is required");
+            if (PrimaryDarkHue == null) throw new InvalidOperationException($"{nameof(PrimaryDarkHue)} is required");
             if (SecondaryAccentHue == null) throw new InvalidOperationException($"{nameof(SecondaryAccentHue)} is required");
-            var swatch = new Swatch("CustomSwatch", new[] { PrimayLightHue, PrimayMidHue, PrimayDarkHue }, new[] { SecondaryAccentHue });
+            var swatch = new Swatch("CustomSwatch", new[] { PrimaryLightHue, PrimaryMidHue, PrimaryDarkHue }, new[] { SecondaryAccentHue });
             return new Palette(swatch, swatch, 0, 1, 2, 0);
         }
     }

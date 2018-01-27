@@ -1,5 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:CustomTheme">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
+    <Color x:Key="PrimaryHueLight">LightGreen</Color>
+    <Color x:Key="PrimaryHueLightForeground">Gray</Color>
+    <Color x:Key="PrimaryHueMid">LawnGreen</Color>
+    <Color x:Key="PrimaryHueMidForeground">Black</Color>
+    <Color x:Key="PrimaryHueDark">DarkGreen</Color>
+    <Color x:Key="PrimaryHueDarkForeground">WhiteSmoke</Color>
+    <Color x:Key="SecondaryAccent">Aqua</Color>
+    <Color x:Key="SecondaryAccentForeground">Black</Color>
 </ResourceDictionary>

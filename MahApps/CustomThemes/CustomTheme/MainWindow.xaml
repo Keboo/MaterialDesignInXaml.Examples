@@ -1,68 +1,83 @@
-﻿<controls:MetroWindow x:Class="CustomTheme.MainWindow"
+﻿<mahControls:MetroWindow x:Class="CustomTheme.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomTheme"
-        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:mahControls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" x:Name="MetroWindow"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         GlowBrush="{DynamicResource AccentColorBrush}"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="525">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.togglebutton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
 
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="5">
-            <ToggleButton IsChecked="{Binding IsLightTheme}"
-                          Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-            <TextBlock>
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-                        <Setter Property="Text" Value="Light Theme" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsLightTheme}" Value="False">
-                                <Setter Property="Text" Value="Dark Theme" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-        </StackPanel>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <mahControls:ToggleSwitch IsChecked="{Binding IsLightTheme}" OffLabel="Dark Theme" OnLabel="Light Theme"
+                                          Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"/>
+            </StackPanel>
 
 
-        <ItemsControl ItemsSource="{Binding ThemeColors}" VerticalAlignment="Center" Grid.Row="1">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+            <ItemsControl ItemsSource="{Binding ThemeColors}" Grid.Row="1">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:ThemeColorViewModel}">
-                    <Button Command="{Binding DataContext.SetThemeCommand, ElementName=MetroWindow}" CommandParameter="{Binding}"
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:ThemeColorViewModel}">
+                        <Button Command="{Binding DataContext.SetThemeCommand, ElementName=MetroWindow}" CommandParameter="{Binding}"
                             Style="{StaticResource MaterialDesignFlatButton}" Height="{x:Static system:Double.NaN}">
-                        <StackPanel>
-                            <Ellipse Fill="{Binding SampleBrush}" Height="50" Width="50" />
-                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBody}"/>
-                        </StackPanel>
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
-</controls:MetroWindow>
+                            <StackPanel>
+                                <Ellipse Fill="{Binding SampleBrush}" Height="50" Width="50" />
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBody}"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <StackPanel Grid.Row="2" Margin="0,30,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="materialDesign:ColorZone" BasedOn="{StaticResource {x:Type materialDesign:ColorZone}}">
+                        <Setter Property="Margin" Value="3" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Resources>
+                <materialDesign:ColorZone Mode="PrimaryDark" Content="Primary Dark" />
+                <materialDesign:ColorZone Mode="PrimaryMid" Content="Primary Mid" />
+                <materialDesign:ColorZone Mode="PrimaryLight" Content="Primary Light" />
+                <materialDesign:ColorZone Mode="Accent" Content="Accent" />
+                <Separator Margin="3,6"/>
+                <materialDesign:ColorZone Mode="Inverted" Content="Inverted" />
+                <materialDesign:ColorZone Mode="Dark" Content="Dark" />
+                <materialDesign:ColorZone Mode="Light" Content="Light" />
+                <materialDesign:ColorZone Mode="Standard" Content="Standard" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</mahControls:MetroWindow>
+
+
 
