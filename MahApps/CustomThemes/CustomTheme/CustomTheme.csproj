@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MahAppsPaletteHelper.cs" />
     <Compile Include="Theme.cs" />
     <Compile Include="ThemeColorViewModel.cs" />
     <Page Include="CustomXamlTheme.xaml">
