@@ -74,6 +74,11 @@
                 <materialDesign:ColorZone Mode="Dark" Content="Dark" />
                 <materialDesign:ColorZone Mode="Light" Content="Light" />
                 <materialDesign:ColorZone Mode="Standard" Content="Standard" />
+                <TabControl>
+                    <TabItem Header="Tab 1"/>
+                    <TabItem Header="Tab 2"/>
+                    <TabItem Header="Tab 3"/>
+                </TabControl>
             </StackPanel>
         </Grid>
     </ScrollViewer>
