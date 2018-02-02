@@ -59,7 +59,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomTheme", "MahApps\Cust
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Animation", "Animation", "{4E496B54-113E-4785-9A50-9DE93F120BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowAnimation", "ShadowAnimation\ShadowAnimation.csproj", "{7A22A17F-C0DD-4D86-A578-84F83A906FFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowAnimation", "Animation\ShadowAnimation\ShadowAnimation.csproj", "{7A22A17F-C0DD-4D86-A578-84F83A906FFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
