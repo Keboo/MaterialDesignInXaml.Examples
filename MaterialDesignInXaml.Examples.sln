@@ -61,6 +61,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Animation", "Animation", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowAnimation", "Animation\ShadowAnimation\ShadowAnimation.csproj", "{7A22A17F-C0DD-4D86-A578-84F83A906FFA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SnackBar", "SnackBar", "{28A34DA9-6DAF-47E3-B7B1-EB0C255BDBC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackBarExample", "SnackBar\SnackBarExample\SnackBarExample.csproj", "{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +123,10 @@ Global
 		{7A22A17F-C0DD-4D86-A578-84F83A906FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A22A17F-C0DD-4D86-A578-84F83A906FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A22A17F-C0DD-4D86-A578-84F83A906FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +153,7 @@ Global
 		{99D95CEF-8F22-49AA-B498-13FE3FEAD776} = {7D5DD8A1-9A00-4AC4-B04A-12346176CD03}
 		{3C1CD16A-36F2-4354-B53B-D81E462069D1} = {99D95CEF-8F22-49AA-B498-13FE3FEAD776}
 		{7A22A17F-C0DD-4D86-A578-84F83A906FFA} = {4E496B54-113E-4785-9A50-9DE93F120BC3}
+		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A} = {28A34DA9-6DAF-47E3-B7B1-EB0C255BDBC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
