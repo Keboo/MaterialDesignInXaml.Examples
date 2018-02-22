@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <md:Snackbar MessageQueue="{md:MessageQueue}" />
+
+        <md:Snackbar VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="WelcomeMessageSnackbar">
+            <md:Snackbar.Resources>
+                <Style TargetType="md:SnackbarMessage" BasedOn="{StaticResource {x:Type md:SnackbarMessage}}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="md:SnackbarMessage">
+                                <Grid>
+                                    <ContentPresenter Content="{TemplateBinding Content}" 
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          HorizontalAlignment="Center"
+                                          MaxHeight="36">
+                                    </ContentPresenter>
+                                    <!-- Needed by the template, wont use it though -->
+                                    <Button x:Name="PART_ActionButton"
+                                            Visibility="Collapsed" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </md:Snackbar.Resources>
+        </md:Snackbar>
     </Grid>
 </Window>
