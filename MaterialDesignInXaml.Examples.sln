@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DialogHost", "DialogHost", "{6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}"
 EndProject
@@ -69,6 +69,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SnackBar", "SnackBar", "{28
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackBarExample", "SnackBar\SnackBarExample\SnackBarExample.csproj", "{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WelcomeMessage", "Animation\WelcomeMessage\WelcomeMessage.csproj", "{E49C60B6-2260-42B8-A179-AF0E7B546B4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49C60B6-2260-42B8-A179-AF0E7B546B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49C60B6-2260-42B8-A179-AF0E7B546B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49C60B6-2260-42B8-A179-AF0E7B546B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49C60B6-2260-42B8-A179-AF0E7B546B4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +170,7 @@ Global
 		{10D696D7-C27A-4B7A-B853-4A89CCA07768} = {79522AC3-05A6-4374-B157-7F12A58FF5A5}
 		{45157E11-0B5A-4FA8-901F-0C54714046A9} = {10D696D7-C27A-4B7A-B853-4A89CCA07768}
 		{C0F51F93-FCC6-4B20-94EE-9A730B83E41A} = {28A34DA9-6DAF-47E3-B7B1-EB0C255BDBC5}
+		{E49C60B6-2260-42B8-A179-AF0E7B546B4A} = {4E496B54-113E-4785-9A50-9DE93F120BC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
