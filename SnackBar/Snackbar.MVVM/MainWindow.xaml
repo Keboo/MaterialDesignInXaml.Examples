@@ -1,0 +1,35 @@
+﻿<Window x:Class="Snackbar.MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mvvm="clr-namespace:Snackbar.MVVM"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=mvvm:MainWindowViewModel}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox x:Name="MessageTextBox" Text="Enter message here" />
+            
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Send Bound" Command="{Binding SendMessageCommand}" 
+                        CommandParameter="{Binding Text, ElementName=MessageTextBox}"
+                        HorizontalAlignment="Center"/>
+                <Button Content="Send Pub/Sub" Command="{Binding SendWithPubSubCommand}" 
+                        CommandParameter="{Binding Text, ElementName=MessageTextBox}"
+                        HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+        </StackPanel>
+        <md:Snackbar MessageQueue="{Binding BoundMessageQueue}" 
+                     x:Name="Snackbar"
+                     HorizontalAlignment="Stretch"/>
+    </Grid>
+</Window>
