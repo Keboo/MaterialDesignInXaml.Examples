@@ -1,0 +1,181 @@
+﻿<Page
+    x:Class="DemoApp.Demos.Airspace.AirspaceDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    xmlns:converters="clr-namespace:Microsoft.DwayneNeed.Converters;assembly=Microsoft.DwayneNeed"
+    xmlns:local="clr-namespace:DemoApp.Demos.Airspace"
+    xmlns:localmodel="clr-namespace:DemoApp.Demos.Airspace.Model"
+    xmlns:mdi="clr-namespace:Microsoft.DwayneNeed.MDI;assembly=Microsoft.DwayneNeed"
+    xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed"
+    xmlns:controls="clr-namespace:Microsoft.DwayneNeed.Controls;assembly=Microsoft.DwayneNeed"
+	Title="MdiDemo">
+    <Page.Resources>
+        <Style TargetType="{x:Type controls:WebBrowserEx}">
+            <Setter Property="CopyBitsBehavior" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.WebBrowserExCopyBitsBehavior}"/>
+            <Setter Property="SuppressScriptErrors" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.WebBrowserExSuppressScriptErrors}"/>
+            <Setter Property="SuppressEraseBackground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.WebBrowserExSuppressEraseBackground}"/>
+        </Style>
+        <Style x:Key="DemoMdiViewStyle" TargetType="{x:Type mdi:MdiView}" BasedOn="{StaticResource {x:Type mdi:MdiView}}">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewBackground}"/>
+            <Setter Property="EnableSnapping" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewIsSnappingEnabled}"/>
+            <Setter Property="SnapThreshold" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewSnappingThreshold}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewHorizontalScrollBarVisibility}"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewVerticalScrollBarVisibility}"/>
+            <Setter Property="ContentAirspaceMode" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiViewAirspaceMode}"/>
+            <Setter Property="ContentClippingBackground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostBackground}"/>
+            <Setter Property="ContentClippingCopyBitsBehavior" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostCopyBitsBehavior}"/>
+            <Setter Property="ContentRedirectionVisibility" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostRedirectionVisibility}"/>
+            <Setter Property="ContentIsOutputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostIsOutputRedirectionEnabled}"/>
+            <Setter Property="ContentOutputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostOutputRedirectionPeriod}"/>
+            <Setter Property="ContentIsInputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostIsInputRedirectionEnabled}"/>
+            <Setter Property="ContentInputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostInputRedirectionPeriod}"/>
+        </Style>
+        <Style x:Key="DemoMdiWindowStyle" TargetType="{x:Type mdi:MdiWindow}" BasedOn="{StaticResource {x:Type mdi:MdiWindow}}">
+            <Setter Property="mdi:MdiPanel.WindowRect" Value="{Binding WindowRect, Mode=TwoWay}"/>
+            <Setter Property="Header" Value="{Binding Title}"/>
+            <Setter Property="MinimizedContent" Value="{Binding Uri}"/>
+            <Setter Property="WindowAirspaceMode" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiWindowAirspaceMode}"/>
+            <Setter Property="WindowClippingBackground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostBackground}"/>
+            <Setter Property="WindowClippingCopyBitsBehavior" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostCopyBitsBehavior}"/>
+            <Setter Property="WindowRedirectionVisibility" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostRedirectionVisibility}"/>
+            <Setter Property="WindowIsOutputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.IsOutputRedirectionEnabled}"/>
+            <Setter Property="WindowOutputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.OutputRedirectionPeriod}"/>
+            <Setter Property="WindowIsInputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.IsInputRedirectionEnabled}"/>
+            <Setter Property="WindowInputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.InputRedirectionPeriod}"/>
+            <Setter Property="ContentAirspaceMode" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.MdiWindowContentAirspaceMode}"/>
+            <Setter Property="ContentClippingBackground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostBackground}"/>
+            <Setter Property="ContentClippingCopyBitsBehavior" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.HwndSourceHostCopyBitsBehavior}"/>
+            <Setter Property="ContentRedirectionVisibility" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostRedirectionVisibility}"/>
+            <Setter Property="ContentIsOutputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostIsOutputRedirectionEnabled}"/>
+            <Setter Property="ContentOutputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostOutputRedirectionPeriod}"/>
+            <Setter Property="ContentIsInputRedirectionEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostIsInputRedirectionEnabled}"/>
+            <Setter Property="ContentInputRedirectionPeriod" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Options.RedirectedHwndHostInputRedirectionPeriod}"/>
+        </Style>
+        <DataTemplate DataType="{x:Type localmodel:MdiDemoContent}">
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localmodel:MdiDemoPageContent}">
+            <controls:ComponentPresenter Source="{Binding Uri}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localmodel:MdiDemoColorGridContent}">
+            <controls:ColorGrid NumberOfCells="{Binding NumberOfCells}"/>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.CommandBindings>
+        <CommandBinding Command="{x:Static mdi:MdiCommands.CloseWindow}" CanExecute="CloseWindow_CanExecute" Executed="CloseWindow_Execute"/>
+        <CommandBinding Command="{x:Static localmodel:MdiDemoCommands.NewWorkspace}" CanExecute="NewWorkspace_CanExecute" Executed="NewWorkspace_Execute"/>
+        <CommandBinding Command="{x:Static localmodel:MdiDemoCommands.OpenWorkspace}" CanExecute="OpenWorkspace_CanExecute" Executed="OpenWorkspace_Execute"/>
+        <CommandBinding Command="{x:Static localmodel:MdiDemoCommands.SaveWorkspace}" CanExecute="SaveWorkspace_CanExecute" Executed="SaveWorkspace_Execute"/>
+        <CommandBinding Command="{x:Static localmodel:MdiDemoCommands.SaveWorkspaceAs}" CanExecute="SaveWorkspaceAs_CanExecute" Executed="SaveWorkspaceAs_Execute"/>
+    </Page.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="W_orkspace">
+                <MenuItem Header="New" Command="{x:Static localmodel:MdiDemoCommands.NewWorkspace}"/>
+                <MenuItem Header="Open..." Command="{x:Static localmodel:MdiDemoCommands.OpenWorkspace}"/>
+                <MenuItem Header="Save" Command="{x:Static localmodel:MdiDemoCommands.SaveWorkspace}"/>
+                <MenuItem Header="Save As..." Command="{x:Static localmodel:MdiDemoCommands.SaveWorkspaceAs}"/>
+                <Separator/>
+                <MenuItem Header="Add New Item">
+                    <MenuItem Header="Windows _Forms">
+                        <MenuItem Header="_Calendar" Click="AddContent" Tag="Demos/Airspace/WinFormsCalendar.xaml"/>
+                        <MenuItem Header="Control _Mix" Click="AddContent" Tag="Demos/Airspace/WinFormsMix.xaml"/>
+                        <MenuItem Header="_Data Form" Click="AddContent" Tag="Demos/Airspace/WinFormsDataForm.xaml"/>
+                        <MenuItem Header="_Web Browser" Click="AddContent" Tag="Demos/Airspace/WinFormsWebBrowser.xaml"/>
+                    </MenuItem>
+                    <MenuItem Header="_ActiveX">
+                        <MenuItem Header="_Media Player" Click="AddContent" Tag="Demos/Airspace/WinFormsMediaPlayer.xaml"/>
+                        <MenuItem Header="_Remote Desktop" Click="AddContent" Tag="Demos/Airspace/WinFormsRemoteDesktop.xaml"/>
+                    </MenuItem>
+                    <MenuItem Header="_DirectX">
+                        <MenuItem Header="_XNA (Dx9)" Click="AddContent" Tag="Demos/Airspace/WinFormsXnaModelViewer.xaml"/>
+                        <MenuItem Header="Direct2D (Dx10)" Click="AddContent" Tag="Demos/Airspace/D2DSample.xaml"/>
+                    </MenuItem>
+                    <MenuItem Header="_WPF">
+                        <MenuItem Header="_Web Browser" Click="AddContent" Tag="Demos/Airspace/WPFWebBrowser.xaml"/>
+                        <MenuItem Header="_Media Element" Click="AddContent" Tag="Demos/Airspace/WPFMediaElement.xaml"/>
+                        <MenuItem Header="_Image" Click="AddContent" Tag="Demos/Airspace/WPFImage.xaml"/>
+                        <MenuItem Header="_Data Form" Click="AddContent" Tag="Demos/Airspace/WPFDataForm.xaml"/>
+                        <MenuItem Header="_Cubes" Click="AddContent" Tag="Demos/Airspace/WPFCubes.xaml"/>
+                        <MenuItem Header="Small Grid:  100 elements" Click="AddContent" Tag="Small"/>
+                        <MenuItem Header="Medium Grid: 1000 elements" Click="AddContent" Tag="Medium"/>
+                        <MenuItem Header="Large Grid:  10000 elements" Click="AddContent" Tag="Large"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Empty MdiWindow" Click="AddContent" Tag="MdiWindow"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Options" Click="ShowOptions"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Cu_t" Command="Cut"/>
+                <MenuItem Header="_Copy" Command="Copy"/>
+                <MenuItem Header="_Paste" Command="Paste"/>
+            </MenuItem>
+            <MenuItem Header="_Window">
+                <MenuItem.Resources>
+                    <converters:ContainerFromItemConverter x:Key="converter"/>
+                </MenuItem.Resources>
+                <MenuItem Header="Restore" Command="{x:Static mdi:MdiCommands.RestoreWindow}">
+                    <MenuItem.CommandTarget>
+                        <MultiBinding Converter="{StaticResource converter}">
+                            <Binding ElementName="MainMdiView"/>
+                            <Binding ElementName="MainMdiView" Path="SelectedItem"/>
+                        </MultiBinding>
+                    </MenuItem.CommandTarget>
+                </MenuItem>
+                <MenuItem Header="Minimize" Command="{x:Static mdi:MdiCommands.MinimizeWindow}">
+                    <MenuItem.CommandTarget>
+                        <MultiBinding Converter="{StaticResource converter}">
+                            <Binding ElementName="MainMdiView"/>
+                            <Binding ElementName="MainMdiView" Path="SelectedItem"/>
+                        </MultiBinding>
+                    </MenuItem.CommandTarget>
+                </MenuItem>
+                <MenuItem Header="Maximize" Command="{x:Static mdi:MdiCommands.MaximizeWindow}">
+                    <MenuItem.CommandTarget>
+                        <MultiBinding Converter="{StaticResource converter}">
+                            <Binding ElementName="MainMdiView"/>
+                            <Binding ElementName="MainMdiView" Path="SelectedItem"/>
+                        </MultiBinding>
+                    </MenuItem.CommandTarget>
+                </MenuItem>
+                <MenuItem Header="Close" Command="{x:Static mdi:MdiCommands.CloseWindow}">
+                    <MenuItem.CommandTarget>
+                        <MultiBinding Converter="{StaticResource converter}">
+                            <Binding ElementName="MainMdiView"/>
+                            <Binding ElementName="MainMdiView" Path="SelectedItem"/>
+                        </MultiBinding>
+                    </MenuItem.CommandTarget>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Restore All Windows" Command="{x:Static mdi:MdiCommands.RestoreAllWindows}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Minimize All Windows" Command="{x:Static mdi:MdiCommands.MinimizeAllWindows}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Maximize All Windows" Command="{x:Static mdi:MdiCommands.MaximizeAllWindows}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Cascade Windows" Command="{x:Static mdi:MdiCommands.CascadeWindows}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Tile Windows" Command="{x:Static mdi:MdiCommands.TileWindows}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Activate Next Window" Command="{x:Static mdi:MdiCommands.ActivateNextWindow}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <MenuItem Header="Activate Previous Window" Command="{x:Static mdi:MdiCommands.ActivatePreviousWindow}" CommandTarget="{Binding ElementName=MainMdiView}"/>
+                <Separator/>
+                <MenuItem Header="All Windows" ItemsSource="{Binding ElementName=MainMdiView, Path=Windows}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="IsChecked" Value="{Binding Path=(Selector.IsSelected)}"/>
+                            <Setter Property="Command" Value="{x:Static mdi:MdiCommands.ActivateWindow}"/>
+                            <Setter Property="CommandTarget" Value="{Binding}"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                    <MenuItem.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl Content="{Binding Header}"/>
+                        </DataTemplate>
+                    </MenuItem.ItemTemplate>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <mdi:MdiView x:Name="MainMdiView"
+                     Style="{StaticResource DemoMdiViewStyle}"
+                     ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:AirspaceDemo}}, Path=Workspace.Content}"
+                     ItemContainerStyle="{StaticResource DemoMdiWindowStyle}"/>
+    </DockPanel>
+</Page>

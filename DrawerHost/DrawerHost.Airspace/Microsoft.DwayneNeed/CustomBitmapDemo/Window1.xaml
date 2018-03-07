@@ -1,0 +1,88 @@
+﻿<Window x:Class="CustomBitmapDemo.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CustomBitmap Demo" Height="400" Width="500">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=BitmapUriList}" Content="First BitmapSource (URI)"/>
+      <ComboBox x:Name="BitmapUriList" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" IsEditable="True" SelectedIndex="0" SelectionChanged="OnSelectionChanged">
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/mslogo-1.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/mslogo-2.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/WinVista_h_Print.jpg.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Live_h_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Generic_v_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/windowsxp-2.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Generic_h_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/WindowsMCE_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Live_v_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/windowsxp-1.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Mobile_Vista_h_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/Windows_Mobile_Vista_v_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/WinServer2003.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/WinVista_v_print.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/officesystem2.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/officesystem1.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/visualstudio-6.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/visualstudio-5.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/dynamics.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/msn-1.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/msn-2.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/xbox-2.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/xbox-3.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/xbox-1.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/images/gallery/logos/xbox-4.tif"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/Defender.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/DigitalLocker.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/EaseOfAccess.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/Flip3D.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/IE.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/ParentalControls.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/Search.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/Security.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/WinVista-Button_rgb.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsDVDMaker.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsMail.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsMarketplace.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsMediaPlayer.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsMovieMaker.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsPhotoGallery.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsSidebar.jpg"/>
+        <ComboBoxItem Content="http://www.microsoft.com/presspass/presskits/windowsvista/images/icons/WindowsUpdate.jpg"/>
+      </ComboBox>
+      <Label Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=CustomBitmapList1}" Content="Second BitmapSource"/>
+      <ComboBox x:Name="CustomBitmapList1" Grid.Row="1" Grid.Column="1" SelectedIndex="0" SelectionChanged="OnSelectionChanged">
+        <ComboBoxItem>None</ComboBoxItem>
+        <ComboBoxItem>ColorKey</ComboBoxItem>
+        <ComboBoxItem>Sepia</ComboBoxItem>
+        <ComboBoxItem>Grayscale</ComboBoxItem>
+      </ComboBox>
+      <Label Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=CustomBitmapList1}" Content="Third BitmapSource"/>
+      <ComboBox x:Name="CustomBitmapList2" Grid.Row="2" Grid.Column="1" SelectedIndex="0" SelectionChanged="OnSelectionChanged">
+        <ComboBoxItem>None</ComboBoxItem>
+        <ComboBoxItem>ColorKey</ComboBoxItem>
+        <ComboBoxItem>Sepia</ComboBoxItem>
+        <ComboBoxItem>Grayscale</ComboBoxItem>
+      </ComboBox>
+        <Button Content="GC!" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Click="Button_Click"/>
+      <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+        <Border.Background>
+          <LinearGradientBrush>
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+          </LinearGradientBrush>
+        </Border.Background>
+        <Image x:Name="TheImage" RenderOptions.BitmapScalingMode="LowQuality"/>
+      </Border>
+    </Grid>
+</Window>

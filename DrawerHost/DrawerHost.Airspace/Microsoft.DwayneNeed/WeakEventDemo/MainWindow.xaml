@@ -1,0 +1,13 @@
+﻿<Window x:Class="WeakEventDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="One"/>
+            <Button Content="Two"/>
+            <Button Content="Three"/>
+        </StackPanel>
+        <TextBox TextWrapping="NoWrap" AcceptsReturn="True" x:Name="TheTextBox"/>
+    </DockPanel>
+</Window>

@@ -1,0 +1,12 @@
+﻿<model:Topic
+    x:Class="DemoApp.Demos.Airspace.Topic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:model="clr-namespace:DemoApp.Model"
+    Title="Mitigating Airspace Issues In WPF Applications"
+    PublishDate="2/27/2013"
+    DemoUri="Demos\Airspace\AirspaceDemo.xaml"
+    BlogUri="http://blogs.msdn.com/b/dwayneneed/archive/2013/02/26/mitigating-airspace-issues-in-wpf-applications.aspx"
+    CodeUri="http://MicrosoftDwayneNeed.codeplex.com"
+    Summary="This example explores the various mitigations for airspace issues in the context of a MDI scenario.">
+</model:Topic>

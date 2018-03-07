@@ -1,0 +1,7 @@
+﻿<NavigationWindow x:Class="DemoApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Microsoft.DwayneNeed - Demo Application"
+    Width="600" Height="400"
+    Source="MainPage.xaml">
+</NavigationWindow>

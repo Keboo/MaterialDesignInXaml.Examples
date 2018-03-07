@@ -1,0 +1,16 @@
+﻿<Grid x:Class="DemoApp.Demos.Airspace.WPFMediaElement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ex="clr-namespace:Microsoft.DwayneNeed.Extensions;assembly=Microsoft.DwayneNeed"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed">
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Top">
+      <Button Content="Go" x:Name="Go" DockPanel.Dock="Right" Click="GoClicked"/>
+      <ComboBox x:Name="Address" SelectionChanged="AddressSelectionChanged" IsEditable="True">
+        <sys:String>C:\Users\Public\Videos\Sample Videos\Wildlife.wmv</sys:String>
+      </ComboBox>
+    </DockPanel>
+    <MediaElement x:Name="Player"/>
+  </DockPanel>
+</Grid>
