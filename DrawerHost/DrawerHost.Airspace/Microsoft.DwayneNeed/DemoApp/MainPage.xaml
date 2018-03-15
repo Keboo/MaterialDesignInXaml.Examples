@@ -1,0 +1,47 @@
+﻿<Page x:Class="DemoApp.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:model="clr-namespace:DemoApp.Model"
+      xmlns:mdi="clr-namespace:DemoApp.Demos.Airspace"
+      Title="Foo">
+    <Page.Resources>
+        <model:Index x:Key="Index">
+            <mdi:Topic/>
+        </model:Index>
+    </Page.Resources>
+    <ItemsControl HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False"  ItemsSource="{Binding Source={StaticResource Index}, Path=Topics}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="{x:Type model:Topic}">
+                <Grid TextElement.FontSize="14" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" TextElement.FontSize="20">
+                        <TextBlock Text="{Binding PublishDate, StringFormat={}{0:MM/dd/yyyy:}}"/>
+                        <TextBlock FontWeight="Bold" Margin="5,0,0,0" Text="{Binding Title}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Summary}"/>
+                    <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                        <TextBlock>
+                                <Hyperlink NavigateUri="{Binding DemoUri}"><Run Text="Demo"/></Hyperlink>
+                        </TextBlock>
+                        <TextBlock Margin="10,0,10,0">
+                                <Hyperlink NavigateUri="{Binding BlogUri}"><Run Text="Blog"/></Hyperlink>
+                        </TextBlock>
+                        <TextBlock>
+                                <Hyperlink NavigateUri="{Binding CodeUri}"><Run Text="Code"/></Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="3" Grid.ColumnSpan="2" Margin="0,20,0,20"/>
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</Page>

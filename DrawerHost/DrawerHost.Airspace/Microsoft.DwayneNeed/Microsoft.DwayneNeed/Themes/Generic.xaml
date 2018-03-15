@@ -1,0 +1,512 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Microsoft.DwayneNeed.Converters"
+    xmlns:controls="clr-namespace:Microsoft.DwayneNeed.Controls"
+    xmlns:media="clr-namespace:Microsoft.DwayneNeed.Media"
+    xmlns:mdi="clr-namespace:Microsoft.DwayneNeed.MDI"
+    xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:extensions="clr-namespace:Microsoft.DwayneNeed.Extensions">
+    <Geometry x:Key="CloseGeometry">M0,0 L1,1 M0,1 L1,0</Geometry>
+    <PathGeometry x:Key="MinimizeGeometry">
+        <!-- An invisible box that helps keep the shape when stretching. -->
+        <PathFigure StartPoint="0,0" IsFilled="False" IsClosed="False">
+            <LineSegment Point="1,0" IsStroked="False"/>
+            <LineSegment Point="1,1" IsStroked="False"/>
+            <LineSegment Point="0,1" IsStroked="False"/>
+            <LineSegment Point="0,0" IsStroked="False"/>
+        </PathFigure>
+        <!-- The rectangle at the bottom. -->
+        <PathFigure StartPoint="0,0.8" IsFilled="False" IsClosed="True">
+            <LineSegment Point="1,0.8"/>
+            <LineSegment Point="1,1"/>
+            <LineSegment Point="0,1"/>
+        </PathFigure>
+        <!-- The arrow head, pointing down. -->
+        <PathFigure StartPoint="0.3,0.5" IsFilled="True" IsClosed="True">
+            <LineSegment Point="0.5,0.7"/>
+            <LineSegment Point="0.7,0.5"/>
+        </PathFigure>
+        <!-- The arrow shaft. -->
+        <PathFigure StartPoint="0.5,0.1" IsFilled="False" IsClosed="False">
+            <LineSegment Point="0.5,0.5"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="MaximizeGeometry">
+        <!-- The surrounding rectangle. -->
+        <PathFigure StartPoint="0,0" IsFilled="False" IsClosed="True">
+            <LineSegment Point="1,0"/>
+            <LineSegment Point="1,1"/>
+            <LineSegment Point="0,1"/>
+        </PathFigure>
+        <!-- The arrow head, pointing up. -->
+        <PathFigure StartPoint="0.3,0.4" IsFilled="True" IsClosed="True">
+            <LineSegment Point="0.5,0.2"/>
+            <LineSegment Point="0.7,0.4"/>
+        </PathFigure>
+        <!-- The arrow shaft. -->
+        <PathFigure StartPoint="0.5,0.8" IsFilled="False" IsClosed="False">
+            <LineSegment Point="0.5,0.4"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="RestoreGeometry">
+        <!-- An invisible box that helps keep the shape when stretching. -->
+        <PathFigure StartPoint="0,0" IsFilled="False" IsClosed="False">
+            <LineSegment Point="1,0" IsStroked="False"/>
+            <LineSegment Point="1,1" IsStroked="False"/>
+            <LineSegment Point="0,1" IsStroked="False"/>
+            <LineSegment Point="0,0" IsStroked="False"/>
+        </PathFigure>
+        <!-- The restored rect in front. -->
+        <PathFigure StartPoint="0.1,0.4" IsFilled="False" IsClosed="True">
+            <LineSegment Point="0.6,0.4"/>
+            <LineSegment Point="0.6,0.8"/>
+            <LineSegment Point="0.1,0.8"/>
+        </PathFigure>
+        <!-- The restored rect in back. -->
+        <PathFigure StartPoint="0.4,0.4" IsFilled="False" IsClosed="False">
+            <LineSegment Point="0.4,0.2"/>
+            <LineSegment Point="0.9,0.2"/>
+            <LineSegment Point="0.9,0.6"/>
+            <LineSegment Point="0.6,0.6"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="MenuGeometry">
+        <!-- An invisible box that helps keep the shape when stretching. -->
+        <PathFigure StartPoint="0,0" IsFilled="False" IsClosed="False">
+            <LineSegment Point="1,0" IsStroked="False"/>
+            <LineSegment Point="1,1" IsStroked="False"/>
+            <LineSegment Point="0,1" IsStroked="False"/>
+            <LineSegment Point="0,0" IsStroked="False"/>
+        </PathFigure>
+        <!-- The arrow head, pointing down. -->
+        <PathFigure StartPoint="0.3,0.4" IsFilled="True" IsClosed="True">
+            <LineSegment Point="0.7,0.4"/>
+            <LineSegment Point="0.5,0.6"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="FloatGeometry">
+        <!-- An invisible box that helps keep the shape when stretching. -->
+        <PathFigure StartPoint="0,0" IsFilled="False" IsClosed="False">
+            <LineSegment Point="1,0" IsStroked="False"/>
+            <LineSegment Point="1,1" IsStroked="False"/>
+            <LineSegment Point="0,1" IsStroked="False"/>
+            <LineSegment Point="0,0" IsStroked="False"/>
+        </PathFigure>
+        <!-- The arrow head, pointing down. -->
+        <PathFigure StartPoint="0.3,0.4" IsFilled="True" IsClosed="True">
+            <LineSegment Point="0.7,0.4"/>
+            <LineSegment Point="0.5,0.6"/>
+        </PathFigure>
+    </PathGeometry>
+
+    <Style TargetType="{x:Type interop:AirspaceDecorator}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type interop:AirspaceDecorator}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="AirspaceMode" Value="Clip">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type interop:AirspaceDecorator}">
+                            <interop:HwndSourceHost
+                                Background="{TemplateBinding ClippingBackground}"
+                                CopyBitsBehavior="{TemplateBinding ClippingCopyBitsBehavior}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter/>
+                                </Border>
+                            </interop:HwndSourceHost>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="AirspaceMode" Value="Redirect">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type interop:AirspaceDecorator}">
+                            <interop:RedirectedHwndSourceHost 
+                                RedirectionVisibility="{TemplateBinding RedirectionVisibility}"
+                                IsOutputRedirectionEnabled="{TemplateBinding IsOutputRedirectionEnabled}" 
+                                OutputRedirectionPeriod="{TemplateBinding OutputRedirectionPeriod}" 
+                                IsInputRedirectionEnabled="{TemplateBinding IsInputRedirectionEnabled}" 
+                                InputRedirectionPeriod="{TemplateBinding InputRedirectionPeriod}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter/>
+                                </Border>
+                            </interop:RedirectedHwndSourceHost>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type interop:AirspaceScrollViewer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type interop:AirspaceScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <interop:AirspaceDecorator Grid.Row="0" Grid.Column="0" 
+                            Background="{TemplateBinding Background}"
+                            AirspaceMode="{TemplateBinding AirspaceMode}"
+                            ClippingBackground="{TemplateBinding ClippingBackground}"
+                            ClippingCopyBitsBehavior="{TemplateBinding ClippingCopyBitsBehavior}"
+                            RedirectionVisibility="{TemplateBinding RedirectionVisibility}"
+                            IsOutputRedirectionEnabled="{TemplateBinding IsOutputRedirectionEnabled}"
+                            OutputRedirectionPeriod="{TemplateBinding OutputRedirectionPeriod}"
+                            IsInputRedirectionEnabled="{TemplateBinding IsInputRedirectionEnabled}"
+                            InputRedirectionPeriod="{TemplateBinding InputRedirectionPeriod}">
+                            <ScrollContentPresenter/>
+                        </interop:AirspaceDecorator>
+
+                        <ScrollBar Name="PART_VerticalScrollBar"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Value="{TemplateBinding VerticalOffset}"
+                            Maximum="{TemplateBinding ScrollableHeight}"
+                            ViewportSize="{TemplateBinding ViewportHeight}"
+                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                        <ScrollBar Name="PART_HorizontalScrollBar"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal"
+                            Value="{TemplateBinding HorizontalOffset}"
+                            Maximum="{TemplateBinding ScrollableWidth}"
+                            ViewportSize="{TemplateBinding ViewportWidth}"
+                            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type mdi:MdiView}">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type mdi:MdiView}">
+                    <ScrollViewer Grid.Row="1" x:Name="PART_ContentScrollViewer" CanContentScroll="True" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" Background="{TemplateBinding Background}">
+                        <interop:AirspaceDecorator 
+                            Background="{TemplateBinding Background}"
+                            AirspaceMode="{TemplateBinding ContentAirspaceMode}" 
+                            ClippingBackground="{TemplateBinding ContentClippingBackground}"
+                            ClippingCopyBitsBehavior="{TemplateBinding ContentClippingCopyBitsBehavior}"
+                            RedirectionVisibility="{TemplateBinding ContentRedirectionVisibility}"
+                            IsOutputRedirectionEnabled="{TemplateBinding ContentIsOutputRedirectionEnabled}"
+                            OutputRedirectionPeriod="{TemplateBinding ContentOutputRedirectionPeriod}"
+                            IsInputRedirectionEnabled="{TemplateBinding ContentIsInputRedirectionEnabled}"
+                            InputRedirectionPeriod="{TemplateBinding ContentInputRedirectionPeriod}">
+                            <mdi:MdiPanel IsItemsHost="true"
+                                Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type mdi:MdiView}}, Path=Background}"/>
+                        </interop:AirspaceDecorator>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- A style for buttons in the title bar.  The look is determined by the button's command. -->
+    <Style TargetType="{x:Type Button}" x:Key="TitleBarButton">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="border" Background="Transparent" BorderThickness="2" BorderBrush="Transparent" Padding="2">
+                        <Path Name="path" Width="15" Height="15" StrokeThickness="1" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" RenderOptions.EdgeMode="Aliased"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Command" Value="{x:Static mdi:MdiCommands.CloseWindow}">
+                            <Setter TargetName="path" Property="Data" Value="{StaticResource CloseGeometry}"/>
+                            <Setter TargetName="path" Property="StrokeThickness" Value="3"/>
+                            <Setter TargetName="path" Property="RenderOptions.EdgeMode" Value="Unspecified"/>
+                        </Trigger>
+                        <Trigger Property="Command" Value="{x:Static mdi:MdiCommands.MaximizeWindow}">
+                            <Setter TargetName="path" Property="Data" Value="{StaticResource MaximizeGeometry}"/>
+                        </Trigger>
+                        <Trigger Property="Command" Value="{x:Static mdi:MdiCommands.MinimizeWindow}">
+                            <Setter TargetName="path" Property="Data" Value="{StaticResource MinimizeGeometry}"/>
+                        </Trigger>
+                        <Trigger Property="Command" Value="{x:Static mdi:MdiCommands.RestoreWindow}">
+                            <Setter TargetName="path" Property="Data" Value="{StaticResource RestoreGeometry}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- A style for thumbs in the resize borders.  The look is determined by the thumb's InteractiveEdge. -->
+    <Style TargetType="{x:Type mdi:MdiWindowThumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type mdi:MdiWindowThumb}">
+                    <Border Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type mdi:MdiWindow}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="MinWidth" Value="250"/>
+        <Setter Property="MinHeight" Value="100"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type mdi:MdiWindow}">
+                    <ControlTemplate.Resources>
+                        <converters:MdiWindowEdgeThicknessConverter x:Key="converter"/>
+                    </ControlTemplate.Resources>
+                    <interop:AirspaceDecorator
+                            Background="{TemplateBinding Background}"
+                            AirspaceMode="{TemplateBinding WindowAirspaceMode}" 
+                            ClippingBackground="{TemplateBinding WindowClippingBackground}"
+                            ClippingCopyBitsBehavior="{TemplateBinding WindowClippingCopyBitsBehavior}"
+                            RedirectionVisibility="{TemplateBinding WindowRedirectionVisibility}"
+                            IsOutputRedirectionEnabled="{TemplateBinding WindowIsOutputRedirectionEnabled}"
+                            OutputRedirectionPeriod="{TemplateBinding WindowOutputRedirectionPeriod}"
+                            IsInputRedirectionEnabled="{TemplateBinding WindowIsInputRedirectionEnabled}"
+                            InputRedirectionPeriod="{TemplateBinding WindowInputRedirectionPeriod}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Name="ResizeLeft" Width="5"/>
+                                <ColumnDefinition Width="20" MinWidth="20" MaxWidth="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20" MinWidth="20" MaxWidth="20"/>
+                                <ColumnDefinition Name="ResizeRight" Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Name="ResizeTop" Height="5"/>
+                                <RowDefinition Height="20" MinHeight="20" MaxHeight="20"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20" MinHeight="20" MaxHeight="20"/>
+                                <RowDefinition Name="ResizeBottom" Height="5"/>
+                            </Grid.RowDefinitions>
+                            <mdi:MdiWindowThumb Grid.Row="1" Grid.Column="0" InteractiveEdges="Top,Left"     BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Left'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="0" Grid.Column="0" InteractiveEdges="Top,Left"     BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Top,Left'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="0" Grid.Column="1" InteractiveEdges="Top,Left"     BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Top'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="0" Grid.Column="2" InteractiveEdges="Top"          BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Top,Left,Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="0" Grid.Column="3" InteractiveEdges="Top,Right"    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Top'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="0" Grid.Column="4" InteractiveEdges="Top,Right"    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Top,Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="1" Grid.Column="4" InteractiveEdges="Top,Right"    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="2" Grid.Column="4" InteractiveEdges="Right"        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Right,Top,Bottom'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="3" Grid.Column="4" InteractiveEdges="Bottom,Right" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="4" Grid.Column="4" InteractiveEdges="Bottom,Right" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Bottom,Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="4" Grid.Column="3" InteractiveEdges="Bottom,Right" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Bottom'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="4" Grid.Column="2" InteractiveEdges="Bottom"       BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Bottom,Left,Right'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="4" Grid.Column="1" InteractiveEdges="Bottom,Left"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Bottom'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="4" Grid.Column="0" InteractiveEdges="Bottom,Left"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Bottom,Left'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="3" Grid.Column="0" InteractiveEdges="Bottom,Left"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Left'}"/>
+                            <mdi:MdiWindowThumb Grid.Row="2" Grid.Column="0" InteractiveEdges="Left"         BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource converter}, ConverterParameter='Left,Top,Bottom'}"/>
+                            <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="Transparent"   BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <!-- Menu -->
+                                        <ColumnDefinition Width="Auto"/>
+                                        <!-- Header -->
+                                        <ColumnDefinition Width="*"/>
+                                        <!-- Minimize -->
+                                        <ColumnDefinition Width="Auto"/>
+                                        <!-- Maximize -->
+                                        <ColumnDefinition Width="Auto"/>
+                                        <!-- Close -->
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <!-- Title Bar -->
+                                        <RowDefinition Height="Auto"/>
+                                        <!-- Content -->
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Menu Grid.Row="0" Grid.Column="0" Background="Transparent">
+                                        <Menu.Resources>
+                                            <!-- A style for the top-level menu item in the title bar. -->
+                                            <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
+                                                <Grid>
+                                                    <Border Name="border" Background="Transparent" BorderThickness="2" BorderBrush="Transparent" Padding="2">
+                                                        <Path Name="path" Width="15" Height="15" Data="{StaticResource MenuGeometry}" StrokeThickness="1" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" RenderOptions.EdgeMode="Aliased"/>
+                                                    </Border>
+                                                    <!-- Submenu Popup -->
+                                                    <Popup x:Name="PART_Popup" HorizontalOffset="1" VerticalOffset="-1" AllowsTransparency="true" Placement="Bottom" IsOpen="{Binding Path=IsSubmenuOpen,RelativeSource={RelativeSource TemplatedParent}}" Focusable="false" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                                        <theme:SystemDropShadowChrome Name="Shdw" Color="Transparent">
+                                                            <Border Name="SubMenuBorder" Background="{TemplateBinding Background}" BorderBrush="#FF959595" BorderThickness="1">
+                                                                <ScrollViewer Name="SubMenuScrollViewer" Margin="1,0" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                                                                    <Grid>
+                                                                        <!--RenderOptions.ClearTypeHint="Enabled"-->
+                                                                        <Canvas Height="0" Width="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                                            <Rectangle Name="OpaqueRect" Height="{Binding ElementName=SubMenuBorder,Path=ActualHeight}"  Width="{Binding ElementName=SubMenuBorder,Path=ActualWidth}"  Fill="{TemplateBinding Background}" />
+                                                                        </Canvas>
+                                                                        <Rectangle Fill="#F1F1F1" HorizontalAlignment="Left" Width="28" Margin="1,2" RadiusX="2" RadiusY="2"/>
+                                                                        <Rectangle HorizontalAlignment="Left" Width="1" Margin="29,2,0,2" Fill="#E2E3E3"/>
+                                                                        <Rectangle HorizontalAlignment="Left" Width="1" Margin="30,2,0,2" Fill="White"/>
+                                                                        <ItemsPresenter Name="ItemsPresenter" Margin="2" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Grid.IsSharedSizeScope="true"/>
+                                                                    </Grid>
+                                                                </ScrollViewer>
+                                                            </Border>
+                                                        </theme:SystemDropShadowChrome>
+                                                    </Popup>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                                                        <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None"/>
+                                                    </Trigger>
+                                                    <Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="true">
+                                                        <Setter TargetName="Shdw" Property="Margin" Value="0,0,5,5"/>
+                                                        <Setter TargetName="Shdw" Property="Color" Value="#71000000"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsHighlighted" Value="true">
+                                                        <Setter TargetName="border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Foreground}"/>
+                                                    </Trigger>
+                                                    <Trigger SourceName="SubMenuScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false" >
+                                                        <Setter TargetName="OpaqueRect" Property="Canvas.Top"  Value="{Binding ElementName=SubMenuScrollViewer, Path=VerticalOffset}" />
+                                                        <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding ElementName=SubMenuScrollViewer, Path=HorizontalOffset}" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Menu.Resources>
+                                        <MenuItem Background="{TemplateBinding Background}">
+                                            <MenuItem Header="Restore" Command="{x:Static mdi:MdiCommands.RestoreWindow}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <MenuItem.Icon>
+                                                    <Path Width="15" Height="15" Data="{StaticResource RestoreGeometry}" StrokeThickness="1" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" RenderOptions.EdgeMode="Aliased"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Minimize" Command="{x:Static mdi:MdiCommands.MinimizeWindow}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <MenuItem.Icon>
+                                                    <Path Width="15" Height="15" Data="{StaticResource MinimizeGeometry}" StrokeThickness="1" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" RenderOptions.EdgeMode="Aliased"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Maximize" Command="{x:Static mdi:MdiCommands.MaximizeWindow}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <MenuItem.Icon>
+                                                    <Path Width="15" Height="15" Data="{StaticResource MaximizeGeometry}" StrokeThickness="1" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" RenderOptions.EdgeMode="Aliased"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <Separator/>
+                                            <MenuItem Header="Float" Command="{x:Static mdi:MdiCommands.FloatWindow}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <MenuItem.Icon>
+                                                    <Path Width="15" Height="15" Data="{StaticResource FloatGeometry}" StrokeThickness="3" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <Separator/>
+                                            <MenuItem Header="Close" Command="{x:Static mdi:MdiCommands.CloseWindow}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <MenuItem.Icon>
+                                                    <Path Width="15" Height="15" Data="{StaticResource CloseGeometry}" StrokeThickness="3" Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </MenuItem>
+                                    </Menu>
+                                    <Grid x:Name="headerGrid" Grid.Row="0" Grid.Column="1" Background="Transparent">
+                                        <ContentPresenter x:Name="headerContentPresenter" Focusable="False" ContentSource="Header" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2"/>
+                                        <mdi:MdiWindowThumb x:Name="TitleBarThumb" DoubleClickCommand="{x:Static mdi:MdiCommands.MaximizeWindow}"/>
+                                    </Grid>
+                                    <Button Grid.Row="0" Grid.Column="2" Name="MinimizeToggle" Command="{x:Static mdi:MdiCommands.MinimizeWindow}" Style="{StaticResource TitleBarButton}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" />
+                                    <Button Grid.Row="0" Grid.Column="3" Name="MaximizeToggle" Command="{x:Static mdi:MdiCommands.MaximizeWindow}" Style="{StaticResource TitleBarButton}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" />
+                                    <Button Grid.Row="0" Grid.Column="4" Command="{x:Static mdi:MdiCommands.CloseWindow}" Style="{StaticResource TitleBarButton}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" />
+                                    <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0">
+                                        <Grid>
+                                            <Border x:Name="normalContent">
+                                                <interop:AirspaceDecorator x:Name="normalContentDecorator" 
+                                                    Background="{TemplateBinding Background}"
+                                                    AirspaceMode="{TemplateBinding ContentAirspaceMode}" 
+                                                    ClippingBackground="{TemplateBinding ContentClippingBackground}"
+                                                    ClippingCopyBitsBehavior="{TemplateBinding ContentClippingCopyBitsBehavior}"
+                                                    RedirectionVisibility="{TemplateBinding ContentRedirectionVisibility}"
+                                                    IsOutputRedirectionEnabled="{TemplateBinding ContentIsOutputRedirectionEnabled}"
+                                                    OutputRedirectionPeriod="{TemplateBinding ContentOutputRedirectionPeriod}"
+                                                    IsInputRedirectionEnabled="{TemplateBinding ContentIsInputRedirectionEnabled}"
+                                                    InputRedirectionPeriod="{TemplateBinding ContentInputRedirectionPeriod}">
+                                                    <ContentPresenter ContentSource="Content" KeyboardNavigation.DirectionalNavigation="Cycle" KeyboardNavigation.TabNavigation="Cycle"/>
+                                                </interop:AirspaceDecorator>
+                                            </Border>
+                                            <Border x:Name="minimizedContent" Visibility="Collapsed">
+                                                <Border.Background>
+                                                    <VisualBrush Visual="{Binding ElementName=normalContentDecorator}"/>
+                                                </Border.Background>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </interop:AirspaceDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="TitleBarThumb" Property="IsDragging" Value="true">
+                            <Setter Property="IsDragging" Value="true"/>
+                        </Trigger>
+                        <Trigger SourceName="TitleBarThumb" Property="IsDragging" Value="false">
+                            <Setter Property="IsDragging" Value="false"/>
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="true">
+                            <Setter Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="Selector.IsSelected" Value="true">
+                            <Setter TargetName="headerGrid" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"/>
+                            <Setter TargetName="headerContentPresenter" Property="TextElement.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}"/>
+                        </Trigger>
+                        <Trigger Property="mdi:MdiPanel.WindowState" Value="Maximized">
+                            <!-- Hide the resize borders. -->
+                            <Setter TargetName="ResizeLeft" Property="Width" Value="0"/>
+                            <Setter TargetName="ResizeRight" Property="Width" Value="0"/>
+                            <Setter TargetName="ResizeTop" Property="Height" Value="0"/>
+                            <Setter TargetName="ResizeBottom" Property="Height" Value="0"/>
+
+                            <!-- Repurpose the button that normally maximizes the window to restore the window. -->
+                            <Setter TargetName="MaximizeToggle" Property="Command" Value="{x:Static mdi:MdiCommands.RestoreWindow}"/>
+                            <Setter TargetName="TitleBarThumb" Property="DoubleClickCommand" Value="{x:Static mdi:MdiCommands.RestoreWindow}"/>
+                        </Trigger>
+
+                        <Trigger Property="mdi:MdiPanel.WindowState" Value="Minimized">
+                            <Setter TargetName="headerGrid" Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="MinWidth" Value="100"/>
+                            <Setter Property="MinHeight" Value="100"/>
+
+                            <!-- Hide the resize borders. -->
+                            <Setter TargetName="ResizeLeft" Property="Width" Value="0"/>
+                            <Setter TargetName="ResizeRight" Property="Width" Value="0"/>
+                            <Setter TargetName="ResizeTop" Property="Height" Value="0"/>
+                            <Setter TargetName="ResizeBottom" Property="Height" Value="0"/>
+
+                            <!-- Repurpose the button that normally minimizes the window to restore the window. -->
+                            <Setter TargetName="MinimizeToggle" Property="Command" Value="{x:Static mdi:MdiCommands.RestoreWindow}"/>
+
+                            <!-- Hide the header content presenter. -->
+                            <Setter TargetName="headerContentPresenter" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="minimizedContent" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="normalContent" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type mdi:MdiFloater}" BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="WindowStyle" Value="None"/>
+    </Style>
+
+</ResourceDictionary>

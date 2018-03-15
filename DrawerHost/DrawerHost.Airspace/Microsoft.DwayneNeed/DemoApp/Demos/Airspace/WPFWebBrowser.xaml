@@ -1,0 +1,23 @@
+﻿<Grid x:Class="DemoApp.Demos.Airspace.WPFWebBrowser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:Microsoft.DwayneNeed.Controls;assembly=Microsoft.DwayneNeed"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button Content="Go" x:Name="Go" DockPanel.Dock="Right" Click="GoClicked"/>
+            <ComboBox x:Name="Address" SelectionChanged="AddressSelectionChanged" IsEditable="True">
+                <sys:String>http://www.bing.com</sys:String>
+                <sys:String>http://www.youtube.com</sys:String>
+                <sys:String>http://www.google.com</sys:String>
+                <sys:String>http://www.msn.com</sys:String>
+                <sys:String>http://www.msnbc.com</sys:String>
+                <sys:String>http://ie.microsoft.com/testdrive</sys:String>
+                <sys:String>http://www.youtube.com/watch?v=jYa1eI1hpDE&amp;ob=av2e</sys:String>
+                <sys:String>http://www.chriscavanagh.com/Chris/CJC.Bullet/BulletDemo1.xbap</sys:String>
+            </ComboBox>
+        </DockPanel>
+        <controls:WebBrowserEx x:Name="TheWebBrowser"/>
+    </DockPanel>
+</Grid>

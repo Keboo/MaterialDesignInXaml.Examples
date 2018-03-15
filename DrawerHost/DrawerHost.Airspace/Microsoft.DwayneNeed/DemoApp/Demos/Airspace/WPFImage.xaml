@@ -1,0 +1,29 @@
+﻿<Grid x:Class="DemoApp.Demos.Airspace.WPFImage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:Microsoft.DwayneNeed.Controls;assembly=Microsoft.DwayneNeed"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button Content="Go" x:Name="Go" DockPanel.Dock="Right" Click="GoClicked"/>
+            <ComboBox x:Name="ImageUrl" SelectionChanged="ImageUrl_SelectionChanged" IsEditable="True">
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows8/screenshot_lockScreen_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows8/screenshot_startScreen_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/taskbar_peek_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background1_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background2_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background3_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/aero_peek_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/images/gallery/logos/web/windows7_h_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/images/gallery/logos/web/windows7_v_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_1_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_2_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_3_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_4_web.jpg</sys:String>
+                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_5_web.jpg</sys:String>
+            </ComboBox>
+        </DockPanel>
+        <Image x:Name="TheImage"/>
+    </DockPanel>
+</Grid>

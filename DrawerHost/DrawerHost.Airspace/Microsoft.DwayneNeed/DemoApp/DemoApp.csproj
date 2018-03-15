@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6964BB0-8B1C-4800-9713-324604B8FF99}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DemoApp</RootNamespace>
+    <AssemblyName>DemoApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://MicrosoftDwayneNeed.codeplex.com/releases/clickonce/</InstallUrl>
+    <SupportUrl>http://MicrosoftDwayneNeed.codeplex.com</SupportUrl>
+    <ErrorReportUrl>http://MicrosoftDwayneNeed.codeplex.com</ErrorReportUrl>
+    <ProductName>Demo Application</ProductName>
+    <PublisherName>Microsoft.DwayneNeed</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\DemoApp.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\DemoApp.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>54DE4C1C9C87B7FB1EA9F907A6888ACD9165A155</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DemoApp_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Demos\Airspace\AirspaceDemoMode.cs" />
+    <Compile Include="Demos\Airspace\D2DSample.xaml.cs">
+      <DependentUpon>D2DSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\Model\MdiDemoCommands.cs" />
+    <Compile Include="Demos\Airspace\Model\MdiDemoOptions.cs" />
+    <Compile Include="Demos\Airspace\Model\MdiDemoPageContent.cs" />
+    <Compile Include="Demos\Airspace\Model\MdiDemoColorGridContent.cs" />
+    <Compile Include="Demos\Airspace\Model\MdiDemoWorkspace.cs" />
+    <Compile Include="Demos\Airspace\OptionsDialog.xaml.cs">
+      <DependentUpon>OptionsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsMediaPlayer.xaml.cs">
+      <DependentUpon>WinFormsMediaPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsRemoteDesktop.xaml.cs">
+      <DependentUpon>WinFormsRemoteDesktop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WPFImage.xaml.cs">
+      <DependentUpon>WPFImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WPFMediaElement.xaml.cs">
+      <DependentUpon>WPFMediaElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsDataForm.xaml.cs">
+      <DependentUpon>WinFormsDataForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WPFDataForm.xaml.cs">
+      <DependentUpon>WPFDataForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WPFWebBrowser.xaml.cs">
+      <DependentUpon>WPFWebBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WPFCubes.xaml.cs">
+      <DependentUpon>WPFCubes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\AirspaceDemo.xaml.cs">
+      <DependentUpon>AirspaceDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\Model\MdiDemoContent.cs" />
+    <Compile Include="Demos\Airspace\Topic.xaml.cs">
+      <DependentUpon>Topic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsCalendar.xaml.cs">
+      <DependentUpon>WinFormsCalendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsMix.xaml.cs">
+      <DependentUpon>WinFormsMix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\Airspace\WinFormsWebBrowser.xaml.cs">
+      <DependentUpon>WinFormsWebBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Index.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\Topic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="DemoApp_1_TemporaryKey.pfx" />
+    <None Include="DemoApp_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Demos\Airspace\D2DSample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\OptionsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsMediaPlayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsRemoteDesktop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WPFImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WPFMediaElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsDataForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WPFDataForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WPFWebBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WPFCubes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\AirspaceDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\Topic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsMix.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demos\Airspace\WinFormsWebBrowser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.DwayneNeed.Win32\Microsoft.DwayneNeed.Win32.csproj">
+      <Project>{39337e67-fdbb-4b17-ab5f-b65820ccd11e}</Project>
+      <Name>Microsoft.DwayneNeed.Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.DwayneNeed\Microsoft.DwayneNeed.csproj">
+      <Project>{80A10B86-6615-4440-93B0-C943DF5B8693}</Project>
+      <Name>Microsoft.DwayneNeed</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsControls\WindowsFormsControls.csproj">
+      <Project>{230c7304-0fae-4b6b-840c-6fa48606efc7}</Project>
+      <Name>WindowsFormsControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80A10B86-6615-4440-93B0-C943DF5B8693}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.DwayneNeed</RootNamespace>
+    <AssemblyName>Microsoft.DwayneNeed</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ColorGrid.cs" />
+    <Compile Include="Controls\ComponentPresenter.cs" />
+    <Compile Include="Controls\Decorator.cs" />
+    <Compile Include="Controls\ElementModalDialog.cs" />
+    <Compile Include="Controls\IModalContent.cs" />
+    <Compile Include="Controls\MeshTextureCoordinateVisualizer.cs" />
+    <Compile Include="Controls\SelectorEx.cs" />
+    <Compile Include="Controls\WebBrowserEx.cs" />
+    <Compile Include="Converters\ContainerFromItemConverter.cs" />
+    <Compile Include="Converters\EnumToBoolConverter.cs" />
+    <Compile Include="Converters\MdiWindowEdgeThicknessConverter.cs" />
+    <Compile Include="Converters\MultiBindingBooleanConverter.cs" />
+    <Compile Include="Converters\PixelGridLengthConverter.cs" />
+    <Compile Include="Converters\StarGridLengthConverter.cs" />
+    <Compile Include="Extensions\DispatcherExtensions.cs" />
+    <Compile Include="Extensions\ElementExtensions.cs" />
+    <Compile Include="Extensions\EventHandlerExtensions.cs" />
+    <Compile Include="Extensions\HwndHostExtensions.cs" />
+    <Compile Include="Extensions\HwndSourceExtensions.cs" />
+    <Compile Include="Extensions\Int32CollectionExtensions.cs" />
+    <Compile Include="Extensions\Int32RectExtensions.cs" />
+    <Compile Include="Extensions\MeshGeometry3DExtensions.cs" />
+    <Compile Include="Extensions\PresentationSourceExtensions.cs" />
+    <Compile Include="Extensions\RectExtensions.cs" />
+    <Compile Include="Extensions\WebBrowserExtensions.cs" />
+    <Compile Include="Input\RoutedCommand.cs" />
+    <Compile Include="Interop\AirspaceMode.cs" />
+    <Compile Include="Interop\CallbackHwndHost.cs" />
+    <Compile Include="Interop\CopyBitsBehavior.cs" />
+    <Compile Include="Interop\DeviceContextCachePolicy.cs" />
+    <Compile Include="Interop\RedirectedHwndHost.cs" />
+    <Compile Include="Interop\RedirectionVisibility.cs" />
+    <Compile Include="Interop\RedirectedHwndSourceHost.cs" />
+    <Compile Include="Interop\RedirectedWindow.cs" />
+    <Compile Include="Interop\WindowBase.cs" />
+    <Compile Include="Interop\AirspaceDecorator.cs" />
+    <Compile Include="Interop\AirspaceScrollViewer.cs" />
+    <Compile Include="Interop\HwndHostCommands.cs" />
+    <Compile Include="Interop\HwndHostEx.cs" />
+    <Compile Include="Interop\HwndSourceHost.cs" />
+    <Compile Include="Interop\HwndSourceHostRoot.cs" />
+    <Compile Include="Interop\MouseActivateParameter.cs" />
+    <Compile Include="Interop\WindowClass.cs" />
+    <Compile Include="Interop\WindowClassType.cs" />
+    <Compile Include="Interop\WindowParameters.cs" />
+    <Compile Include="Interop\WindowShowState.cs" />
+    <Compile Include="MDI\AdjustWindowRectParameter.cs" />
+    <Compile Include="MDI\MdiCommands.cs" />
+    <Compile Include="MDI\MdiFloater.cs" />
+    <Compile Include="MDI\MdiPanel.cs" />
+    <Compile Include="MDI\MdiView.cs" />
+    <Compile Include="MDI\MdiWindow.cs" />
+    <Compile Include="MDI\MdiWindowCollection.cs" />
+    <Compile Include="MDI\MdiWindowEdge.cs" />
+    <Compile Include="MDI\MdiWindowThumb.cs" />
+    <Compile Include="Media\CacheScale.cs" />
+    <Compile Include="Media\DynamicThickness.cs" />
+    <Compile Include="Media\Shape3DMaterial.cs" />
+    <Compile Include="Numerics\Degree.cs" />
+    <Compile Include="Numerics\Int32Point.cs" />
+    <Compile Include="Numerics\MemoizeMath.cs" />
+    <Compile Include="Numerics\Radian.cs" />
+    <Compile Include="Shapes\Cone.cs" />
+    <Compile Include="Shapes\BoysSurface.cs" />
+    <Compile Include="Shapes\Figure8Torus.cs" />
+    <Compile Include="Shapes\MobiusStrip.cs" />
+    <Compile Include="Shapes\SuperToroid.cs" />
+    <Compile Include="Shapes\SuperEllipsoid.cs" />
+    <Compile Include="Shapes\RomanSurface.cs" />
+    <Compile Include="Shapes\Cylinder.cs" />
+    <Compile Include="Shapes\ParametricShape3D.cs" />
+    <Compile Include="Shapes\Shape3D.cs" />
+    <Compile Include="Shapes\Sphere.cs" />
+    <Compile Include="Shapes\Ellipsoid.cs" />
+    <Compile Include="Shapes\Torus.cs" />
+    <Compile Include="Threading\UIThreadPerfCounters.cs" />
+    <Compile Include="Threading\UIThreadPerfSample.cs" />
+    <Compile Include="Threading\UIThreadPool.cs" />
+    <Compile Include="Threading\UIThreadPoolDataGridColumn.cs" />
+    <Compile Include="Threading\UIThreadPoolDataGridTemplateColumn.cs" />
+    <Compile Include="Threading\UIThreadPoolRoot.cs" />
+    <Compile Include="Threading\UIThreadPoolThread.cs" />
+    <Compile Include="Utilities\Buffer2D.cs" />
+    <Compile Include="Utilities\Buffer2DView.cs" />
+    <Compile Include="Utilities\CommandLineParameterAttribute.cs" />
+    <Compile Include="Utilities\CommandLineParameterException.cs" />
+    <Compile Include="Utilities\CommandLineParser.cs" />
+    <Compile Include="Utilities\CommandLineUsageException.cs" />
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Threading\VisualTargetPresentationSource.cs" />
+    <Compile Include="Controls\VisualWrapper.cs" />
+    <Compile Include="Geometry\Box.cs" />
+    <Compile Include="Geometry\Box1D.cs" />
+    <Compile Include="Geometry\Box2D.cs" />
+    <Compile Include="Geometry\Box3D.cs" />
+    <Compile Include="Geometry\BoxExtensions.cs" />
+    <Compile Include="Geometry\Point.cs" />
+    <Compile Include="Geometry\Point1D.cs" />
+    <Compile Include="Geometry\Point2D.cs" />
+    <Compile Include="Geometry\Point3D.cs" />
+    <Compile Include="Geometry\PointExtensions.cs" />
+    <Compile Include="Geometry\Size.cs" />
+    <Compile Include="Geometry\Size1D.cs" />
+    <Compile Include="Geometry\Size2D.cs" />
+    <Compile Include="Geometry\Size3D.cs" />
+    <Compile Include="Geometry\SizeExtensions.cs" />
+    <Compile Include="Geometry\Vector.cs" />
+    <Compile Include="Geometry\Vector1D.cs" />
+    <Compile Include="Geometry\Vector2D.cs" />
+    <Compile Include="Geometry\Vector3D.cs" />
+    <Compile Include="Geometry\VectorExtensions.cs" />
+    <Compile Include="Media\Imaging\Bgra32Pixel.cs" />
+    <Compile Include="Media\Imaging\ChainedBitmap.cs" />
+    <Compile Include="Media\Imaging\ColorKeyBitmap.cs" />
+    <Compile Include="Media\Imaging\CustomBitmap.cs" />
+    <Compile Include="Media\Imaging\GrayscaleBitmap.cs" />
+    <Compile Include="Media\Imaging\SepiaBitmap.cs" />
+    <Compile Include="Numerics\Binary64Exponent.cs" />
+    <Compile Include="Numerics\Binary64.cs" />
+    <Compile Include="Numerics\Binary64InsignificantBits.cs" />
+    <Compile Include="Numerics\ClosedInterval.cs" />
+    <Compile Include="Numerics\DoubleExtensions.cs" />
+    <Compile Include="Numerics\Binary64Significand.cs" />
+    <Compile Include="Numerics\Interval.cs" />
+    <Compile Include="Numerics\IntervalExtensions.cs" />
+    <Compile Include="Numerics\NumberSet.cs" />
+    <Compile Include="Numerics\OpenInterval.cs" />
+    <Compile Include="Numerics\Double42.cs" />
+    <Compile Include="Numerics\Sign.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.DwayneNeed.Win32\Microsoft.DwayneNeed.Win32.csproj">
+      <Project>{39337e67-fdbb-4b17-ab5f-b65820ccd11e}</Project>
+      <Name>Microsoft.DwayneNeed.Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39337E67-FDBB-4B17-AB5F-B65820CCD11E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.DwayneNeed.Win32</RootNamespace>
+    <AssemblyName>Microsoft.DwayneNeed.Win32</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gdi32\BI.cs" />
+    <Compile Include="Gdi32\BITMAPINFO.cs" />
+    <Compile Include="Gdi32\BKMODE.cs" />
+    <Compile Include="Gdi32\HBRUSH.cs" />
+    <Compile Include="Gdi32\HGDIOBJ.cs" />
+    <Compile Include="Gdi32\OBJ.cs" />
+    <Compile Include="Kernel32\Error.cs" />
+    <Compile Include="Gdi32\CHARSET.cs" />
+    <Compile Include="Gdi32\CLIP.cs" />
+    <Compile Include="Gdi32\COLOR.cs" />
+    <Compile Include="Gdi32\COLORREF.cs" />
+    <Compile Include="Common\ThreadAffinitizedHandle.cs" />
+    <Compile Include="User32\CS.cs" />
+    <Compile Include="Gdi32\DIB.cs" />
+    <Compile Include="User32\DT.cs" />
+    <Compile Include="DwmApi\DWM_EC.cs" />
+    <Compile Include="Gdi32\FF.cs" />
+    <Compile Include="Gdi32\FW.cs" />
+    <Compile Include="User32\GA.cs" />
+    <Compile Include="User32\GCL.cs" />
+    <Compile Include="User32\GCW.cs" />
+    <Compile Include="Gdi32\GDC.cs" />
+    <Compile Include="User32\GW.cs" />
+    <Compile Include="User32\GWL.cs" />
+    <Compile Include="User32\HARDWAREINPUT.cs" />
+    <Compile Include="Gdi32\HDC.cs" />
+    <Compile Include="User32\HWND.cs" />
+    <Compile Include="User32\INPUT.cs" />
+    <Compile Include="UrlMon\INTERNETFEATURELIST.cs" />
+    <Compile Include="User32\KEYBDINPUT.cs" />
+    <Compile Include="User32\KEYEVENTF.cs" />
+    <Compile Include="User32\LWA.cs" />
+    <Compile Include="User32\MA.cs" />
+    <Compile Include="Kernel32\MEM.cs" />
+    <Compile Include="User32\MOUSEEVENTF.cs" />
+    <Compile Include="User32\MOUSEINPUT.cs" />
+    <Compile Include="NativeMacros.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Gdi32\OUTPRECIS.cs" />
+    <Compile Include="Kernel32\PAGE.cs" />
+    <Compile Include="Gdi32\PITCH.cs" />
+    <Compile Include="Gdi32\PITCH_FF.cs" />
+    <Compile Include="User32\POINT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User32\PW.cs" />
+    <Compile Include="Gdi32\QUALITY.cs" />
+    <Compile Include="User32\RDW.cs" />
+    <Compile Include="User32\RECT.cs" />
+    <Compile Include="Gdi32\ROP.cs" />
+    <Compile Include="Kernel32\SEC.cs" />
+    <Compile Include="UrlMon\SET_FEATURE.cs" />
+    <Compile Include="ComCtl32\StrongHWND.cs" />
+    <Compile Include="ComCtl32\StrongHWNDSubclass.cs" />
+    <Compile Include="ComCtl32\SUBCLASSPROC.cs" />
+    <Compile Include="User32\SW.cs" />
+    <Compile Include="User32\SWP.cs" />
+    <Compile Include="Kernel32\SYSTEM_INFO.cs" />
+    <Compile Include="User32\TIMERPROC.cs" />
+    <Compile Include="User32\VK.cs" />
+    <Compile Include="User32\WINDOWPOS.cs" />
+    <Compile Include="ComCtl32\WindowSubclass.cs" />
+    <Compile Include="User32\WM.cs" />
+    <Compile Include="User32\WNDCLASSEX.cs" />
+    <Compile Include="User32\WNDPROC.cs" />
+    <Compile Include="User32\WS.cs" />
+    <Compile Include="User32\WS_EX.cs" />
+    <Compile Include="Kernel32\_PROCESSOR_INFO_UNION.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Documentation\API.xlsx" />
+    <None Include="Documentation\readme.docx" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

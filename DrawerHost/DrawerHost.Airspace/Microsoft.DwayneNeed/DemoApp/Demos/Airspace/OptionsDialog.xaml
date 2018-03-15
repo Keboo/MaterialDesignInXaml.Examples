@@ -1,0 +1,386 @@
+﻿<Window x:Class="DemoApp.Demos.Airspace.OptionsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    xmlns:local="clr-namespace:DemoApp.Demos.Airspace"
+    xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed"
+    xmlns:converters="clr-namespace:Microsoft.DwayneNeed.Converters;assembly=Microsoft.DwayneNeed"
+    Title="Options" Height="600" Width="600">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="AirspaceModeEnumValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="interop:AirspaceMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="CopyBitsBehaviorEnumValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="interop:CopyBitsBehavior" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="RedirectionVisibilityEnumValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="interop:RedirectionVisibility" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+        <converters:MultiBindingBooleanConverter x:Key="MultiBindingBooleanConverter"/>
+    </Window.Resources>
+    <DockPanel Margin="2">
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button Content="Cancel" IsCancel="True" MinWidth="70" Margin="5" DockPanel.Dock="Right" Click="OnCancel"/>
+            <Button Content="OK" IsDefault="True" MinWidth="70" Margin="5" DockPanel.Dock="Right" Click="OnOK"/>
+            <Canvas/>
+        </DockPanel>
+        <TabControl>
+            <TabItem Header="General">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="This application demonstrates some of the techniques that can be used to mitigate the airspace issues encountered when integrating Win32 child windows into WPF applications."/>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Airspace Mitigations"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="You can select from the two primary techniques, or choose to customize the settings on the other tabs."/>
+                        </StackPanel>
+                            <StackPanel Margin="20,5,5,5">
+                            <RadioButton FontWeight="Heavy" Content="None" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.None}}"/>
+                                <TextBlock TextWrapping="Wrap" Text="All behavior is reset to the default behavior of a WPF application. With this setting you will experience the various airspace problems as you interact with the application."/>
+                            <RadioButton Margin="0,5,0,0" FontWeight="Heavy" Content="Clipping"  IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Clipping}}"/>
+                                <TextBlock TextWrapping="Wrap" Text="The 'intermediate child window' technique is used to align the clipping behavior of WPF and Win32, mitigating many of the worst airspace issues.  However, advanced effects like transparency and visual brushes are still broken."/>
+                            <RadioButton Margin="0,5,0,0" FontWeight="Heavy" Content="Redirection"  IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Redirection}}"/>
+                                <TextBlock TextWrapping="Wrap" Text="The redirection technique is used to host the contents of the MDI Windows in their own top-level transparent windows and copy the content into a bitmap to be displayed by WPF.  This resolves all airspace issues, but has a performance penalty and there are various limitations on different versions of Windows."/>
+                            <RadioButton Margin="0,5,0,0" FontWeight="Heavy" Content="Custom"  IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}"/>
+                                <TextBlock TextWrapping="Wrap" Text="The settings of the various tabs can be configured to explore the effects of the various mitigation techniques on a granular level."/>
+                            </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="MdiView">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The MdiView is the workspace in which MdiWindows are arranged."/>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Background"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The background of the MdiView can any brush.  Here you can select from a sample of solid colors and images."/>
+                        </StackPanel>
+                        <Grid Margin="20,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="_Brush: " Target="{Binding ElementName=MdiViewBackgroundCombo}"/>
+                            <ComboBox x:Name="MdiViewBackgroundCombo" Margin="2" Grid.Row="0" Grid.Column="1" SelectionChanged="MdiViewBackgroundCombo_SelectionChanged" IsEditable="False" SelectedIndex="0">
+                                <TextBlock Background="White" Text="White"/>
+                                <TextBlock Background="Transparent" Text="Transparent"/>
+                                <TextBlock Background="{x:Null}" Text="None"/>
+                                <TextBlock Background="AliceBlue" Text="AliceBlue"/>
+                                <TextBlock Background="BlanchedAlmond" Text="BlanchedAlmond"/>
+                                <TextBlock Background="CadetBlue" Text="CadetBlue"/>
+                                <TextBlock Background="Firebrick" Text="Firebrick"/>
+                                <TextBlock Background="Goldenrod" Text="Goldenrod"/>
+                                <TextBlock Background="Lavender" Text="Lavender"/>
+                                <TextBlock Background="LightGreen" Text="LightGreen"/>
+                                <TextBlock Background="LightSalmon" Text="LightSalmon"/>
+                                <TextBlock Background="LightSeaGreen" Text="LightSeaGreen"/>
+                                <TextBlock Background="LightSkyBlue" Text="LightSkyBlue"/>
+                                <TextBlock Background="MistyRose" Text="MistyRose"/>
+                                <TextBlock Background="Teal" Text="Teal"/>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows8/screenshot_lockScreen_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows8/screenshot_startScreen_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/taskbar_peek_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background1_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background2_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/desktop_background3_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/aero_peek_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/images/gallery/logos/web/windows7_h_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/images/gallery/logos/web/windows7_v_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_1_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_2_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_3_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_4_web.jpg</sys:String>
+                                <sys:String>http://www.microsoft.com/presspass/imagegallery/images/products/windows/windows7/outdoor_5_web.jpg</sys:String>
+                            </ComboBox>
+                        </Grid>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Snapping"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="A feature that will snap the edges of MDI windows that are being interactively adjusted to align with the edges of existing windows."/>
+                            <CheckBox Grid.Row="0" Grid.Column="0" Name="EnableSnapping" Content="Enable _Snapping"
+                                IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiViewIsSnappingEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Margin="20,5,5,5" IsEnabled="{Binding ElementName=EnableSnapping, Path=IsChecked}">
+                            <TextBlock FontWeight="Heavy" Text="Snapping Threshold"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="How close an edge must be to an edge of an existing window before it snaps into alignment."/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="_Threshold: " Target="{Binding ElementName=SnappingThresholdTextBox}"/>
+                                <TextBox Name="SnappingThresholdTextBox" Width="30"
+                                    IsEnabled="{Binding ElementName=EnableSnapping, Path=IsChecked}"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiViewSnappingThreshold}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Scroll Bar Visibility"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The MDI View represents the logical area within which the MDI Windows can be arranged.  This logical area is normally infinite, but can be limited to the layout size by disabling the corresponding scrollbar visibility to Disabled."/>
+                        </StackPanel>
+                        <Grid Margin="20,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="_Horizontal: " Target="{Binding ElementName=HorizontalScrollBarVisibilityCombo}"/>
+                            <ComboBox Margin="2" Grid.Row="0" Grid.Column="1" Name="HorizontalScrollBarVisibilityCombo" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiViewHorizontalScrollBarVisibility}">
+                                <ScrollBarVisibility>Auto</ScrollBarVisibility>
+                                <ScrollBarVisibility>Visible</ScrollBarVisibility>
+                                <ScrollBarVisibility>Hidden</ScrollBarVisibility>
+                                <ScrollBarVisibility>Disabled</ScrollBarVisibility>
+                            </ComboBox>
+                            <Label Grid.Row="1" Grid.Column="0" Content="_Vertical: " Target="{Binding ElementName=VerticalScrollBarVisibilityCombo}"/>
+                            <ComboBox Margin="2" Grid.Row="1" Grid.Column="1" Name="VerticalScrollBarVisibilityCombo" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiViewVerticalScrollBarVisibility}">
+                                <ScrollBarVisibility>Auto</ScrollBarVisibility>
+                                <ScrollBarVisibility>Visible</ScrollBarVisibility>
+                                <ScrollBarVisibility>Hidden</ScrollBarVisibility>
+                                <ScrollBarVisibility>Disabled</ScrollBarVisibility>
+                            </ComboBox>
+                        </Grid>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Airspace"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The MDI View can contain content that uses child windows.  To mitigate the resulting airspace issues, the content can either be clipped or redirected."/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="View: " Target="{Binding ElementName=ViewAirspaceModeCombo}"/>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource AirspaceModeEnumValues}}" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiViewAirspaceMode}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="MdiWindow">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="MdiWindows can contain various kinds of content, from 'pure' WPF controls to components that interop with other technologies like Win32, WinForms, ActiveX, or DirectX - many of which raise 'airspace' or other rendering issues."/>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Effects"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The MdiWindows can use various effects during interaction and transition.  Some of these effects can only be supported with redirection."/>
+                        </StackPanel>
+                        <Grid Margin="20,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="_Dragging: " Target="{Binding ElementName=MdiWindowDraggingEffectCombo}"/>
+                            <ComboBox Name="MdiWindowDraggingEffectCombo" Margin="2" Grid.Row="0" Grid.Column="1"
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                                TODO
+                            </ComboBox>
+                            <Label Grid.Row="1" Grid.Column="0" Content="_Minimize: " Target="{Binding ElementName=MdiWindowMinimizeEffectCombo}"/>
+                            <ComboBox Name="MdiWindowMinimizeEffectCombo" Margin="2" Grid.Row="1" Grid.Column="1"
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                                TODO
+                            </ComboBox>
+                            <Label Grid.Row="2" Grid.Column="0" Content="M_inimized Content: " Target="{Binding ElementName=MdiWindowMinimizedContentEffectCombo}"/>
+                            <ComboBox Name="MdiWindowMinimizedContentEffectCombo" Margin="2" Grid.Row="2" Grid.Column="1"
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                                TODO
+                            </ComboBox>
+                            <Label Grid.Row="3" Grid.Column="0" Content="M_aximize: " Target="{Binding ElementName=MdiWindowMaximizeEffectCombo}"/>
+                            <ComboBox Name="MdiWindowMaximizeEffectCombo" Margin="2" Grid.Row="3" Grid.Column="1"
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                                TODO
+                            </ComboBox>
+                        </Grid>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Airspace"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The MdiWindow may overlap with other MdiWindows, and the content may include hosted child windows. To mitigate the resulting airspace issues, the windows and contents can either be clipped or redirected."/>
+                        </StackPanel>
+                        <Grid Margin="20,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="_Window: " Target="{Binding ElementName=MdiWindowAirspaceModeCombo}"/>
+                            <ComboBox Name="MdiWindowAirspaceModeCombo"
+                                      Margin="2" Grid.Row="0" Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource AirspaceModeEnumValues}}"
+                                      IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiWindowAirspaceMode}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="_Content: " Target="{Binding ElementName=MdiWindowContentAirspaceModeCombo}"/>
+                            <ComboBox Name="MdiWindowContentAirspaceModeCombo"
+                                      Margin="2" Grid.Row="1" Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource AirspaceModeEnumValues}}"
+                                      IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.MdiWindowContentAirspaceMode}"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="WebBrowserEx">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The WebBrowser element uses a child window to host the Internet Explorer WebOC, and is a common source of airspace issues in WPF applications."/>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="GPU Acceleration"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The Internet Explorer WebOC component does not enable GPU acceleration by default.  Selecting this option will write a value into the registry to enable GPU acceleration for this application.  This setting will only apply after restarting the application."/>
+                            <CheckBox Name="EnableGpuAcceleration" Content="Enable _GPU Acceleration" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.IsWebBrowserExGpuAccelerationEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Script Errors"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The WebBrowser element does not provide a public API to suppress script errors, but it can be done by digging into the Internet Explorer WebOC.  Select this option to suppress script errors."/>
+                            <CheckBox Name="SuppressScriptErrors" Content="Suppress _Script Errors" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.WebBrowserExSuppressScriptErrors}"/>
+                        </StackPanel>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Painting the Background"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="Internet Explorer 8 erases the background in a seperate pass from painting the foreground, which can lead to noticeable flicker, depending on the behavior of copying pixels.  It seems that this is not actually necessary and can be suppressed below.  Internet Explorer 9 does not seem to erase the background in a seperate pass."/>
+                            <CheckBox Name="SuppressEraseBackground" Content="Suppress _Erase Background" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.WebBrowserExSuppressEraseBackground}"/>
+                        </StackPanel>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Copying Pixels"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="A frequent Win32 technique is to copy pixels when moving a window around the screen.  However, due to the use of DirectX on a seperate render thread, this technique is not reliable in WPF applications and can result in visual artifacts."/>
+                            <Grid Margin="20,5,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Content="_Behavior: " Target="{Binding ElementName=WebBrowserExCopyBitsBehaviorCombo}"/>
+                                <ComboBox Name="WebBrowserExCopyBitsBehaviorCombo"
+                                      Margin="2" Grid.Row="0" Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource CopyBitsBehaviorEnumValues}}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.WebBrowserExCopyBitsBehavior}"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="HwndSourceHost">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="HwndSourceHost is a component that uses a child window to host a WPF element sub-tree.  This technique ensures that the WPF element subtree clips the same way as other Win32 components."/>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Background"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="Drawing a background with WPF behind the child window can improve the response time of UI updates.  This is because WPF will immediately clear the old contents rather than waiting for the often-delayed WM_PAINT message."/>
+                        </StackPanel>
+                        <Grid Margin="20,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="_Brush: " Target="{Binding ElementName=HwndSourceHostBackgroundCombo}"/>
+                            <ComboBox x:Name="HwndSourceHostBackgroundCombo" Margin="2" Grid.Row="0" Grid.Column="1" SelectionChanged="HwndSourceHostBackgroundCombo_SelectionChanged" IsEditable="False" SelectedIndex="0">
+                                <TextBlock Background="{x:Null}" Text="None"/>
+                                <TextBlock Background="Transparent" Text="Transparent"/>
+                                <TextBlock Background="Red" Text="Red"/>
+                            </ComboBox>
+                        </Grid>
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Copying Pixels"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="A frequent Win32 technique is to copy pixels when moving a window around the screen.  However, due to the use of DirectX on a seperate render thread, this technique is not reliable in WPF applications and can result in visual artifacts."/>
+                            <Grid Margin="20,5,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Content="_Behavior: " Target="{Binding ElementName=HwndSourceHostCopyBitsBehaviorCombo}"/>
+                                <ComboBox Name="HwndSourceHostCopyBitsBehaviorCombo"
+                                      Margin="2" Grid.Row="0" Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource CopyBitsBehaviorEnumValues}}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.HwndSourceHostCopyBitsBehavior}"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="RedirectedHwndHost">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <TextBlock Margin="5" FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="RedirectedHwndHost is a new kind of hosting technique that actually hosts the child window in a separate, transparent, top-level window.  Because the child window is not hosted within the element tree, all of the normal airspace problems are avoided."/>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Host"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The hosted window is not usually visible, but it can be interesting to make it visible while experimenting."/>
+                            <Grid Margin="20,5,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Content="_Behavior: " Target="{Binding ElementName=RedirectedHwndHostRedirectionVisibilityCombo}"/>
+                                <ComboBox Name="RedirectedHwndHostRedirectionVisibilityCombo"
+                                      Margin="2" Grid.Row="0" Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource RedirectionVisibilityEnumValues}}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.RedirectedHwndHostRedirectionVisibility}"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Output Redirection"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The actual painting of the hosted child window is not normally visible.  Output redirection will simply copy the contents of the child window into the WPF element."/>
+                            <CheckBox Grid.Row="0" Grid.Column="0" Name="IsOutputRedirectionEnabled" Content="Enable _Output Redirection"
+                                IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.RedirectedHwndHostIsOutputRedirectionEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Margin="20,5,5,5" IsEnabled="{Binding ElementName=IsOutputRedirectionEnabled, Path=IsChecked}">
+                            <TextBlock FontWeight="Heavy" Text="Update Period"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The time period between updates, in milliseconds."/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="_Period: " Target="{Binding ElementName=RedirectedHwndHostOutputRedirectionPeriodTextBox}"/>
+                                <TextBox Name="RedirectedHwndHostOutputRedirectionPeriodTextBox" Width="300"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.RedirectedHwndHostOutputRedirectionPeriod}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock FontWeight="Heavy" Text="Input Redirection"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The hosted child window must be aligned under the mouse in order to receive mouse messages."/>
+                            <CheckBox Grid.Row="0" Grid.Column="0" Name="IsInputRedirectionEnabled" Content="Enable _Input Redirection"
+                                IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.RedirectedHwndHostIsInputRedirectionEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Margin="20,5,5,5" IsEnabled="{Binding ElementName=IsInputRedirectionEnabled, Path=IsChecked}">
+                            <TextBlock FontWeight="Heavy" Text="Update Period"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The time period between updates, in milliseconds."/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="_Period: " Target="{Binding ElementName=RedirectedHwndHostInputRedirectionPeriodTextBox}"/>
+                                <TextBox Name="RedirectedHwndHostInputRedirectionPeriodTextBox" Width="300"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.RedirectedHwndHostInputRedirectionPeriod}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="DWM">
+                <ScrollViewer>
+                    <StackPanel IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}}, Path=Options.AirspaceDemoMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:AirspaceDemoMode.Custom}}">
+                        <StackPanel Margin="5,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="Desktop Composition"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="The Desktop Window Manager (DWM) fundamentally changes the way applications display pixels on the screen. When desktop composition is enabled, individual windows no longer draw directly to the screen or primary display device as they did in previous versions of Windows. Instead, their drawing is redirected to off-screen surfaces in video memory, which are then rendered into a desktop image and presented on the display. Certain applications might have to disable the DWM for compatibility or performance."/>
+                            <CheckBox Name="EnableDWM" Content="Enable Desktop Composition" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.IsDwmDesktopCompositionEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Margin="20,5,5,5">
+                            <TextBlock FontWeight="Heavy" Text="VistaBLT"/>
+                            <TextBlock FontWeight="Light" FontStyle="Italic" TextWrapping="Wrap" Text="VistaBLT is a mode for integrating GDI and DirectX surfaces, introduced in Vista that uses a heurisitc to determine which to display.  Device Bitmaps, introduced in Win7, offers better integration for most scenarios."/>
+                            <CheckBox Name="ForceVistaBLT" Content="Force VistaBLT (not implemented yet)" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionsDialog}},Path=Options.DwmForceVistaBLT}" IsEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

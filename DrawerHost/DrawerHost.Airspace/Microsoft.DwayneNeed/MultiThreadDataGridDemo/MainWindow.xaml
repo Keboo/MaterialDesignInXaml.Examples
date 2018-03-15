@@ -1,0 +1,73 @@
+﻿<Window x:Class="MultiThreadDataGridDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:msdn="clr-namespace:Microsoft.DwayneNeed.Threading;assembly=Microsoft.DwayneNeed"
+        xmlns:msdnc="clr-namespace:Microsoft.DwayneNeed.Converters;assembly=Microsoft.DwayneNeed"
+        xmlns:local="clr-namespace:MultiThreadDataGridDemo"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <msdn:UIThreadPerfCounters x:Key="PerfCounters" NumberOfSamples="30"/>
+        <local:NotificationConfiguration x:Key="Configuration"/>
+        <local:DataSet x:Key="DataSet" Configuration="{StaticResource Configuration}"/>
+        <DataTemplate x:Key="UIThreadPoolRootTemplate">
+            <TextBlock Text="{Binding}"/>
+        </DataTemplate>
+        <msdnc:StarGridLengthConverter x:Key="PercentageConverter"/>
+    </Window.Resources>
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Band="0">
+                <Label Content="DataSet" FontWeight="ExtraBold"/>
+                <Label Content="{Binding Source={StaticResource DataSet}, Path=Count}" ContentStringFormat="Number of Items: {0:000}"/>
+                <Slider Minimum="0" Maximum="50" IsSnapToTickEnabled="True" TickPlacement="BottomRight"  TickFrequency="10" Width="200" Margin="10,0,10,0" Value="{Binding Source={StaticResource DataSet}, Path=Count}"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource DataSet}, Path=UpdateItems}" Content="Dynamic Data"/>
+            </ToolBar>
+            <ToolBar Band="1">
+                <Label Content="DataItem" FontWeight="ExtraBold"/>
+                <Label Content="Notify Changes: "/>
+                <Button Content="All" Click="ConfigurationAll_Click"/>
+                <Button Content="None" Click="ConfigurationNone_Click"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=A}" Content="A"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=B}" Content="B"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=C}" Content="C"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=D}" Content="D"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=E}" Content="E"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=F}" Content="F"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=G}" Content="G"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=H}" Content="H"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=I}" Content="I"/>
+                <CheckBox IsChecked="{Binding Source={StaticResource Configuration}, Path=J}" Content="J"/>
+            </ToolBar>
+            <ToolBar Band="2">
+                <Label Content="DataGrid" FontWeight="ExtraBold"/>
+                <CheckBox IsChecked="{Binding ElementName=TheDataGrid, Path=AutoGenerateColumns}" Content="Auto-Generate Columns"/>
+                <CheckBox IsChecked="{Binding ElementName=TheDataGrid, Path=EnableRowVirtualization}" Content="Row Virtualization"/>
+                <CheckBox IsChecked="{Binding ElementName=TheDataGrid, Path=EnableColumnVirtualization}" Content="Column Virtualization"/>
+                <CheckBox IsChecked="{Binding ElementName=TheDataGrid, Path=IsDeferredScrollingEnabled}" Content="Deferred Scrolling"/>
+                <CheckBox x:Name="UseUIThreadPool" Content="Use UIThreadPool" Click="CheckBox_Click"/>
+            </ToolBar>
+            <ToolBar Band="3">
+                <Label Content="Perf" FontWeight="ExtraBold"/>
+                <Label Content="{Binding Source={StaticResource PerfCounters}, Path=NumberOfProcessors}" ContentStringFormat="Processors: {0:#}"/>
+                <Label Content="{Binding Source={StaticResource PerfCounters}, Path=FPS}" ContentStringFormat="FPS: {0:00}"/>
+                <Label Content="Process: "/>
+                <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Source={StaticResource PerfCounters}, Path=ProcessCyclePercentage, StringFormat={}{0:00%}}"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Source={StaticResource PerfCounters}, Path=IdleCyclePercentage, StringFormat={}{0:00%}}"/>-->
+                <Grid Width="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding Source={StaticResource PerfCounters}, Path=ProcessCyclePercentage, Converter={StaticResource PercentageConverter}}" />
+                        <ColumnDefinition Width="{Binding Source={StaticResource PerfCounters}, Path=IdleCyclePercentage, Converter={StaticResource PercentageConverter}}" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Background="Green">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Source={StaticResource PerfCounters}, Path=ProcessCyclePercentage, StringFormat={}{0:00%}}"/>
+                    </Border>
+                    <Border Grid.Column="1" Background="Black">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Source={StaticResource PerfCounters}, Path=IdleCyclePercentage, StringFormat={}{0:00%}}" Foreground="White"/>
+                    </Border>
+                </Grid>
+            </ToolBar>
+        </ToolBarTray>
+        <!--<Grid DockPanel.Dock="Top"  x:Name="TheGrid" Initialized="TheGrid_Initialized"/>-->
+        <DataGrid x:Name="TheDataGrid" ItemsSource="{Binding Source={StaticResource DataSet}, Path=Items}" AutoGenerateColumns="True"/>
+    </DockPanel>
+</Window>

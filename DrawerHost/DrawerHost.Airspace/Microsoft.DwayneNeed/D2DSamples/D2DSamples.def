@@ -1,0 +1,4 @@
+LIBRARY		"D2DSamples.dll"
+
+EXPORTS
+	CreateDemoHelloWorldApp
