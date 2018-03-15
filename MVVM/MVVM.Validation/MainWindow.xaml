@@ -1,0 +1,93 @@
+﻿<Window x:Class="MVVM.Validation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM.Validation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        
+        <StackPanel Orientation="Horizontal">
+            <GroupBox Header="No Validation" MinWidth="200" Margin="10">
+                <StackPanel>
+                    <StackPanel.DataContext>
+                        <local:SimpleViewModel />
+                    </StackPanel.DataContext>
+
+                    <TextBlock Text="First Name"/>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Last Name"/>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Binding Validation" MinWidth="200" Margin="10">
+                <StackPanel>
+                    <StackPanel.DataContext>
+                        <local:SimpleViewModel />
+                    </StackPanel.DataContext>
+
+                    <TextBlock Text="First Name"/>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <TextBox>
+                        <TextBox.Text>
+                            <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <!-- You can create your own validation rules -->
+                                    <local:NotEmptyValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBlock Text="Last Name"/>
+                    <TextBox>
+                        <TextBox.Text>
+                            <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <!-- You can put properties on your validation rule to make them more versatile -->
+                                    <local:NotEmptyValidationRule Message="A last name is required"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="INotifyDataErrorInfo Validation" MinWidth="200" Margin="10">
+                <StackPanel>
+                    <StackPanel.DataContext>
+                        <local:NotifyErrorInfoViewModel />
+                    </StackPanel.DataContext>
+
+                    <TextBlock Text="First Name"/>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Last Name"/>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
+                </StackPanel>
+            </GroupBox>
+            
+            
+            <GroupBox Header="DataAnnotations Validation" MinWidth="200" Margin="10">
+                <StackPanel>
+                    <StackPanel.DataContext>
+                        <local:AttributeValidationViewModel />
+                    </StackPanel.DataContext>
+
+                    <TextBlock Text="First Name"/>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Last Name"/>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
