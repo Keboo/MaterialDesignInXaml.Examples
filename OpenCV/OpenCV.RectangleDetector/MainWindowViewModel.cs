@@ -1,5 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using Microsoft.Win32;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -8,11 +12,6 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using Microsoft.Win32;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 
 namespace OpenCV.RectangleDetector
 {
@@ -58,7 +57,6 @@ namespace OpenCV.RectangleDetector
                     using (Mat structuringElement = Cv2.GetStructuringElement(MorphShapes.Ellipse, new Size(9, 9)))
                     {
                         AddImage(autoCanny);
-
                         //Smooth over small possible breaks in edges
                         Cv2.Dilate(autoCanny, autoCanny, structuringElement);
                         AddImage(autoCanny);

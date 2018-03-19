@@ -1,0 +1,66 @@
+﻿<Window x:Class="PopupBox.Simple.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mdix="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <mdix:PopupBox StaysOpen="True" HorizontalAlignment="Center" VerticalAlignment="Center" PlacementMode="BottomAndAlignCentres" >
+            <mdix:PopupBox.ToggleContent>
+                <Border Background="{DynamicResource PrimaryHueMidBrush}" 
+                        TextElement.Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" 
+                        Padding="8">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Fabric" />
+                        <mdix:PackIcon Kind="ChevronDown" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Border>
+
+            </mdix:PopupBox.ToggleContent>
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+                        <Setter Property="Margin" Value="10,3" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <CheckBox Content="All Weather" Grid.Row="0" Grid.Column="0"/>
+                <CheckBox Content="Leather" Grid.Row="0" Grid.Column="1"/>
+                <CheckBox Content="Coton Blend" Grid.Row="1" Grid.Column="0"/>
+                <CheckBox Content="Lycra/Spandex" Grid.Row="1" Grid.Column="1"/>
+                <CheckBox Content="Down" Grid.Row="2" Grid.Column="0"/>
+                <CheckBox Content="Soft Shell" Grid.Row="2" Grid.Column="1"/>
+                <CheckBox Content="Faux Fur" Grid.Row="3" Grid.Column="0"/>
+                <CheckBox Content="Suede" Grid.Row="3" Grid.Column="1"/>
+                <CheckBox Content="Faux Leather" Grid.Row="4" Grid.Column="0"/>
+                <CheckBox Content="Wool &amp; Wool Blend" Grid.Row="4" Grid.Column="1"/>
+
+                <Button Content="Done" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+            </Grid>
+        </mdix:PopupBox>
+    </Grid>
+</Window>
+
