@@ -54,19 +54,12 @@ namespace OpenCV.RectangleDetector
                     using (Mat gray = resized.CvtColor(ColorConversionCodes.BGR2GRAY)) //Convert to gray scale since we don't want the color data
                     using (Mat blur = gray.GaussianBlur(new Size(5, 5), 0)) //Smooth the image to eliminate noise
                     using (Mat autoCanny = blur.AutoCanny()) //Apply canny edge filter to find edges
-                    using (Mat structuringElement = Cv2.GetStructuringElement(MorphShapes.Ellipse, new Size(9, 9)))
                     {
                         AddImage(autoCanny);
-                        //Smooth over small possible breaks in edges
-                        Cv2.Dilate(autoCanny, autoCanny, structuringElement);
-                        AddImage(autoCanny);
-                        Cv2.Erode(autoCanny, autoCanny, structuringElement);
-                        AddImage(autoCanny);
+                        
+                        Point[][] contours = autoCanny.FindContoursAsArray(RetrievalModes.List, ContourApproximationModes.ApproxSimple);
 
-                        //Change the RetrievalModes to CComp if you want internal polygons too, not just the outer most one.
-                        Point[][] contours = autoCanny.FindContoursAsArray(RetrievalModes.External, ContourApproximationModes.ApproxSimple);
-
-                        //Draw all of the found polygons for reference
+                        //Draw all of the found polygons. This is just for reference
                         using (Mat allFound = resized.Clone())
                         {
                             for (int i = 0; i < contours.Length; i++)
