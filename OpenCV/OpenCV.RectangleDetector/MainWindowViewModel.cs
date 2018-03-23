@@ -44,6 +44,38 @@ namespace OpenCV.RectangleDetector
 
         private void LoadImage(string filePath)
         {
+            //using (Mat mat1 = Mat.Zeros(2048, 1536, MatType.CV_8UC1))
+            //using (Mat mat2 = Mat.Zeros(2048, 1536, MatType.CV_8UC1))
+            //using (var intersection = new Mat(2048, 1536, MatType.CV_8UC1))
+            //using (var union = new Mat(2048, 1536, MatType.CV_8UC1))
+            //{
+            //    mat1.FillPoly(new[] { new[]
+            //    {
+            //        new Point(565, 267),
+            //        new Point(1210, 207),
+            //        new Point(1275, 1720),
+            //        new Point(568, 1688)
+            //    } }, Scalar.All(255));
+            //    AddImage(mat1);
+            //    mat2.FillPoly(new[] { new[]
+            //    {
+            //        new Point(564, 268),
+            //        new Point(1208, 208),
+            //        new Point(1272, 1716),
+            //        new Point(572, 1688)
+            //    } }, Scalar.All(255));
+            //    AddImage(mat2);
+            //    Cv2.BitwiseAnd(mat1, mat2, intersection);
+            //    int intersectionPixels = Cv2.CountNonZero(intersection);
+            //    AddImage(intersection);
+            //    Cv2.BitwiseOr(mat1, mat2, union);
+            //    int unionPixels = Cv2.CountNonZero(union);
+            //    AddImage(union);
+            //    double iou = (double) intersectionPixels / unionPixels;
+            //}
+            //
+            //return;
+
             try
             {
                 using (Mat image = new Mat(filePath))
@@ -52,12 +84,19 @@ namespace OpenCV.RectangleDetector
                     AddImage(resized);
 
                     using (Mat gray = resized.CvtColor(ColorConversionCodes.BGR2GRAY)) //Convert to gray scale since we don't want the color data
-                    using (Mat blur = gray.GaussianBlur(new Size(5, 5), 0)) //Smooth the image to eliminate noise
-                    using (Mat autoCanny = blur.AutoCanny()) //Apply canny edge filter to find edges
+                    using (Mat blur = gray.GaussianBlur(new Size(7, 7), 0, borderType:BorderTypes.Replicate)) //Smooth the image to eliminate noise
+                    using (Mat autoCanny = blur.AutoCanny(0.75)) //Apply canny edge filter to find edges
                     {
+                        AddImage(blur);
                         AddImage(autoCanny);
-                        
+
                         Point[][] contours = autoCanny.FindContoursAsArray(RetrievalModes.List, ContourApproximationModes.ApproxSimple);
+
+                        //Just get the external hull of the contours
+                        for (int i = 0; i < contours.Length; i++)
+                        {
+                            contours[i] = Cv2.ConvexHull(contours[i]);
+                        }
 
                         //Draw all of the found polygons. This is just for reference
                         using (Mat allFound = resized.Clone())
@@ -68,15 +107,15 @@ namespace OpenCV.RectangleDetector
                             }
                             AddImage(allFound);
                         }
-
+                        
                         //Find the largest polygons that four corners
                         var found = (from contour in contours
                                      let permimiter = Cv2.ArcLength(contour, true)
                                      let approx = Cv2.ApproxPolyDP(contour, 0.04 * permimiter, true)
                                      where approx.Length == 4 //Rectange
-                                     let area = Cv2.ContourArea(approx)
+                                     let area = Cv2.ContourArea(contour)
                                      orderby area descending //We are looking for the biggest thing
-                                     select approx).Take(3).ToArray(); //Grabbing three just for comparison
+                                     select contour).Take(3).ToArray(); //Grabbing three just for comparison
 
                         //Colors the found polygons Green->Yellow->Red to indicate best matches.
                         for (int i = 0; i < found.Length; i++)
