@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utilities="clr-namespace:Utilities;assembly=Utilities"
         mc:Ignorable="d"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{StaticResource MaterialDesignBody}"
@@ -12,8 +13,29 @@
         TextOptions.TextRenderingMode="Auto"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Expander Header="Header" Width="300" Background="LightBlue">
+                <Border Background="Coral">
+                    <Border Width="200" Height="200" Background="Beige" />
+                </Border>
+            </Expander>
+        </Border>
+        
+        <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <Expander Header="Header" Width="300">
+                <utilities:TreeHelpers.Modifiers>
+                    <utilities:ModifierCollection>
+                        <utilities:Modifier TemplatePartName="HeaderSite" Property="{x:Static Control.BackgroundProperty}">
+                            <utilities:Modifier.Value>
+                                <SolidColorBrush Color="LightBlue" />
+                            </utilities:Modifier.Value>
+                        </utilities:Modifier>
+                    </utilities:ModifierCollection>
+                </utilities:TreeHelpers.Modifiers>
                 <Border Background="Coral">
                     <Border Width="200" Height="200" Background="Beige" />
                 </Border>
