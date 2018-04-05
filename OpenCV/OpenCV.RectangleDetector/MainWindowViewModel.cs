@@ -8,10 +8,13 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Point = OpenCvSharp.Point;
+using Size = OpenCvSharp.Size;
 
 namespace OpenCV.RectangleDetector
 {
@@ -83,8 +86,8 @@ namespace OpenCV.RectangleDetector
                 {
                     AddImage(resized);
 
-                    using (Mat gray = resized.CvtColor(ColorConversionCodes.BGR2GRAY)) //Convert to gray scale since we don't want the color data
-                    using (Mat blur = gray.GaussianBlur(new Size(7, 7), 0, borderType:BorderTypes.Replicate)) //Smooth the image to eliminate noise
+                    using (Mat gray = resized.CvtColor(ColorConversionCodes.RGB2GRAY)) //Convert to gray scale since we don't want the color data
+                    using (Mat blur = gray.GaussianBlur(new Size(5, 5), 0, borderType:BorderTypes.Replicate)) //Smooth the image to eliminate noise
                     using (Mat autoCanny = blur.AutoCanny(0.75)) //Apply canny edge filter to find edges
                     {
                         AddImage(blur);
@@ -111,14 +114,14 @@ namespace OpenCV.RectangleDetector
                         //Find the largest polygons that four corners
                         var found = (from contour in contours
                                      let permimiter = Cv2.ArcLength(contour, true)
-                                     let approx = Cv2.ApproxPolyDP(contour, 0.04 * permimiter, true)
+                                     let approx = Cv2.ApproxPolyDP(contour, 0.02 * permimiter, true)
                                      where approx.Length == 4 //Rectange
                                      let area = Cv2.ContourArea(contour)
                                      orderby area descending //We are looking for the biggest thing
                                      select contour).Take(3).ToArray(); //Grabbing three just for comparison
 
                         //Colors the found polygons Green->Yellow->Red to indicate best matches.
-                        for (int i = 0; i < found.Length; i++)
+                        for (int i = found.Length - 1; i >= 0; i--)
                         {
                             Scalar color;
                             switch (i)
