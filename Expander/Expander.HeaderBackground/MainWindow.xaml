@@ -1,0 +1,23 @@
+﻿<Window x:Class="Expander.HeaderBackground.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Expander Header="Header" Width="300" Background="LightBlue">
+                <Border Background="Coral">
+                    <Border Width="200" Height="200" Background="Beige" />
+                </Border>
+            </Expander>
+        </Border>
+    </Grid>
+</Window>
