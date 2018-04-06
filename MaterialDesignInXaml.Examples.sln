@@ -103,6 +103,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Expander", "Expander", "{7E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expander.HeaderBackground", "Expander\Expander.HeaderBackground\Expander.HeaderBackground.csproj", "{C132428C-7472-41DC-8415-777710822EAF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToggleButton", "ToggleButton", "{9F50E81A-8B34-48AE-9034-8FF7B4050940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToggleButton.NormalButton", "ToggleButton\ToggleButton.NormalButton\ToggleButton.NormalButton.csproj", "{2BD240DA-7813-4162-B741-2826121809EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shadow", "Shadow", "{4E1B0CE3-6618-4B41-957B-9B4E6F4DC60A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shadow.Colors", "Shadow\Shadow.Colors\Shadow.Colors.csproj", "{46FCDEA6-D067-4932-866E-B360C9407DF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -213,6 +221,14 @@ Global
 		{C132428C-7472-41DC-8415-777710822EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C132428C-7472-41DC-8415-777710822EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C132428C-7472-41DC-8415-777710822EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD240DA-7813-4162-B741-2826121809EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD240DA-7813-4162-B741-2826121809EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD240DA-7813-4162-B741-2826121809EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD240DA-7813-4162-B741-2826121809EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FCDEA6-D067-4932-866E-B360C9407DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FCDEA6-D067-4932-866E-B360C9407DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FCDEA6-D067-4932-866E-B360C9407DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FCDEA6-D067-4932-866E-B360C9407DF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -254,6 +270,8 @@ Global
 		{FEC452DC-6DC0-436C-BDD0-4ECC88745CA4} = {4DF136DF-8B12-4747-A9A8-DD416A4522B6}
 		{74DF32F3-6257-46B1-8593-A915B778E4BE} = {A75D9228-5E94-4216-862C-0297752856A6}
 		{C132428C-7472-41DC-8415-777710822EAF} = {7E081963-D5E1-4B19-ADB3-16465F950FD1}
+		{2BD240DA-7813-4162-B741-2826121809EA} = {9F50E81A-8B34-48AE-9034-8FF7B4050940}
+		{46FCDEA6-D067-4932-866E-B360C9407DF5} = {4E1B0CE3-6618-4B41-957B-9B4E6F4DC60A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
