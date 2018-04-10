@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TreeViewMenu"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -216,6 +220,11 @@
                     <Trigger Property="IsKeyboardFocusWithin" Value="True">
                         <Setter Property="IsExpanded" Value="True" />
                     </Trigger>
+                    <Trigger Property="HasItems" Value="False">
+                        <!-- Registering a command to all "leaf" tree view item and paramter, normally you would do this in a derived style or on the item directly -->
+                        <Setter Property="local:TreeViewHelper.SelectedCommand" Value="{Binding ItemSelectedCommand}" />
+                        <Setter Property="local:TreeViewHelper.SelectedCommandParameter" Value="{Binding Tag, RelativeSource={RelativeSource Self}}" />
+                    </Trigger>
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>
@@ -399,7 +408,7 @@
         </TreeView>
 
         <ContentPresenter Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                          TextElement.FontSize="20" Content="{Binding Path=SelectedItem.Tag, ElementName=TreeView}">
+                          TextElement.FontSize="20" Content="{Binding SelectedItem}">
         </ContentPresenter>
     </Grid>
 </Window>

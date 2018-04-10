@@ -86,7 +86,7 @@ namespace OpenCV.RectangleDetector
                 {
                     AddImage(resized);
 
-                    using (Mat gray = resized.CvtColor(ColorConversionCodes.RGB2GRAY)) //Convert to gray scale since we don't want the color data
+                    using (Mat gray = resized.CvtColor(ColorConversionCodes.BGRA2GRAY)) //Convert to gray scale since we don't want the color data
                     using (Mat blur = gray.GaussianBlur(new Size(5, 5), 0, borderType:BorderTypes.Replicate)) //Smooth the image to eliminate noise
                     using (Mat autoCanny = blur.AutoCanny(0.75)) //Apply canny edge filter to find edges
                     {
@@ -115,7 +115,7 @@ namespace OpenCV.RectangleDetector
                         var found = (from contour in contours
                                      let permimiter = Cv2.ArcLength(contour, true)
                                      let approx = Cv2.ApproxPolyDP(contour, 0.02 * permimiter, true)
-                                     where approx.Length == 4 //Rectange
+                                     where IsValidRectangle(approx, 0.2)
                                      let area = Cv2.ContourArea(contour)
                                      orderby area descending //We are looking for the biggest thing
                                      select contour).Take(3).ToArray(); //Grabbing three just for comparison
@@ -149,6 +149,22 @@ namespace OpenCV.RectangleDetector
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
+            }
+
+            bool IsValidRectangle(Point[] contour, double minimum)
+            {
+                if (contour.Length != 4) return false;
+                double side1 = GetLength(contour[0], contour[1]);
+                double side2 = GetLength(contour[1], contour[2]);
+                double side3 = GetLength(contour[2], contour[3]);
+                double side4 = GetLength(contour[3], contour[0]);
+
+                if (Math.Abs(side1 - side3) / Math.Max(side1, side3) > minimum) return false;
+                if (Math.Abs(side2 - side4) / Math.Max(side2, side4) > minimum) return false;
+
+                return true;
+
+                double GetLength(Point p1, Point p2) => Math.Abs(p1.X - p2.X) + Math.Abs(p1.Y - p2.Y);
             }
 
             Size GetTargetSize(Size size, int longSize = 512)
