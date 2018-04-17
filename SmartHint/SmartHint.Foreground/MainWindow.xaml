@@ -1,0 +1,39 @@
+﻿<Window x:Class="SmartHint.Foreground.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Resources>
+                <Style TargetType="materialDesign:SmartHint" BasedOn="{StaticResource {x:Type materialDesign:SmartHint}}">
+                    <Style.Resources>
+                        <!-- This color will be applied when the hint is float and has keyboard focus -->
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Aqua" />
+                    </Style.Resources>
+                    <!-- This will be the default color for the hint -->
+                    <Setter Property="Foreground" Value="Fuchsia" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox MinWidth="100" 
+                 materialDesign:HintAssist.Hint="My Hint" 
+                 materialDesign:HintAssist.IsFloating="True" />
+            
+            <TextBox MinWidth="100" materialDesign:HintAssist.Hint="My Other Hint" />
+
+        </StackPanel>
+    </Grid>
+</Window>
