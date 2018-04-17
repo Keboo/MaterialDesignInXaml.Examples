@@ -1,0 +1,173 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=WpfToolkit"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:controlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf">
+    <!--
+    xmlns:vsm is a bit more unique. It is using an extern alias (see AssemblyInfo.cs). 
+    This also requires setting an alias on the properties on the WPFToolkit reference
+    -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="CustomAutoCompleteBox" TargetType="{x:Type controls:AutoCompleteBox}" BasedOn="{StaticResource {x:Type controls:AutoCompleteBox}}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="MinWidth" Value="45" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignTextBoxBorder}" />
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AutoCompleteBox}">
+                    <Grid Opacity="{TemplateBinding Opacity}">
+                        <vsm:VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="PopupStates">
+                                <vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualTransition GeneratedDuration="0:0:0.1" To="PopupOpened" />
+                                    <vsm:VisualTransition GeneratedDuration="0:0:0.1" To="PopupClosed" />
+                                </vsm:VisualStateGroup.Transitions>
+                                <vsm:VisualState x:Name="PopupOpened">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity"
+                                                                 To="1.0" Duration="0:0:0.1"  />
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="PopupClosed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity"
+                                                                 To="0" Duration="0:0:0.1"  />
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                            <vsm:VisualStateGroup x:Name="ValidationStates">
+                                <vsm:VisualState x:Name="Valid" />
+                                <vsm:VisualState x:Name="InvalidUnfocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationErrorElement" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <ObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </ObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="InvalidFocused">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationErrorElement" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <ObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </ObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="validationTooltip" Storyboard.TargetProperty="IsOpen" >
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <ObjectKeyFrame.Value>
+                                                    <system:Boolean>True</system:Boolean>
+                                                </ObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                        </vsm:VisualStateManager.VisualStateGroups>
+
+                        <TextBox x:Name="Text"
+                                 Padding="{TemplateBinding Padding}"
+                                 Background="{TemplateBinding Background}"
+                                 IsTabStop="True"
+                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 Margin="0"
+                                 Style="{StaticResource MaterialDesignTextBox}"/>
+                        <Border
+                                x:Name="ValidationErrorElement"
+                                Visibility="Collapsed"
+                                BorderBrush="#FFDB000C"
+                                BorderThickness="1"
+                                CornerRadius="1">
+                            <ToolTipService.ToolTip>
+                                <ToolTip
+                                            x:Name="validationTooltip"
+                                            Placement="Right"
+                                            DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                                    <FrameworkElement.Triggers>
+                                        <EventTrigger RoutedEvent="Canvas.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames
+                                                                    Storyboard.TargetName="validationTooltip"
+                                                                    Storyboard.TargetProperty="IsHitTestVisible" >
+                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                            <ObjectKeyFrame.Value>
+                                                                <system:Boolean>true</system:Boolean>
+                                                            </ObjectKeyFrame.Value>
+                                                        </DiscreteObjectKeyFrame>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </FrameworkElement.Triggers>
+                                </ToolTip>
+                            </ToolTipService.ToolTip>
+                            <Grid
+                                Height="12"
+                                HorizontalAlignment="Right"
+                                Margin="1,-4,-4,0"
+                                VerticalAlignment="Top"
+                                Width="12"
+                                Background="#00FFFFFF">
+                                <Path
+                                    Fill="#FFDC000C"
+                                    Margin="1,3,0,0"
+                                    Data="M1,0 L6,0 A2,2 0 0 1 8,2L8,7" />
+                                <Path Fill="#ffffff" Margin="1,3,0,0" Data="M0,0 L2,0 L8,6 L8,8" />
+                            </Grid>
+                        </Border>
+                        <controlzEx:PopupEx x:Name="Popup">
+                            <Grid Opacity="{TemplateBinding Opacity}" Background="{TemplateBinding Background}">
+                                <Border x:Name="PopupBorder" HorizontalAlignment="Stretch"
+                                        BorderThickness="0"
+                                        Background="{DynamicResource MaterialDesignPaper}">
+                                    <UIElement.RenderTransform>
+                                        <TranslateTransform X="1" Y="1" />
+                                    </UIElement.RenderTransform>
+                                    <Border
+                                         HorizontalAlignment="Stretch"
+                                         Opacity="1"
+                                         Padding="0"
+                                         BorderThickness="1 0 1 1"
+                                         BorderBrush="{TemplateBinding BorderBrush}"
+                                         Background="{DynamicResource MaterialDesignPaper}"
+                                         CornerRadius="0">
+                                        <UIElement.RenderTransform>
+                                            <TransformGroup >
+                                                <TranslateTransform X="-1" Y="-1" />
+                                            </TransformGroup>
+                                        </UIElement.RenderTransform>
+                                        <ListBox
+                                            x:Name="Selector"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            Background="{TemplateBinding Background}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            BorderThickness="0"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}" />
+                                    </Border>
+                                </Border>
+                            </Grid>
+                        </controlzEx:PopupEx>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
