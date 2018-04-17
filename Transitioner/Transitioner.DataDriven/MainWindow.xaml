@@ -1,0 +1,38 @@
+﻿<Window x:Class="Transitioner.DataDriven.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transitioner.DataDriven"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
+    <materialDesign:Transitioner SelectedIndex="{Binding SelectedIndex}">
+        <!-- First page -->
+        <Grid>
+            <ListBox ItemsSource="{Binding Projects}" x:Name="ListBox" DisplayMemberPath="Name"
+                     VerticalAlignment="Center" HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <!--Not perfect because a double click may occur on an item other than the selected one-->
+                        <i:InvokeCommandAction Command="{Binding SelectProjectCommand}" 
+                                               CommandParameter="{Binding SelectedItem, ElementName=ListBox}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </Grid>
+        <!-- Second page -->
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                        DataContext="{Binding SelectedProject}">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" />
+                <ListBox ItemsSource="{Binding Files}" DisplayMemberPath="Name" />
+            </StackPanel>
+        </Grid>
+    </materialDesign:Transitioner>
+</Window>

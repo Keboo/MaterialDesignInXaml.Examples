@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Input;
-using MDDialogHost = MaterialDesignThemes.Wpf.DialogHost;
+using MDIXDialogHost = MaterialDesignThemes.Wpf.DialogHost;
 
 namespace DialogHost.Example
 {
@@ -19,7 +19,7 @@ namespace DialogHost.Example
         private async void OnShowLoginForm()
         {
             var vm = new LoginViewModel();
-            await MDDialogHost.Show(vm, (object sender, DialogOpenedEventArgs e) =>
+            await MDIXDialogHost.Show(vm, (object sender, DialogOpenedEventArgs e) =>
             {
                 void OnClose(object _, EventArgs args)
                 {
