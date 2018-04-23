@@ -20,8 +20,7 @@
 
     </mdixWindow:MaterialDesignWindow.HeaderContent>
     <Window.Content>
-        <mdix:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
-                         LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
+        <mdix:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}">
             <mdix:DrawerHost.LeftDrawerContent>
                 <TextBlock Width="250" TextWrapping="Wrap" Text="Some left drawer content here. Perhaps navigation options?" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
