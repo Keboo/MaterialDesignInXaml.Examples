@@ -127,6 +127,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDIXWindow", "Window\MDIXWi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawerHost.PushTemplate", "DrawerHost\DrawerHost.PushTemplate\DrawerHost.PushTemplate.csproj", "{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ripple", "Ripple", "{1766E411-5286-49C4-B5A8-33C1D8742CD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ripple.SpillOver", "Ripple\Ripple.SpillOver\Ripple.SpillOver.csproj", "{56AE2710-66D4-483B-8191-DA95548ABB64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +269,10 @@ Global
 		{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AE2710-66D4-483B-8191-DA95548ABB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AE2710-66D4-483B-8191-DA95548ABB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AE2710-66D4-483B-8191-DA95548ABB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AE2710-66D4-483B-8191-DA95548ABB64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -313,6 +321,7 @@ Global
 		{B229B0B2-4063-42A1-9148-AA7E2F087AB8} = {8D6E499D-26D0-45F8-B275-688A1859DB7E}
 		{DF75D5FA-EC8C-4307-84E8-164EE1301254} = {BA7D5DB7-3918-4680-AD52-4AD7FC56C0FE}
 		{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069} = {B722BA4E-AE07-424D-83FF-2A3A19354397}
+		{56AE2710-66D4-483B-8191-DA95548ABB64} = {1766E411-5286-49C4-B5A8-33C1D8742CD9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
