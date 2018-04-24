@@ -13,7 +13,7 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <!-- TODO: This causes clipping when the window is maximized -->
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
