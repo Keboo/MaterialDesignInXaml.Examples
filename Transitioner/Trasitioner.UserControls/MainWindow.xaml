@@ -1,0 +1,23 @@
+﻿<Window x:Class="Trasitioner.UserControls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trasitioner.UserControls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <materialDesign:Transitioner SelectedIndex="0" Margin="30">
+            <local:Page1Control />
+            <local:Page2Control />
+            <local:Page3Control />
+        </materialDesign:Transitioner>
+    </Grid>
+</Window>

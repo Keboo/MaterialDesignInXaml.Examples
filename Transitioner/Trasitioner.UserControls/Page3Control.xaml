@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Trasitioner.UserControls.Page3Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Trasitioner.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:Page3ViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <TextBlock Text="Page 3" Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" />
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="_Previous" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" />
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="_Start Over" Command="{x:Static materialDesign:Transitioner.MoveFirstCommand}" />
+    </Grid>
+</UserControl>

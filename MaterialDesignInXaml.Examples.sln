@@ -131,6 +131,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ripple", "Ripple", "{1766E4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ripple.SpillOver", "Ripple\Ripple.SpillOver\Ripple.SpillOver.csproj", "{56AE2710-66D4-483B-8191-DA95548ABB64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trasitioner.UserControls", "Transitioner\Trasitioner.UserControls\Trasitioner.UserControls.csproj", "{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -273,6 +275,10 @@ Global
 		{56AE2710-66D4-483B-8191-DA95548ABB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56AE2710-66D4-483B-8191-DA95548ABB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56AE2710-66D4-483B-8191-DA95548ABB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -322,6 +328,7 @@ Global
 		{DF75D5FA-EC8C-4307-84E8-164EE1301254} = {BA7D5DB7-3918-4680-AD52-4AD7FC56C0FE}
 		{C3A55738-7FB7-4DED-8E4A-2F33DFBC2069} = {B722BA4E-AE07-424D-83FF-2A3A19354397}
 		{56AE2710-66D4-483B-8191-DA95548ABB64} = {1766E411-5286-49C4-B5A8-33C1D8742CD9}
+		{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26} = {33C99332-C5A0-4A54-A28D-377A4F3D3407}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
