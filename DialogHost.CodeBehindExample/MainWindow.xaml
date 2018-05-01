@@ -1,0 +1,107 @@
+﻿<Window x:Class="DialogHost.CodeBehindExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:DialogHost.CodeBehindExample"
+        mc:Ignorable="d"
+        Background="{StaticResource MaterialDesignPaper}"
+        Title="MainWindow" Height="400" Width="600">
+    <md:DialogHost Identifier="MainDialogHost">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <md:ColorZone Grid.Row="0"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="3"
+                          md:ShadowAssist.ShadowDepth="Depth1"
+                          Mode="PrimaryMid">
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <md:PackIcon Kind="Newspaper"
+                                 VerticalAlignment="Center"
+                                 Height="30" 
+                                 Width="30" />
+                    <TextBlock Text="DialogHost Example" 
+                               VerticalAlignment="Center"
+                               Margin="18, 0, 0, 0"
+                               Style="{StaticResource MaterialDesignDisplay1TextBlock}" />
+                </StackPanel>
+            </md:ColorZone>
+
+            <md:DialogHost Identifier="GroupDialogHost"
+                           Grid.Row="1"
+                           Grid.Column="0">
+                <GroupBox Header="Group A"
+                      
+                          Style="{DynamicResource MaterialDesignCardGroupBox}"
+                          Background="{DynamicResource MaterialDesignPaper}"
+                          Margin="8">
+                    <DockPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Click="GroupAButtonClick"
+                                Content="SHOW DIALOG"
+                                DockPanel.Dock="Bottom"/>
+                        <TextBlock Text="Show a basic dialog that will cover just this group box and check if the user pressed the OK button"
+                                   TextWrapping="Wrap"/>
+                    </DockPanel>
+                </GroupBox>
+            </md:DialogHost>
+            
+
+            <GroupBox Header="Group B"
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Background="{DynamicResource MaterialDesignPaper}"
+                      Margin="8">
+                <DockPanel>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"
+                            Click="GroupBButtonClick"
+                            Content="SHOW DIALOG"
+                            DockPanel.Dock="Bottom"/>
+                    <TextBlock Text="Show a dialog that will cover the entire window, pass in a viewmodel, and receive back a user input"
+                               TextWrapping="Wrap"/>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Header="Group C"
+                      Grid.Row="1"
+                      Grid.Column="2"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Background="{DynamicResource MaterialDesignPaper}"
+                      Margin="8">
+                <DockPanel>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"
+                            Content="SHOW DIALOG"
+                            Click="GroupCButtonClick"
+                            DockPanel.Dock="Bottom"/>
+                    <TextBlock Text="Show a dialog that will cover the entire window, pass in a viewmodel, retrieve back a user input, and call the OnClosing event to validate the input"
+                               TextWrapping="Wrap"/>
+                </DockPanel>
+            </GroupBox>
+
+            <md:Snackbar x:Name="Snackbar"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3" />
+
+            <StatusBar Grid.Row="2"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Background="{StaticResource PrimaryHueMidBrush}"
+                       Foreground="{StaticResource PrimaryHueMidForegroundBrush}">
+                <TextBlock Text="Hi friends" />
+            </StatusBar>
+        </Grid>
+    </md:DialogHost>
+</Window>
