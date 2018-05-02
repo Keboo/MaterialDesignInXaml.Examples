@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:DialogHost.CodeBehindExample"
         mc:Ignorable="d"
         Background="{StaticResource MaterialDesignPaper}"
         Title="MainWindow" Height="400" Width="600">
@@ -42,7 +41,6 @@
                            Grid.Row="1"
                            Grid.Column="0">
                 <GroupBox Header="Group A"
-                      
                           Style="{DynamicResource MaterialDesignCardGroupBox}"
                           Background="{DynamicResource MaterialDesignPaper}"
                           Margin="8">
