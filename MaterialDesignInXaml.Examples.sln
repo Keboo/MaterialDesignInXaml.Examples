@@ -133,7 +133,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ripple.SpillOver", "Ripple\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trasitioner.UserControls", "Transitioner\Trasitioner.UserControls\Trasitioner.UserControls.csproj", "{6F8F8408-F1B1-4B3D-8178-7A2D6FEC0A26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.CodeBehindExample", "DialogHost.CodeBehindExample\DialogHost.CodeBehindExample.csproj", "{CD852FC2-CFBD-4940-A404-75427C2B5E48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.CodeBehindExample", "DialogHost\DialogHost.CodeBehindExample\DialogHost.CodeBehindExample.csproj", "{CD852FC2-CFBD-4940-A404-75427C2B5E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
