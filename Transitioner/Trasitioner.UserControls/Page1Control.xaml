@@ -13,6 +13,13 @@
     <Grid>
         <TextBlock Text="Page 1" Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" />
 
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="First Name" />
+            <TextBox Text="{Binding FirstName}" />
+            <TextBlock Text="Last Name" />
+            <TextBox Text="{Binding LastName}" />
+        </StackPanel>
+
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="_Next" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" />
     </Grid>
 </UserControl>

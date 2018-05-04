@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <materialDesign:Transitioner SelectedIndex="0" Margin="30">
+        <materialDesign:Transitioner SelectedIndex="0" Margin="30" SelectionChanged="TransitionerOnSelectionChanged">
             <local:Page1Control />
             <local:Page2Control />
             <local:Page3Control />
