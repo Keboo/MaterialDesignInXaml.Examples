@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -7,6 +9,90 @@ namespace TreeViewMenu
 {
     public static class TreeViewHelper
     {
+        public static readonly DependencyProperty SingleExpandPathProperty = DependencyProperty.RegisterAttached(
+            "SingleExpandPath", typeof(bool), typeof(TreeViewHelper), new PropertyMetadata(default(bool), OnSingleExpandPathChanged));
+
+        private static void OnSingleExpandPathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue as bool? == true)
+            {
+                ((TreeView)d).SelectedItemChanged += TreeViewOnSelectedItemChanged;
+            }
+            else
+            {
+                ((TreeView)d).SelectedItemChanged -= TreeViewOnSelectedItemChanged;
+            }
+        }
+
+        private static void TreeViewOnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            var seen = new HashSet<TreeViewItem>();
+
+            var treeView = (TreeView)sender;
+
+            if (GetTreeViewItem(e.NewValue) is TreeViewItem newTvi)
+            {
+                newTvi.IsExpanded = !newTvi.IsExpanded;
+                foreach (var parents in GetParents(newTvi))
+                {
+                    seen.Add(parents);
+                }
+
+                foreach (TreeViewItem tvi in GetExpanded(treeView))
+                {
+                    if (!seen.Contains(tvi))
+                        tvi.IsExpanded = false;
+                }
+            }
+            else if (GetTreeViewItem(e.OldValue) is TreeViewItem oldTvi)
+            {
+                oldTvi.IsExpanded = !oldTvi.IsExpanded;
+            }
+
+            IEnumerable<TreeViewItem> GetExpanded(ItemsControl parent)
+            {
+                foreach (TreeViewItem tvi in GetTreeViewItems(parent).Where(x => x != null))
+                {
+                    if (tvi.IsExpanded) 
+                    {
+                        yield return tvi;
+
+                        foreach (TreeViewItem child in GetExpanded(tvi))
+                        {
+                            yield return child;
+                        }
+                    }
+                }
+            }
+
+            IEnumerable<TreeViewItem> GetTreeViewItems(ItemsControl parent)
+            {
+                return parent.Items.Cast<object>().Select(x => GetTreeViewItem(x, parent));
+            }
+
+            TreeViewItem GetTreeViewItem(object item, ItemsControl parent = null)
+            {
+                if (item is TreeViewItem tvi) return tvi;
+                return (parent ?? treeView).ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
+            }
+
+            IEnumerable<TreeViewItem> GetParents(TreeViewItem tvi)
+            {
+                for (; tvi != null; tvi = tvi.Parent as TreeViewItem)
+                    yield return tvi;
+            }
+        }
+
+        public static void SetSingleExpandPath(DependencyObject element, bool value)
+        {
+            element.SetValue(SingleExpandPathProperty, value);
+        }
+
+        public static bool GetSingleExpandPath(DependencyObject element)
+        {
+            return (bool)element.GetValue(SingleExpandPathProperty);
+        }
+
         public static readonly DependencyProperty SelectedCommandProperty = DependencyProperty.RegisterAttached(
             "SelectedCommand", typeof(ICommand), typeof(TreeViewHelper), new PropertyMetadata(default(ICommand), OnSelectedCommandChanged));
 

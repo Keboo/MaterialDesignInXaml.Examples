@@ -19,6 +19,7 @@
             <Style x:Key="MenuTreeView" TargetType="TreeView" BasedOn="{StaticResource {x:Type TreeView}}">
                 <Setter Property="Background" Value="#485A64" />
                 <Setter Property="Foreground" Value="White" />
+                <Setter Property="local:TreeViewHelper.SingleExpandPath" Value="True" />
             </Style>
 
             <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource MaterialDesignTreeViewItem}">
@@ -214,12 +215,15 @@
                             </Setter.Value>
                         </Setter>
                     </Trigger>
+                    <!--
+                    NB: These triggers mostly work, however they can cause the selected item to change when keyboard focus moves off of the tree view
                     <Trigger Property="IsSelected" Value="True">
                         <Setter Property="IsExpanded" Value="True" />
                     </Trigger>
                     <Trigger Property="IsKeyboardFocusWithin" Value="True">
                         <Setter Property="IsExpanded" Value="True" />
                     </Trigger>
+                    -->
                     <Trigger Property="HasItems" Value="False">
                         <!-- Registering a command to all "leaf" tree view item and paramter, normally you would do this in a derived style or on the item directly -->
                         <Setter Property="local:TreeViewHelper.SelectedCommand" Value="{Binding ItemSelectedCommand}" />
@@ -291,6 +295,39 @@
                             <TextBlock Text="Supplier" Grid.Column="1" />
                         </Grid>
                     </TreeViewItem.Header>
+                    <TreeViewItem Tag="Supplier 1">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="Icon" Width="35"/>
+                                    <ColumnDefinition SharedSizeGroup="Text" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Supplier 1" Grid.Column="1" Margin="20,0,0,0"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Tag="Supplier 2">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="Icon" Width="35"/>
+                                    <ColumnDefinition SharedSizeGroup="Text" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Supplier 2" Grid.Column="1" Margin="20,0,0,0"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Tag="Supplier 3">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="Icon" Width="35"/>
+                                    <ColumnDefinition SharedSizeGroup="Text" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Supplier 3" Grid.Column="1" Margin="20,0,0,0"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
                 </TreeViewItem>
                 <TreeViewItem Tag="Contract">
                     <TreeViewItem.Header>
@@ -410,5 +447,7 @@
         <ContentPresenter Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
                           TextElement.FontSize="20" Content="{Binding SelectedItem}">
         </ContentPresenter>
+        
+        <TextBox Grid.Column="1" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
