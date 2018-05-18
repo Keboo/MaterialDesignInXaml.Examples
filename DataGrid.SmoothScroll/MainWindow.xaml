@@ -19,8 +19,7 @@
         </StackPanel>
 
         <DataGrid ItemsSource="{Binding People, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}}"
-                  Grid.Row="1" x:Name="DataGrid" ScrollViewer.CanContentScroll="True" >
-
+                  Grid.Row="1" x:Name="DataGrid" ScrollViewer.CanContentScroll="False" >
         </DataGrid>
     </Grid>
 </Window>
