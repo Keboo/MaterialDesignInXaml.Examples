@@ -143,6 +143,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataGrid", "DataGrid", "{FD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid.SmoothScroll", "DataGrid.SmoothScroll\DataGrid.SmoothScroll.csproj", "{169D4AEE-0154-4005-92C3-108923B89B3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.ClosingConfirmation.CodeBehind", "DialogHost\DialogHost.ClosingConfirmation.CodeBehind\DialogHost.ClosingConfirmation.CodeBehind.csproj", "{EB05258B-9FE1-43D6-90DC-61A100B9EF28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -301,6 +303,10 @@ Global
 		{169D4AEE-0154-4005-92C3-108923B89B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{169D4AEE-0154-4005-92C3-108923B89B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{169D4AEE-0154-4005-92C3-108923B89B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB05258B-9FE1-43D6-90DC-61A100B9EF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB05258B-9FE1-43D6-90DC-61A100B9EF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB05258B-9FE1-43D6-90DC-61A100B9EF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB05258B-9FE1-43D6-90DC-61A100B9EF28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -354,6 +360,7 @@ Global
 		{CD852FC2-CFBD-4940-A404-75427C2B5E48} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 		{7A3FF29F-905A-4433-A9D7-3272A67E4FFC} = {8954AFE8-B326-47B1-AD3B-34F4E2A6368A}
 		{169D4AEE-0154-4005-92C3-108923B89B3F} = {FD14663A-6018-41F4-A1DC-255AC9780021}
+		{EB05258B-9FE1-43D6-90DC-61A100B9EF28} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}

@@ -1,0 +1,39 @@
+﻿<Window x:Class="DialogHost.ClosingConfirmation.CodeBehind.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogHost.ClosingConfirmation.CodeBehind"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <materialDesign:DialogHost>
+        <ScrollViewer>
+            <TextBlock TextWrapping="Wrap" Margin="10">
+                <Span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies tristique nulla aliquet enim tortor at auctor. Fermentum dui faucibus in ornare quam viverra. Maecenas accumsan lacus vel facilisis. In est ante in nibh mauris cursus mattis molestie a. Massa eget egestas purus viverra accumsan. Ornare quam viverra orci sagittis eu volutpat. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Semper eget duis at tellus at urna condimentum. Felis donec et odio pellentesque diam volutpat commodo sed.
+                </Span>
+                <LineBreak />
+                <LineBreak />
+                <Span>
+                    Euismod in pellentesque massa placerat duis ultricies lacus sed. Viverra adipiscing at in tellus integer feugiat scelerisque varius. Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Sed faucibus turpis in eu mi bibendum. Sit amet venenatis urna cursus eget. Id semper risus in hendrerit gravida rutrum quisque non tellus. Nunc sed velit dignissim sodales ut eu sem integer vitae. Aliquet nec ullamcorper sit amet risus nullam eget felis. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Leo urna molestie at elementum eu facilisis sed. Lacus laoreet non curabitur gravida arcu ac tortor. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Morbi non arcu risus quis varius. Diam ut venenatis tellus in metus vulputate. Mi quis hendrerit dolor magna eget est lorem ipsum dolor. Magnis dis parturient montes nascetur. Imperdiet massa tincidunt nunc pulvinar sapien. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Ac placerat vestibulum lectus mauris.
+                </Span>
+                <LineBreak />
+                <LineBreak />
+                <Span>
+                    Diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Praesent tristique magna sit amet purus gravida. Mattis pellentesque id nibh tortor id. Neque sodales ut etiam sit amet. Purus sit amet volutpat consequat mauris nunc congue nisi. Id porta nibh venenatis cras sed felis eget. Viverra accumsan in nisl nisi scelerisque eu ultrices. Adipiscing bibendum est ultricies integer. Urna neque viverra justo nec. Amet nulla facilisi morbi tempus. Cras fermentum odio eu feugiat pretium nibh ipsum. Neque egestas congue quisque egestas diam in arcu cursus euismod. Sapien et ligula ullamcorper malesuada proin libero. Leo vel orci porta non pulvinar neque. Erat pellentesque adipiscing commodo elit at imperdiet. Euismod in pellentesque massa placerat duis ultricies. Tellus at urna condimentum mattis pellentesque.
+                </Span>
+                <LineBreak/>
+                <LineBreak/>
+                <Span>
+                    Justo nec ultrices dui sapien eget mi. Iaculis at erat pellentesque adipiscing commodo elit at. Massa sed elementum tempus egestas sed sed risus pretium. Non blandit massa enim nec dui nunc mattis enim. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Justo nec ultrices dui sapien eget. Auctor urna nunc id cursus metus aliquam. Dictum at tempor commodo ullamcorper a lacus. Vel quam elementum pulvinar etiam non quam lacus suspendisse. Laoreet sit amet cursus sit amet dictum. Arcu non sodales neque sodales ut etiam. Malesuada nunc vel risus commodo viverra maecenas accumsan. Neque laoreet suspendisse interdum consectetur libero. Id consectetur purus ut faucibus. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque. Arcu felis bibendum ut tristique et egestas quis ipsum. Phasellus vestibulum lorem sed risus ultricies. Nibh tellus molestie nunc non blandit massa.
+                </Span>
+                <LineBreak />
+                <LineBreak />
+                <Span>
+                    Purus ut faucibus pulvinar elementum. Nisl suscipit adipiscing bibendum est. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Pellentesque massa placerat duis ultricies lacus sed turpis. Lacus luctus accumsan tortor posuere ac ut consequat semper. Montes nascetur ridiculus mus mauris. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Mi proin sed libero enim sed faucibus turpis in. Sapien pellentesque habitant morbi tristique. Pellentesque dignissim enim sit amet.
+                </Span>
+            </TextBlock>
+        </ScrollViewer>
+    </materialDesign:DialogHost>
+</Window>
