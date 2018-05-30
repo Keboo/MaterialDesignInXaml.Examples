@@ -19,8 +19,8 @@
                 <MenuItem Header="_Open" Click="OpenOnClick"/>
             </MenuItem>
         </Menu>
-        
-        <wpf:SKElement PaintSurface="SKElement_OnPaintSurface" Grid.Row="1" x:Name="SKElement" />
-
+        <Border Margin="10" BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+            <wpf:SKElement PaintSurface="SKElement_OnPaintSurface" x:Name="SKElement" />
+        </Border>
     </Grid>
 </Window>
