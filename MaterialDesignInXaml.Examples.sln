@@ -155,6 +155,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Button", "Button", "{7F17AC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Button.RotatedProgress", "Button\Button.RotatedProgress\Button.RotatedProgress.csproj", "{368B2269-3CAC-4802-B11F-65D4AAA6F7DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFC89033-4EF3-493E-8694-E8B14C6B78A3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{3869A84B-D522-4673-AB21-32C11009875C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationBackgroundChange", "Styling\Validation\ValidationBackgroundChange\ValidationBackgroundChange.csproj", "{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -329,6 +338,10 @@ Global
 		{368B2269-3CAC-4802-B11F-65D4AAA6F7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{368B2269-3CAC-4802-B11F-65D4AAA6F7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{368B2269-3CAC-4802-B11F-65D4AAA6F7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -386,6 +399,8 @@ Global
 		{8E306AC9-1559-49B9-8EB2-79C4EFA827F9} = {520DD809-8547-48F7-9E96-62D3D7E2C80B}
 		{36E6014E-28CB-499A-AE58-52156FB3AD43} = {520DD809-8547-48F7-9E96-62D3D7E2C80B}
 		{368B2269-3CAC-4802-B11F-65D4AAA6F7DF} = {7F17AC0B-B59A-4DCB-B167-5774BCB924DA}
+		{3869A84B-D522-4673-AB21-32C11009875C} = {79522AC3-05A6-4374-B157-7F12A58FF5A5}
+		{6BE2E3C5-3BE3-4505-AD47-047ED28F4D62} = {3869A84B-D522-4673-AB21-32C11009875C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
