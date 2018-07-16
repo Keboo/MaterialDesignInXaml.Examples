@@ -1,0 +1,53 @@
+﻿<Window x:Class="ValidationBackgroundChange.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValidationBackgroundChange"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{StaticResource MaterialDesignFont}"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:SimpleViewModel />
+    </Window.DataContext>
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="250">
+            <TextBlock Text="Enter Text" />
+            <TextBox materialDesign:HintAssist.Hint="First Name">
+                <TextBox.Text>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <!-- You can create your own validation rules -->
+                            <local:NotEmptyValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <AdornerDecorator>
+                <AdornerDecorator.Resources>
+                    <!--Injecting a brush with the same name so it gets picked up by the dynamic resource-->
+                    <SolidColorBrush x:Key="MaterialDesignPaper" Color="LightBlue" />
+                </AdornerDecorator.Resources>
+                <TextBox Style="{StaticResource MaterialDesignTextBox}" materialDesign:HintAssist.Hint="Last Name" Margin="0,30,0,0">
+                    <TextBox.Text>
+                        <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                        <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <!-- You can create your own validation rules -->
+                                <local:NotEmptyValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </AdornerDecorator>
+        </StackPanel>
+    </Grid>
+</Window>

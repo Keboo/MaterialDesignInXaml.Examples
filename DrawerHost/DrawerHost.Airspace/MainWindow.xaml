@@ -17,6 +17,9 @@
     <materialDesign:DrawerHost LeftDrawerBackground="{DynamicResource MaterialDesignPaper}" x:Name="DrawerHost">
         <materialDesign:DrawerHost.LeftDrawerContent>
             <StackPanel Width="150" Margin="5">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                              IsChecked="{Binding IsLeftDrawerOpen, ElementName=DrawerHost}"
+                              HorizontalAlignment="Right"/>
                 <Button Content="Google" Click="GoogleOnClick" Margin="0,0,0,10"/>
                 <Button Content="Bing" Click="BingOnClick" />
             </StackPanel>

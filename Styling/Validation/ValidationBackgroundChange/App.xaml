@@ -1,0 +1,119 @@
+﻿<Application x:Class="ValidationBackgroundChange.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <!--
+            This is a copy of the existing MDIX template from here:
+            https://github.com/ButchersBoy/MaterialDesignInXamlToolkit/blob/master/MaterialDesignThemes.Wpf/Themes/MaterialDesignTheme.ValidationErrorTemplate.xaml
+            -->
+            <ControlTemplate x:Key="MyValidationErrorTemplate">
+                <ControlTemplate.Resources>
+                    <DataTemplate DataType="{x:Type ValidationError}">
+                        <TextBlock Foreground="{DynamicResource ValidationErrorBrush}"
+                           FontSize="10"
+                           MaxWidth="{Binding ElementName=Placeholder, Path=ActualWidth}"
+                           HorizontalAlignment="Left"
+                           Margin="2"
+                           TextWrapping="Wrap"
+                           Text="{Binding ErrorContent}"
+                           UseLayoutRounding="false" />
+                    </DataTemplate>
+                </ControlTemplate.Resources>
+                <StackPanel>
+                    <AdornedElementPlaceholder Name="Placeholder" />
+                    <Border Name="DefaultErrorViewer"
+                    Visibility="Collapsed"
+                    Background="LightGreen">
+                        <TextBlock Foreground="{DynamicResource ValidationErrorBrush}"
+                           FontSize="10"
+                           MaxWidth="{Binding ElementName=Placeholder, Path=ActualWidth}"
+                           HorizontalAlignment="Left"
+                           Margin="0 2"
+                           TextWrapping="Wrap"
+                           Text="{Binding CurrentItem.ErrorContent}"
+                           UseLayoutRounding="false" />
+                    </Border>
+                    <controlzEx:PopupEx x:Name="ValidationPopup"
+                                IsOpen="False"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=Placeholder, Mode=OneWay}"
+                                AllowsTransparency="True">
+                        <Border Background="{DynamicResource MaterialDesignPaper}">
+                            <TextBlock Foreground="{DynamicResource ValidationErrorBrush}"
+                               FontSize="10"
+                               HorizontalAlignment="Left"
+                               Margin="0 2"
+                               TextWrapping="Wrap"
+                               Text="{Binding CurrentItem.ErrorContent}"
+                               UseLayoutRounding="false" />
+                        </Border>
+                    </controlzEx:PopupEx>
+                </StackPanel>
+                <ControlTemplate.Triggers>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.OnlyShowOnFocus)}" Value="False"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.UsePopup)}" Value="True"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.Suppress)}" Value="False"/>
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter TargetName="ValidationPopup" Property="IsOpen" Value="True"/>
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.OnlyShowOnFocus)}" Value="False"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.UsePopup)}" Value="False"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.Suppress)}" Value="False"/>
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter TargetName="DefaultErrorViewer" Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.OnlyShowOnFocus)}" Value="True"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.UsePopup)}" Value="True"/>
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter TargetName="ValidationPopup" Property="IsOpen"
+                            Value="{Binding ElementName=Placeholder, Path=AdornedElement.IsKeyboardFocusWithin, Mode=OneWay}"/>
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.OnlyShowOnFocus)}" Value="True"/>
+                            <Condition Binding="{Binding ElementName=Placeholder, Path=AdornedElement.(wpf:ValidationAssist.UsePopup)}" Value="False"/>
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter TargetName="DefaultErrorViewer" Property="Visibility"
+                            Value="{Binding ElementName=Placeholder, Path=AdornedElement.IsKeyboardFocusWithin, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!-- We apply our new validation template to all of the TextBox controls -->
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MyValidationErrorTemplate}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
