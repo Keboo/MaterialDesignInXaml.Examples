@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Bogus;
+using TestData;
 
 namespace DataGrid.SmoothScroll
 {
@@ -18,14 +17,7 @@ namespace DataGrid.SmoothScroll
 
         public MainWindow()
         {
-            Faker<Person> generator = new Faker<Person>()
-                .StrictMode(true)
-                .RuleFor(x => x.ID, f => f.IndexGlobal)
-                .RuleFor(x => x.FirstName, f => f.Person.FirstName)
-                .RuleFor(x => x.LastName, f => f.Person.LastName)
-                .RuleFor(x => x.DOB, f => f.Person.DateOfBirth);
-
-            People = generator.Generate(300);
+            People = Data.GeneratePeople(300);
 
             InitializeComponent();
         }

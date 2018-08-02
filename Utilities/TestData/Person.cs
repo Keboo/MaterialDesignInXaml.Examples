@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataGrid.ChangeRowColor
+namespace TestData
 {
     public class Person
     {

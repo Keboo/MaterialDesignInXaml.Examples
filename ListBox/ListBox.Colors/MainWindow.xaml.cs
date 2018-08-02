@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
 using TestData;
 
-namespace DataGrid.ChangeRowColor
+namespace ListBox.Colors
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
-        public IList<Person> People { get; }
-
+        public IList<Person> People { get;}
+        
         public MainWindow()
         {
-            People = Data.GeneratePeople(300);
+            People = Data.GeneratePeople(10);
 
             InitializeComponent();
         }

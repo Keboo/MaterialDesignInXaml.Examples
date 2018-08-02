@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{169D4AEE-0154-4005-92C3-108923B89B3F}</ProjectGuid>
+    <ProjectGuid>{B65DF219-7ED7-4154-84C2-2BBE8F3882CE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DataGrid.SmoothScroll</RootNamespace>
-    <AssemblyName>DataGrid.SmoothScroll</AssemblyName>
+    <RootNamespace>ListBox.Colors</RootNamespace>
+    <AssemblyName>ListBox.Colors</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,7 +60,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ScrollViewerHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +104,10 @@
     <ProjectReference Include="..\..\Utilities\TestData\TestData.csproj">
       <Project>{75e7e6d0-77dc-4a35-8330-046b833e9edc}</Project>
       <Name>TestData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utilities\Utilities\Utilities.csproj">
+      <Project>{74df32f3-6257-46b1-8593-a915b778e4be}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
