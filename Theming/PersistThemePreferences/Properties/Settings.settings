@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PersistThemePreferences.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Theme" Type="MaterialDesignThemes.Wpf.BaseTheme" Scope="User">
+      <Value Profile="(Default)">Inherit</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
