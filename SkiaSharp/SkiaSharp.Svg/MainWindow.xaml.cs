@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Media;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;
+using System;
+using System.Windows;
+using System.Windows.Media;
 
 namespace SkiaSharp.Svg
 {

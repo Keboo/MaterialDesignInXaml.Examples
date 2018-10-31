@@ -17,6 +17,8 @@
             <TextBox x:Name="Blur" Width="50" TextChanged="OnBlurChanged" Margin="5" VerticalAlignment="Center"/>
             <TextBox x:Name="OffsetBox" MinWidth="300" TextChanged="OnOffsetChanged" VerticalAlignment="Center" />
         </StackPanel>
-        <wpf:SKElement PaintSurface="SKElement_OnPaintSurface" Grid.Row="1" x:Name="SKElement" />
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <wpf:SKElement PaintSurface="SKElement_OnPaintSurface" x:Name="SKElement" />
+        </ScrollViewer>
     </Grid>
 </Window>

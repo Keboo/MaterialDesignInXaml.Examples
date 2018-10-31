@@ -62,7 +62,10 @@ namespace SkiaSharp.ImageDrawing
 
         private void OnBrowse(object sender, RoutedEventArgs e)
         {
-            var picker = new OpenFileDialog();
+            var picker = new OpenFileDialog
+            {
+                Filter = "Bitmap Files|*.bmp|All Files|*"
+            };
             if (picker.ShowDialog() == true)
             {
                 SelectedFile = new FileInfo(picker.FileName);
