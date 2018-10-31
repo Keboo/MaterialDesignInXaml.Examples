@@ -14,33 +14,37 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel x:Name="StackPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <md:Card Margin="10" Padding="30" md:ShadowAssist.ShadowDepth="Depth0">
-            <md:Card.Effect>
-                <!--A copy of MaterialDesignShadowDepth1-->
-                <DropShadowEffect x:Name="DropShadowEffect" BlurRadius="5" ShadowDepth="1" Direction="270" Color="{StaticResource MaterialDesignShadow}" Opacity=".42" RenderingBias="Performance" />
-            </md:Card.Effect>
-            <TextBlock Text="Done in XAML" HorizontalAlignment="Center" />
-            <md:Card.Triggers>
-                <!--Values taken from MaterialDesignShadowDepth4 -->
-                <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard TargetName="DropShadowEffect">
-                            <DoubleAnimation Storyboard.TargetProperty="BlurRadius" To="25" Duration="0:0:0.5" />
-                            <DoubleAnimation Storyboard.TargetProperty="ShadowDepth" To="8" Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <!--Values taken from MaterialDesignShadowDepth1 -->
-                <EventTrigger RoutedEvent="FrameworkElement.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard TargetName="DropShadowEffect">
-                            <DoubleAnimation Storyboard.TargetProperty="BlurRadius" To="5" Duration="0:0:0.5" />
-                            <DoubleAnimation Storyboard.TargetProperty="ShadowDepth" To="1" Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </md:Card.Triggers>
-        </md:Card>
+        <AdornerDecorator>
+            <md:Card Margin="10" Padding="30" md:ShadowAssist.ShadowDepth="Depth0">
+                <md:Card.Effect>
+                    <!--A copy of MaterialDesignShadowDepth1-->
+                    <DropShadowEffect x:Name="DropShadowEffect" BlurRadius="5" ShadowDepth="1" Direction="270" Color="{StaticResource MaterialDesignShadow}" Opacity=".42" RenderingBias="Performance" />
+                </md:Card.Effect>
+                <Grid RenderOptions.ClearTypeHint="Enabled" Background="White">
+                    <TextBlock Text="Done in XAML" HorizontalAlignment="Center" />
+                </Grid>
+                <md:Card.Triggers>
+                    <!--Values taken from MaterialDesignShadowDepth4 -->
+                    <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard TargetName="DropShadowEffect">
+                                <DoubleAnimation Storyboard.TargetProperty="BlurRadius" To="25" Duration="0:0:0.5" />
+                                <DoubleAnimation Storyboard.TargetProperty="ShadowDepth" To="8" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <!--Values taken from MaterialDesignShadowDepth1 -->
+                    <EventTrigger RoutedEvent="FrameworkElement.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard TargetName="DropShadowEffect">
+                                <DoubleAnimation Storyboard.TargetProperty="BlurRadius" To="5" Duration="0:0:0.5" />
+                                <DoubleAnimation Storyboard.TargetProperty="ShadowDepth" To="1" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </md:Card.Triggers>
+            </md:Card>
+        </AdornerDecorator>
     </StackPanel>
 </Window>
 
