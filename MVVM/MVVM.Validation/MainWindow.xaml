@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM.Validation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-        
+
         <StackPanel Orientation="Horizontal">
             <GroupBox Header="No Validation" MinWidth="200" Margin="10">
                 <StackPanel>
@@ -23,7 +24,7 @@
                     <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
                 </StackPanel>
             </GroupBox>
-            
+
             <GroupBox Header="Binding Validation" MinWidth="200" Margin="10">
                 <StackPanel>
                     <StackPanel.DataContext>
@@ -71,8 +72,7 @@
                     <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
                 </StackPanel>
             </GroupBox>
-            
-            
+
             <GroupBox Header="DataAnnotations Validation" MinWidth="200" Margin="10">
                 <StackPanel>
                     <StackPanel.DataContext>
@@ -80,6 +80,38 @@
                     </StackPanel.DataContext>
 
                     <TextBlock Text="First Name"/>
+                    <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
+                    <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Last Name"/>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Submit" Command="{Binding SubmitCommand}" Margin="0,15"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Display Error With Hint" MinWidth="200" Margin="10">
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                            <!-- This disable the built-in validation template -->
+                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+                            <Setter Property="materialDesign:HintAssist.Hint" Value="{Binding Path=(Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True">
+                                    <!-- 
+                                    Using an attached property for this, eventually this should get resolved by 
+                                    https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/pull/1070
+                                    -->
+                                    <Setter Property="local:ResourcesEx.PrimaryHueMidBrush" Value="{DynamicResource ValidationErrorBrush}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Resources>
+                    <StackPanel.DataContext>
+                        <local:AttributeValidationViewModel />
+                    </StackPanel.DataContext>
+
+                    <TextBlock Text="First Name" />
                     <!--Explicitly setting the UpdateSourceTrigger to PropertyChanges so its updates the value as we type-->
                     <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Text="Last Name"/>

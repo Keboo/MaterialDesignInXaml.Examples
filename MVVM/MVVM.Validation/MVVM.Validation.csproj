@@ -77,6 +77,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AnnotationValidationViewModel.cs" />
+    <Compile Include="ResourcesEx.cs" />
     <Compile Include="NotEmptyValidationRule.cs" />
     <Compile Include="NotifyErrorInfoViewModel.cs" />
     <Compile Include="SimpleViewModel.cs" />
