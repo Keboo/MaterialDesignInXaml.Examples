@@ -192,6 +192,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Theming", "Theming", "{2C1A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistThemePreferences", "Theming\PersistThemePreferences\PersistThemePreferences.csproj", "{A10D1B92-A1B8-4FD4-9583-BD90216FB4E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prism", "Prism", "{12879AAB-010C-47C1-B9E0-C8C0C2F2162F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawerHostRegions", "Prism\DrawerHostRegions\DrawerHostRegions.csproj", "{C7BEC002-24F5-446B-B1B1-9AB76AE317F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -410,6 +414,10 @@ Global
 		{A10D1B92-A1B8-4FD4-9583-BD90216FB4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A10D1B92-A1B8-4FD4-9583-BD90216FB4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A10D1B92-A1B8-4FD4-9583-BD90216FB4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -479,6 +487,7 @@ Global
 		{F600FC36-2239-47D5-94EA-6923FD05F4FF} = {BD97A1E3-EF06-4692-A4C0-CB5FA9C1601D}
 		{8DF8D507-33EF-4869-ABB6-92685F437B3E} = {773FC843-665F-415F-A192-095D698F3151}
 		{A10D1B92-A1B8-4FD4-9583-BD90216FB4E1} = {2C1A7601-41A7-4AE5-A361-554BEA582A91}
+		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5} = {12879AAB-010C-47C1-B9E0-C8C0C2F2162F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}

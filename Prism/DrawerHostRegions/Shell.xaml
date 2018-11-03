@@ -1,0 +1,15 @@
+﻿<Window x:Class="DrawerHostRegions.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
+    <materialDesign:DrawerHost>
+        <materialDesign:DrawerHost.RightDrawerContent>
+            <ContentControl Name="RightDrawer"/>
+        </materialDesign:DrawerHost.RightDrawerContent>
+        <ContentControl prism:RegionManager.RegionName="MainRegion"/>
+    </materialDesign:DrawerHost>
+</Window>
