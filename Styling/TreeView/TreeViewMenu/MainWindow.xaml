@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:TreeViewMenu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -225,9 +225,11 @@
                     </Trigger>
                     -->
                     <Trigger Property="HasItems" Value="False">
-                        <!-- Registering a command to all "leaf" tree view item and paramter, normally you would do this in a derived style or on the item directly -->
-                        <Setter Property="local:TreeViewHelper.SelectedCommand" Value="{Binding ItemSelectedCommand}" />
-                        <Setter Property="local:TreeViewHelper.SelectedCommandParameter" Value="{Binding Tag, RelativeSource={RelativeSource Self}}" />
+                        <!-- Registering a command to all "leaf" tree view item and parameter, normally you would do this in a derived style or on the item directly -->
+                        <Setter Property="local:TreeViewHelper.SelectedCommand"
+                                Value="{Binding DataContext.ItemSelectedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeView}}" />
+                        <Setter Property="local:TreeViewHelper.SelectedCommandParameter" 
+                                Value="{Binding Tag, RelativeSource={RelativeSource Self}}" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -237,6 +239,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
 
         <TreeView x:Name="TreeView" Style="{StaticResource MenuTreeView}" Grid.IsSharedSizeScope="True">
@@ -445,9 +448,41 @@
         </TreeView>
 
         <ContentPresenter Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                          TextElement.FontSize="20" Content="{Binding SelectedItem}">
-        </ContentPresenter>
-        
+                          TextElement.FontSize="20" Content="{Binding SelectedItem}" />
         <TextBox Grid.Column="1" VerticalAlignment="Bottom" />
+
+        <TreeView Style="{StaticResource MenuTreeView}" Grid.IsSharedSizeScope="True"
+                  ItemsSource="{Binding MenuItems}" Grid.Column="2"
+                  local:TreeViewHelper.SingleExpandPath="False">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <Setter Property="Tag" Value="{Binding Title}" />
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:MenuItem}" ItemsSource="{Binding Children}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="Icon" Width="35"/>
+                            <ColumnDefinition SharedSizeGroup="Text" />
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="{Binding Icon}" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon.Style>
+                                <Style TargetType="{x:Type materialDesign:PackIcon}" BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Icon}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                        <TextBlock Text="{Binding Title}" Grid.Column="1" />
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </TreeView>
     </Grid>
 </Window>
