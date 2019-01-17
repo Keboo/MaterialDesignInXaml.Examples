@@ -200,6 +200,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popupbox.RemoveFocusVisual"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.FromViewModel", "DialogHost\DialogHost.FromViewModel\DialogHost.FromViewModel.csproj", "{BF6C608E-2ADB-4A41-B40D-25E413B04F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.CommonDialogWindow", "DialogHost\DialogHost.CommonDialogWindow\DialogHost.CommonDialogWindow.csproj", "{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -430,6 +432,10 @@ Global
 		{BF6C608E-2ADB-4A41-B40D-25E413B04F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF6C608E-2ADB-4A41-B40D-25E413B04F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF6C608E-2ADB-4A41-B40D-25E413B04F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -502,6 +508,7 @@ Global
 		{C7BEC002-24F5-446B-B1B1-9AB76AE317F5} = {12879AAB-010C-47C1-B9E0-C8C0C2F2162F}
 		{5D0D19E5-45A3-4694-AAEF-50B90019F145} = {BAB7A74D-6B18-46D4-AFC3-1C740D7CEAD6}
 		{BF6C608E-2ADB-4A41-B40D-25E413B04F15} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
+		{01891E72-E7FC-4B5F-95FC-D3BA255BCC9C} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}

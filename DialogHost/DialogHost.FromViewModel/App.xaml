@@ -11,6 +11,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="MaterialDesignCardBackground" Color="Red" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

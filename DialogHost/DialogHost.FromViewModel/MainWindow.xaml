@@ -64,7 +64,7 @@
                     VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBox x:Name="Message" MinWidth="200" md:HintAssist.Hint="Enter message here" />
+                <TextBox x:Name="Message" MinWidth="200" md:HintAssist.Hint="Enter message here" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <Button Content="Show Message Dialog" Command="{Binding ShowMessageCommand}" 
                         CommandParameter="{Binding Text, ElementName=Message}" HorizontalAlignment="Left" />
             </StackPanel>

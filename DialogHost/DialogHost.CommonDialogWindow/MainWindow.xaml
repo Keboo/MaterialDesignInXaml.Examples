@@ -1,0 +1,28 @@
+﻿<Window x:Class="DialogHost.CommonDialogWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogHost.CommonDialogWindow"
+        mc:Ignorable="d" 
+        Style="{StaticResource DialogWindowStyle}"
+        Title="MainWindow" Height="450" Width="800"
+        local:DialogHostEx.Identifier="{local:GuidGenerator}"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Command="{Binding ShowDialogCommand}" 
+                CommandParameter="{Binding (local:DialogHostEx.Identifier), RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Content="Show Dialog" 
+                Margin="0,0,0,10" />
+
+            <Button Command="{Binding ShowMainWindowCommand}" 
+                    Content="Show MainWindow" 
+                    Margin="0,0,0,10" />
+
+            <Button Command="{Binding ShowOtherWindowCommand}" 
+                    Content="Show OtherWindow" 
+                    Margin="0,0,0,10" />
+        </StackPanel>
+    </Grid>
+</Window>
