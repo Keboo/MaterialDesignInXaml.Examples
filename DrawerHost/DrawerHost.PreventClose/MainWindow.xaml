@@ -1,0 +1,24 @@
+﻿<Window x:Class="DrawerHost.PreventClose.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrawerHost.PreventClose"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding DrawerOpen}">
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <StackPanel Width="200" Margin="20">
+                <TextBlock Text="Left drawer content" TextWrapping="Wrap" Margin="0,20"/>
+                <CheckBox IsChecked="{Binding LockDrawer}" Content="Lock Drawer" />
+            </StackPanel>
+        </materialDesign:DrawerHost.LeftDrawerContent>
+
+        <Button Content="Open Drawer" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </materialDesign:DrawerHost>
+</Window>
