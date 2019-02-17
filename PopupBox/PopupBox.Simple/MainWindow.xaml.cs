@@ -24,5 +24,10 @@ namespace PopupBox.Simple
         {
             InitializeComponent();
         }
+
+        private void Done_Click(object sender, RoutedEventArgs e)
+        {
+            PopupBox.IsPopupOpen = false;
+        }
     }
 }
