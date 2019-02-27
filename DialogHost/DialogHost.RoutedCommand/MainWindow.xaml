@@ -1,0 +1,29 @@
+﻿<Window x:Class="DialogHost.RoutedCommand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Title="MainWindow" Height="450" Width="800">
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel Margin="15">
+                <StackPanel.CommandBindings>
+                    <CommandBinding Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                    CanExecute="CommandBinding_OnCanExecute" />
+                </StackPanel.CommandBindings>
+
+                <TextBlock Text="Is this ok?" />
+                <CheckBox Content="Check me" x:Name="CheckBox"/>
+
+                <Button Content="Close" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" />
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+
+        <Button Content="Show Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </materialDesign:DialogHost>
+</Window>

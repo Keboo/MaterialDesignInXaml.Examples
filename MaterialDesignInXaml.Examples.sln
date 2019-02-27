@@ -214,6 +214,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox.CustomFilter", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopupBox.MenuItems", "PopupBox\PopupBox.MenuItems\PopupBox.MenuItems.csproj", "{34E10A85-866F-447B-BDF7-2E2C17E3B0D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.RoutedCommand", "DialogHost\DialogHost.RoutedCommand\DialogHost.RoutedCommand.csproj", "{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -464,6 +466,10 @@ Global
 		{34E10A85-866F-447B-BDF7-2E2C17E3B0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34E10A85-866F-447B-BDF7-2E2C17E3B0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34E10A85-866F-447B-BDF7-2E2C17E3B0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -541,6 +547,7 @@ Global
 		{A2235DEF-E43E-4D33-9B72-85C3102664FD} = {E530DF29-8539-493D-BD7F-311013F43004}
 		{73F510F2-C0EC-4340-9B98-290F69822658} = {C3159A87-4110-4C15-A9E8-F32277B7F999}
 		{34E10A85-866F-447B-BDF7-2E2C17E3B0D8} = {BAB7A74D-6B18-46D4-AFC3-1C740D7CEAD6}
+		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
