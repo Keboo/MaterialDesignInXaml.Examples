@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:DialogHost.RoutedCommand"
         mc:Ignorable="d"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -23,7 +24,14 @@
             </StackPanel>
         </materialDesign:DialogHost.DialogContent>
 
-        <Button Content="Show Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
-                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Show Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Margin="0,0,0,10"/>
+            <Button Content="Show Other Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                <Button.CommandParameter>
+                    <local:SimpleDialog />
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+        
     </materialDesign:DialogHost>
 </Window>
