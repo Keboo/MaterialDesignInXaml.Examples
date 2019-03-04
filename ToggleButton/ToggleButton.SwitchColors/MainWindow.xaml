@@ -1,0 +1,36 @@
+﻿<Window x:Class="ToggleButton.SwitchColors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToggleButton.SwitchColors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <!-- Background will be the thumbs background when checked -->
+        <!-- Foreground will be the thumbs foreground both checked and unchecked -->
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" 
+                      Background="Yellow">
+            <ToggleButton.Resources>
+                <!-- Checked thumb foreground -->
+                <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="Red" />
+                <!-- Unchecked thumb foreground -->
+                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Green" />
+
+                <!-- Checked track color: There will be an opacity of 0.26 applied to it -->
+                <!-- Setting this will also affect the color of the ripple when the thumb is clicked -->
+                <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="Cyan" />
+                <!-- Unchecked track color: Hard coded to be black with 0.26 opacity -->
+            </ToggleButton.Resources>
+            <materialDesign:PackIcon Kind="Smiley" />
+        </ToggleButton>
+    </Grid>
+</Window>
