@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28606.126
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DialogHost", "DialogHost", "{6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}"
 EndProject
@@ -219,6 +219,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePicker.PersianCalendar", "DatePicker.PersianCalendar\DatePicker.PersianCalendar.csproj", "{91DDF89D-0951-4A94-A162-362B229C8B1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.RoutedCommand", "DialogHost\DialogHost.RoutedCommand\DialogHost.RoutedCommand.csproj", "{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Button.CornerRadius", "Button\Button.CornerRadius\Button.CornerRadius.csproj", "{F83763F3-EBDC-4BE6-B810-6E9849946F2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToggleButton.SwitchColors", "ToggleButton\ToggleButton.SwitchColors\ToggleButton.SwitchColors.csproj", "{A3B22FBD-1C93-47B1-8699-5778390620F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -478,6 +482,14 @@ Global
 		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83763F3-EBDC-4BE6-B810-6E9849946F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83763F3-EBDC-4BE6-B810-6E9849946F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83763F3-EBDC-4BE6-B810-6E9849946F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83763F3-EBDC-4BE6-B810-6E9849946F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3B22FBD-1C93-47B1-8699-5778390620F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3B22FBD-1C93-47B1-8699-5778390620F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3B22FBD-1C93-47B1-8699-5778390620F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3B22FBD-1C93-47B1-8699-5778390620F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -557,6 +569,8 @@ Global
 		{34E10A85-866F-447B-BDF7-2E2C17E3B0D8} = {BAB7A74D-6B18-46D4-AFC3-1C740D7CEAD6}
 		{91DDF89D-0951-4A94-A162-362B229C8B1B} = {2A43950C-82C1-4611-8BEE-35C10786A387}
 		{DE805A12-BC19-4095-9C59-58FB0B3FFB6E} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
+		{F83763F3-EBDC-4BE6-B810-6E9849946F2E} = {7F17AC0B-B59A-4DCB-B167-5774BCB924DA}
+		{A3B22FBD-1C93-47B1-8699-5778390620F0} = {9F50E81A-8B34-48AE-9034-8FF7B4050940}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
