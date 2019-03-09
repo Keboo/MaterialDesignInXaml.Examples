@@ -21,8 +21,12 @@
             <CheckBox Content="Enable PopupBox" IsChecked="True" x:Name="PopupEnabled" />
             <materialDesign:PopupBox StaysOpen="True" 
                                      IsEnabled="{Binding IsChecked, ElementName=PopupEnabled}">
-                <utilities:Modifier TemplatePartName="PART_Toggle" Property="{x:Static FrameworkElement.FocusVisualStyleProperty}"
+                <utilities:TreeHelpers.Modifiers>
+                    <utilities:ModifierCollection>
+                        <utilities:Modifier TemplatePartName="PART_Toggle" Property="{x:Static FrameworkElement.FocusVisualStyleProperty}"
                                     Value="{x:Null}" />
+                    </utilities:ModifierCollection>
+                </utilities:TreeHelpers.Modifiers>
                 <materialDesign:PopupBox.Content>
                     <Grid Width="300" Margin="8,8,8,8">
                         <Grid.Resources>
