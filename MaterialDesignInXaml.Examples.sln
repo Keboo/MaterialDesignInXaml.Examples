@@ -226,6 +226,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToggleButton.SwitchColors",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaskedTextBox", "WpfToolkit\MaskedTextBox\MaskedTextBox.csproj", "{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiProject", "MultiProject", "{81232B97-DC7C-4E9B-A051-6EF00F72FF4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.WpfApp", "MultiProject\MultiProject.WpfApp\MultiProject.WpfApp.csproj", "{B2021250-3128-41B0-823C-7732C7236B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.Views", "MultiProject.Views\MultiProject.Views.csproj", "{2769C064-9A01-44CA-BD3F-B92A63C7B20B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -496,6 +502,14 @@ Global
 		{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2021250-3128-41B0-823C-7732C7236B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2021250-3128-41B0-823C-7732C7236B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2021250-3128-41B0-823C-7732C7236B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2021250-3128-41B0-823C-7732C7236B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -578,6 +592,8 @@ Global
 		{F83763F3-EBDC-4BE6-B810-6E9849946F2E} = {7F17AC0B-B59A-4DCB-B167-5774BCB924DA}
 		{A3B22FBD-1C93-47B1-8699-5778390620F0} = {9F50E81A-8B34-48AE-9034-8FF7B4050940}
 		{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD} = {FEF411B6-E9ED-41D0-A8B0-94266A8DB23B}
+		{B2021250-3128-41B0-823C-7732C7236B90} = {81232B97-DC7C-4E9B-A051-6EF00F72FF4F}
+		{2769C064-9A01-44CA-BD3F-B92A63C7B20B} = {81232B97-DC7C-4E9B-A051-6EF00F72FF4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
