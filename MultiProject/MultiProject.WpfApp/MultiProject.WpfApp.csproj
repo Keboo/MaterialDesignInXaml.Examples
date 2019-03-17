@@ -94,7 +94,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MultiProject.Views\MultiProject.Views.csproj">
+    <ProjectReference Include="..\MultiProject.Views\MultiProject.Views.csproj">
       <Project>{2769c064-9a01-44ca-bd3f-b92a63c7b20b}</Project>
       <Name>MultiProject.Views</Name>
     </ProjectReference>

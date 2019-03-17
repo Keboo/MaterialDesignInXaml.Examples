@@ -230,7 +230,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiProject", "MultiProjec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.WpfApp", "MultiProject\MultiProject.WpfApp\MultiProject.WpfApp.csproj", "{B2021250-3128-41B0-823C-7732C7236B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.Views", "MultiProject.Views\MultiProject.Views.csproj", "{2769C064-9A01-44CA-BD3F-B92A63C7B20B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.Views", "MultiProject\MultiProject.Views\MultiProject.Views.csproj", "{2769C064-9A01-44CA-BD3F-B92A63C7B20B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
