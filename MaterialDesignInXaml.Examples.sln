@@ -232,6 +232,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.WpfApp", "Mult
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiProject.Views", "MultiProject\MultiProject.Views\MultiProject.Views.csproj", "{2769C064-9A01-44CA-BD3F-B92A63C7B20B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValidationTemplate", "ValidationTemplate", "{4F791A4A-DCC8-4DAF-9A39-28C2541C44FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationTemplate", "MahApps\ValidationTemplate\ValidationTemplate\ValidationTemplate.csproj", "{A8E155C0-871F-48C3-B1DD-ADF451CBA052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -510,6 +514,10 @@ Global
 		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2769C064-9A01-44CA-BD3F-B92A63C7B20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8E155C0-871F-48C3-B1DD-ADF451CBA052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E155C0-871F-48C3-B1DD-ADF451CBA052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E155C0-871F-48C3-B1DD-ADF451CBA052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E155C0-871F-48C3-B1DD-ADF451CBA052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -594,6 +602,8 @@ Global
 		{6A2F601E-BFAB-4B0C-B64F-4D698859E4CD} = {FEF411B6-E9ED-41D0-A8B0-94266A8DB23B}
 		{B2021250-3128-41B0-823C-7732C7236B90} = {81232B97-DC7C-4E9B-A051-6EF00F72FF4F}
 		{2769C064-9A01-44CA-BD3F-B92A63C7B20B} = {81232B97-DC7C-4E9B-A051-6EF00F72FF4F}
+		{4F791A4A-DCC8-4DAF-9A39-28C2541C44FF} = {7D5DD8A1-9A00-4AC4-B04A-12346176CD03}
+		{A8E155C0-871F-48C3-B1DD-ADF451CBA052} = {4F791A4A-DCC8-4DAF-9A39-28C2541C44FF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
