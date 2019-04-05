@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="25.0.3" />
+    <PackageReference Include="Bogus" Version="26.0.2" />
     <PackageReference Include="MaterialDesignColors" Version="1.1.3" />
-    <PackageReference Include="MaterialDesignThemes" Version="2.5.0.1205" />
+    <PackageReference Include="MaterialDesignThemes" Version="2.5.1" />
   </ItemGroup>
 
 </Project>
