@@ -1,0 +1,30 @@
+﻿<Window x:Class="Calendar.Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calendar.Colors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+            <DatePicker.Resources>
+                <!-- For many of these brushes the calendar template applies opacity to them -->
+
+                <!--"today" background color -->
+                <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="Purple" />
+                <!-- "today" foreground -->
+                <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Aqua" />
+
+                <!-- Header, text box colors, selected data background circle -->
+                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Red" />
+
+                <!--Highlighted day background, and focus -->
+                <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Orange" />
+
+                <!--Selected day button, text color -->
+                <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="DarkGreen" />
+            </DatePicker.Resources>
+        </DatePicker>
+    </Grid>
+</Window>
