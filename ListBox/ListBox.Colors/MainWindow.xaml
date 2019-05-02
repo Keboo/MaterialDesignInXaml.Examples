@@ -9,17 +9,17 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox ItemsSource="{Binding People}">>
+        <ListBox ItemsSource="{Binding People}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                     <!-- By default the background color is the Foreground color with an opacity applied -->
-                    <!-- We can chance the background color but the template will still be applying the opacity-->
+                    <!-- We can change the background color but the template will still be applying the opacity-->
                     <Setter Property="utilities:TreeHelpers.Modifiers">
                         <Setter.Value>
                             <utilities:ModifierCollection>
                                 <utilities:Modifier TemplatePartName="SelectedBorder" Property="{x:Static Control.BackgroundProperty}">
                                     <utilities:Modifier.Value>
-                                        <SolidColorBrush Color="Fuchsia" />
+                                        <SolidColorBrush Color="Transparent" />
                                     </utilities:Modifier.Value>
                                 </utilities:Modifier>
                             </utilities:ModifierCollection>
