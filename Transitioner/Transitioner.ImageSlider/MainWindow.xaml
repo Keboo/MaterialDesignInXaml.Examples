@@ -33,12 +33,12 @@
                 <Style TargetType="materialDesign:TransitionerSlide">
                     <Setter Property="BackwardWipe">
                         <Setter.Value>
-                            <materialDesign:FadeWipe />
+                            <materialDesign:FadeWipe Duration="0:0:0.3"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="ForwardWipe">
                         <Setter.Value>
-                            <materialDesign:FadeWipe />
+                            <materialDesign:FadeWipe Duration="0:0:0.5" />
                         </Setter.Value>
                     </Setter>
                 </Style>
