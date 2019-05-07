@@ -16,5 +16,12 @@ namespace TestData
 
             return generator.Generate(count);
         }
+
+        public static IList<Image> GenerateImages(int count)
+        {
+            Faker<Image> generator = new Faker<Image>();
+            generator.RuleFor(x => x.Url, f => f.Image.PicsumUrl());
+            return generator.Generate(count);
+        }
     }
 }

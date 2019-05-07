@@ -1,6 +1,4 @@
-﻿using Jdenticon;
-using System;
-using System.Collections.Generic;
+﻿using TestData;
 
 namespace Transitioner.ImageSlider
 {
@@ -11,13 +9,7 @@ namespace Transitioner.ImageSlider
     {
         public MainWindow()
         {
-            var images = new List<Identicon>();
-            for (int i = 0; i < 8; i++)
-            {
-                images.Add(Identicon.FromValue(Guid.NewGuid(), size: 400));
-            }
-
-            DataContext = images;
+            DataContext = Data.GenerateImages(8);
             InitializeComponent();
         }
     }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Transitioner.ImageSlider"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:testData="clr-namespace:TestData;assembly=TestData"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -12,7 +13,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <local:IdenticonToBrushConverter x:Key="IdenticonToBrushConverter" />
             <local:IndexConverter x:Key="IndexConverter" />
             <local:AreEqualMultiValueConverter x:Key="AreEqualMultiValueConverter" />
         </ResourceDictionary>
@@ -44,8 +44,8 @@
                 </Style>
             </materialDesign:Transitioner.ItemContainerStyle>
             <materialDesign:Transitioner.ItemTemplate>
-                <DataTemplate>
-                    <Rectangle Fill="{Binding Converter={StaticResource IdenticonToBrushConverter}}" />
+                <DataTemplate DataType="{x:Type testData:Image}">
+                    <Image Source="{Binding Url}" />
                 </DataTemplate>
             </materialDesign:Transitioner.ItemTemplate>
         </materialDesign:Transitioner>
@@ -70,8 +70,8 @@
                     <Ellipse Margin="10,0">
                         <Ellipse.Style>
                             <Style TargetType="Ellipse">
-                                <Setter Property="Width" Value="15" />
-                                <Setter Property="Height" Value="15" />
+                                <Setter Property="Width" Value="10" />
+                                <Setter Property="Height" Value="10" />
                                 <Setter Property="Fill" Value="{StaticResource PrimaryHueLightBrush}" />
                                 <Style.Triggers>
                                     <DataTrigger Value="True">
@@ -81,9 +81,9 @@
                                                 <Binding />
                                             </MultiBinding>
                                         </DataTrigger.Binding>
-                                        <Setter Property="Width" Value="20" />
-                                        <Setter Property="Height" Value="20" />
-                                        <Setter Property="Fill" Value="{StaticResource PrimaryHueMidBrush}" />
+                                        <Setter Property="Width" Value="15" />
+                                        <Setter Property="Height" Value="15" />
+                                        <Setter Property="Fill" Value="{StaticResource SecondaryAccentBrush}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

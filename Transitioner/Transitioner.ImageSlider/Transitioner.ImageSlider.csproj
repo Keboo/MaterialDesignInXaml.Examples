@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jdenticon, Version=2.2.1.0, Culture=neutral, PublicKeyToken=3fcf9f6e3475a4f8, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Jdenticon-net.2.2.1\lib\net45\Jdenticon.dll</HintPath>
-    </Reference>
-    <Reference Include="Jdenticon.Wpf, Version=2.2.1.0, Culture=neutral, PublicKeyToken=3fcf9f6e3475a4f8, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Jdenticon.Wpf.2.2.1\lib\net45\Jdenticon.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -76,7 +70,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AreEqualMultiValueConverter.cs" />
-    <Compile Include="IdenticonToBrushConverter.cs" />
     <Compile Include="IndexConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -109,6 +102,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utilities\TestData\TestData.csproj">
+      <Project>{75E7E6D0-77DC-4A35-8330-046B833E9EDC}</Project>
+      <Name>TestData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utilities\Utilities\Utilities.csproj">
+      <Project>{74df32f3-6257-46b1-8593-a915b778e4be}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
