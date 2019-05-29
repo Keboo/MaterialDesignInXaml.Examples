@@ -11,6 +11,7 @@
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 </ResourceDictionary.MergedDictionaries>
+                <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             </ResourceDictionary>
         </Style.Resources>
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
@@ -98,10 +99,12 @@
                                                 <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
                                             </Style>
                                         </StackPanel.Resources>
-                                        <Button Command="{x:Static views:MaterialDesignWindow.Minimize}">
+                                        <Button Command="{x:Static views:MaterialDesignWindow.Minimize}"
+                                                Visibility="{Binding Path=(views:WindowEx.ShowMinimizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <md:PackIcon Kind="WindowMinimize" />
                                         </Button>
-                                        <Button Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}">
+                                        <Button Command="{x:Static views:MaterialDesignWindow.ToggleMaximize}"
+                                                Visibility="{Binding Path=(views:WindowEx.ShowMaximizeButton), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                                                     <Setter Property="Content">

@@ -9,6 +9,8 @@
         Style="{StaticResource MaterialDesignWindow}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        mdixWindow:WindowEx.ShowMinimizeButton="True"
+        mdixWindow:WindowEx.ShowMaximizeButton="True"
         Title="Custom Window" Height="450" Width="800">
     <!--You only need to specify header content if you want to put some custom stuff in the color zone at the top. Otherwise just set Title.-->
     <mdixWindow:MaterialDesignWindow.HeaderContent>
