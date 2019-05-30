@@ -1,0 +1,77 @@
+﻿<Window x:Class="ListView.GridViewColors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utilities="clr-namespace:Utilities;assembly=Utilities"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListView.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="CustomHeaderStyle" TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                <!-- This is currently broken is v2.5.1; and does not work -->
+                <Setter Property="Background" Value="Fuchsia" />
+
+                <!-- This works, but will will only change the color for the displayed columns and not the entire header area -->
+                <Setter Property="utilities:TreeHelpers.Modifiers">
+                    <Setter.Value>
+                        <utilities:ModifierCollection>
+                            <utilities:Modifier TemplatePartName="HeaderBorder" Property="{x:Static Border.BackgroundProperty}">
+                                <utilities:Modifier.Value>
+                                    <SolidColorBrush Color="Orange" />
+                                </utilities:Modifier.Value>
+                            </utilities:Modifier>
+                        </utilities:ModifierCollection>
+                    </Setter.Value>
+                </Setter>
+
+                <!-- Header text color -->
+                <Setter Property="Foreground" Value="Lime" />
+
+                <Style.Resources>
+                    <!-- Mouse over color -->
+                    <SolidColorBrush x:Key="MaterialDesignBody" Color="Yellow" />
+                </Style.Resources>
+            </Style>
+
+
+            <Style x:Key="MyListViewScrollStyle" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                 <!--This will change the color of the entire list view. If you set this you probably want to set a specific ListViewItem style like below--> 
+                <Setter Property="Background" Value="MediumOrchid" />
+            </Style>
+
+            <Style x:Key="ItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                <Style.Resources>
+                    <!-- Item Selection color -->
+                    <SolidColorBrush x:Key="MaterialDesignSelection" Color="DodgerBlue" />
+                    <!-- Mouse over color and separator color -->
+                    <SolidColorBrush x:Key="MaterialDesignDivider" Color="PaleGreen" />
+                </Style.Resources>
+                <Setter Property="Background" Value="DarkOliveGreen" />
+
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <ListView ItemsSource="{Binding People}" Foreground="Pink" ItemContainerStyle="{StaticResource ItemStyle}">
+            <ListView.Resources>
+                <Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MyListViewScrollStyle}" />
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" HeaderContainerStyle="{StaticResource CustomHeaderStyle}" />
+                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" HeaderContainerStyle="{StaticResource CustomHeaderStyle}"/>
+                    <GridViewColumn Header="Date of birth" DisplayMemberBinding="{Binding DOB}" HeaderContainerStyle="{StaticResource CustomHeaderStyle}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
