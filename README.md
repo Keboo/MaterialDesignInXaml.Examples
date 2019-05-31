@@ -7,7 +7,7 @@ A collection of small samples using [MaterialDesignInXaml](https://github.com/Bu
 Samples may be in various states of "done". If there is some concept you would like to see demonstrated please open an issue.
 PRs happily accepted as well.
 
-## Online
+## Online Videos / Streams
 I do live streams on Material Designs in XAML and WPF. You can find me on [twitch](https://www.twitch.tv/kitokeboo/) and [YouTube](https://www.youtube.com/channel/UCwrx8tfGSE-itqJQHx2586Q/featured)
 
 
