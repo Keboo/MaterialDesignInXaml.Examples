@@ -256,6 +256,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ListView", "ListView", "{98
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListView.GridViewColors", "ListView\ListView.GridViewColors\ListView.GridViewColors.csproj", "{ACF842A2-F3AD-401E-B824-081AC15EDD76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Window.Icon", "Window\Window.Icon\Window.Icon.csproj", "{51681050-2CDF-4D17-BE24-AF8F9403523D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -570,6 +572,10 @@ Global
 		{ACF842A2-F3AD-401E-B824-081AC15EDD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACF842A2-F3AD-401E-B824-081AC15EDD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACF842A2-F3AD-401E-B824-081AC15EDD76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51681050-2CDF-4D17-BE24-AF8F9403523D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51681050-2CDF-4D17-BE24-AF8F9403523D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51681050-2CDF-4D17-BE24-AF8F9403523D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51681050-2CDF-4D17-BE24-AF8F9403523D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -663,6 +669,7 @@ Global
 		{E07C21FC-1C51-4859-B3FD-5178206AFB24} = {33C99332-C5A0-4A54-A28D-377A4F3D3407}
 		{C574F497-0B6B-480A-9F42-4196E4AEC5EF} = {4E496B54-113E-4785-9A50-9DE93F120BC3}
 		{ACF842A2-F3AD-401E-B824-081AC15EDD76} = {9899E00A-993C-46AA-A037-6C10ABB537C6}
+		{51681050-2CDF-4D17-BE24-AF8F9403523D} = {BA7D5DB7-3918-4680-AD52-4AD7FC56C0FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
