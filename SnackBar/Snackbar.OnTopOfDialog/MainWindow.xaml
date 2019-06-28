@@ -6,8 +6,15 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <materialDesign:DialogHost>
+        <materialDesign:DialogHost Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Margin="20" MinWidth="300">
                     <Button Content="Show Message" Click="ShowMessage_OnClick" Margin="0,0,0,25"/>
