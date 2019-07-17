@@ -20,6 +20,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.togglebutton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <local:SolidBrushConverter x:Key="SolidBrushConverter" />
         </ResourceDictionary>
     </Window.Resources>
     <ScrollViewer>
@@ -48,7 +50,7 @@
                         <Button Command="{Binding DataContext.SetThemeCommand, ElementName=MetroWindow}" CommandParameter="{Binding}"
                             Style="{StaticResource MaterialDesignFlatButton}" Height="{x:Static system:Double.NaN}">
                             <StackPanel>
-                                <Ellipse Fill="{Binding SampleBrush}" Height="50" Width="50" />
+                                <Ellipse Fill="{Binding SampleColor, Converter={StaticResource SolidBrushConverter}}" Height="50" Width="50" />
                                 <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBody}"/>
                             </StackPanel>
                         </Button>

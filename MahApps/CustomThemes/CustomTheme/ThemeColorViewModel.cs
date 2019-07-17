@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
 
 namespace CustomTheme
 {
     public class ThemeColorViewModel
     {
-        public ThemeColorViewModel(Theme theme)
+        public ThemeColorViewModel(ITheme theme, string name)
         {
             Theme = theme ?? throw new ArgumentNullException(nameof(theme));
-            SampleBrush = new SolidColorBrush
-            {
-                Color = theme.PrimaryMidHue.Color
-            };
-            Name = theme.Name;
+            Name = name;
         }
 
-        public Brush SampleBrush { get; }
+        public Color SampleColor => Theme.PrimaryMid.Color;
 
         public string Name { get; }
 
-        public Theme Theme { get; }
+        public ITheme Theme { get; }
     }
 }

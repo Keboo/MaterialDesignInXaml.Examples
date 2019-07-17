@@ -34,11 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.319, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.319, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,9 +91,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

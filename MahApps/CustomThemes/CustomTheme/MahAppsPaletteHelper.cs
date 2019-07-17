@@ -11,6 +11,7 @@ namespace CustomTheme
 {
     public class MahAppsPaletteHelper : PaletteHelper
     {
+        [Obsolete]
         public override void ReplacePalette(Palette palette)
         {
             base.ReplacePalette(palette);
