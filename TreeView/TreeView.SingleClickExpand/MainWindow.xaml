@@ -1,0 +1,36 @@
+﻿<Window x:Class="TreeView.SingleClickExpand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreeView.SingleClickExpand"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <local:SingleClickTreeView>
+            <local:SingleClickTreeView.Resources>
+                <Style TargetType="local:SingleClickTreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}" />
+            </local:SingleClickTreeView.Resources>
+            <local:SingleClickTreeViewItem Header="Header1">
+                <local:SingleClickTreeViewItem Header="Item1" />
+                <local:SingleClickTreeViewItem Header="Item2" />
+                <local:SingleClickTreeViewItem Header="Item3" />
+            </local:SingleClickTreeViewItem>
+            <local:SingleClickTreeViewItem Header="Header2">
+                <local:SingleClickTreeViewItem Header="Item1" />
+                <local:SingleClickTreeViewItem Header="Item2" />
+                <local:SingleClickTreeViewItem Header="Item3" />
+            </local:SingleClickTreeViewItem>
+            <local:SingleClickTreeViewItem Header="Header3">
+                <local:SingleClickTreeViewItem Header="Item1" />
+                <local:SingleClickTreeViewItem Header="Item2" />
+                <local:SingleClickTreeViewItem Header="Item3" />
+            </local:SingleClickTreeViewItem>
+            <local:SingleClickTreeViewItem Header="Header4">
+                <local:SingleClickTreeViewItem Header="Item1" />
+                <local:SingleClickTreeViewItem Header="Item2" />
+                <local:SingleClickTreeViewItem Header="Item3" />
+            </local:SingleClickTreeViewItem>
+        </local:SingleClickTreeView>
+    </Grid>
+</Window>
