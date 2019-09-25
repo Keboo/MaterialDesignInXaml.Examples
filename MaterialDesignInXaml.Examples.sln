@@ -212,7 +212,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopupBox.MenuItems", "Popup
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatePicker", "DatePicker", "{2A43950C-82C1-4611-8BEE-35C10786A387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePicker.PersianCalendar", "DatePicker.PersianCalendar\DatePicker.PersianCalendar.csproj", "{91DDF89D-0951-4A94-A162-362B229C8B1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePicker.PersianCalendar", "DatePicker\DatePicker.PersianCalendar\DatePicker.PersianCalendar.csproj", "{91DDF89D-0951-4A94-A162-362B229C8B1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.RoutedCommand", "DialogHost\DialogHost.RoutedCommand\DialogHost.RoutedCommand.csproj", "{DE805A12-BC19-4095-9C59-58FB0B3FFB6E}"
 EndProject
