@@ -1,0 +1,41 @@
+﻿<Window x:Class="PopupBox.SquareToggle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PopupBox.SquareToggle"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="SquareButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="0" />
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth0" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <materialDesign:PopupBox Padding="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <materialDesign:PopupBox.ToggleContent>
+                <Button Style="{StaticResource SquareButton}" IsHitTestVisible="False"
+                        materialDesign:ButtonAssist.CornerRadius="0">
+                    <materialDesign:PackIcon Kind="Music" />
+                </Button>
+            </materialDesign:PopupBox.ToggleContent>
+            <StackPanel>
+                <Button materialDesign:ButtonAssist.CornerRadius="0" Style="{StaticResource SquareButton}" Margin="0,0,0,5">
+                    <materialDesign:PackIcon Kind="Play" />
+                </Button>
+                <Button materialDesign:ButtonAssist.CornerRadius="0" Style="{StaticResource SquareButton}">
+                    <materialDesign:PackIcon Kind="Pause" />
+                </Button>
+            </StackPanel>
+            
+        </materialDesign:PopupBox>
+    </Grid>
+</Window>
