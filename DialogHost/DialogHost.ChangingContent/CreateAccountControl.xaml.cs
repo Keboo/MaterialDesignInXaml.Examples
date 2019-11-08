@@ -17,7 +17,7 @@ namespace DialogHost.ChangingContent
             DialogHost = dialogHost ?? throw new ArgumentNullException(nameof(dialogHost));
         }
 
-        private void Back_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Back_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (DialogHost.CurrentSession is DialogSession session)
             {
