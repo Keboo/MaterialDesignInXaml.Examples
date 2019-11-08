@@ -26,7 +26,7 @@
         
         
         <TextBlock Text="Username" />
-        <TextBox />
+        <TextBox x:Name="Username"/>
         <TextBlock Text="Password" />
         <PasswordBox />
         <TextBlock Text="Re-enter password" />

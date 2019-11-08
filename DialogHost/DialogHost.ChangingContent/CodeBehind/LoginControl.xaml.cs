@@ -11,9 +11,10 @@ namespace DialogHost.ChangingContent.CodeBehind
     {
         private MaterialDesignThemes.Wpf.DialogHost DialogHost { get; }
 
-        public LoginControl(MaterialDesignThemes.Wpf.DialogHost dialogHost)
+        public LoginControl(MaterialDesignThemes.Wpf.DialogHost dialogHost, string username)
         {
             InitializeComponent();
+            Username.Text = username;
             DialogHost = dialogHost ?? throw new ArgumentNullException(nameof(dialogHost));
         }
 
@@ -21,7 +22,7 @@ namespace DialogHost.ChangingContent.CodeBehind
         {
             if (DialogHost.CurrentSession is DialogSession session)
             {
-                session.UpdateContent(new CreateAccountControl(DialogHost));
+                session.UpdateContent(new CreateAccountControl(DialogHost, Username.Text));
             }
         }
     }

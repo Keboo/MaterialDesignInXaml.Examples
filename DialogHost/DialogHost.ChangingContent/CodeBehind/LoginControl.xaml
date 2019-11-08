@@ -10,7 +10,7 @@
              Padding="30">
     <StackPanel>
         <TextBlock Text="Username" />
-        <TextBox />
+        <TextBox x:Name="Username" />
         <TextBlock Text="Password" />
         <PasswordBox />
 

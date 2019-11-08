@@ -24,7 +24,10 @@ namespace DialogHost.ChangingContent.MVVM.ViewModel
 
         private void OnShowCreateAccount(object _)
         {
-            DialogSession?.UpdateContent(new CreateAccountViewModel(DialogSession));
+            DialogSession?.UpdateContent(new CreateAccountViewModel(DialogSession) 
+            {
+                Username = Username
+            });
         }
     }
 }

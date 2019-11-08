@@ -25,7 +25,7 @@
         </Button>
         
         <TextBlock Text="Username" />
-        <TextBox />
+        <TextBox Text="{Binding Username}"/>
         <TextBlock Text="Password" />
         <PasswordBox />
         <TextBlock Text="Re-enter password" />

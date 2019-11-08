@@ -4,11 +4,18 @@ using System.Windows.Input;
 
 namespace DialogHost.ChangingContent.MVVM.ViewModel
 {
-    public class CreateAccountViewModel
+    public class CreateAccountViewModel : ViewModelBase
     {
         public DialogSession DialogSession { get; }
 
         public ICommand BackCommand { get; }
+
+        private string _Username;
+        public string Username
+        {
+            get => _Username;
+            set => SetProperty(ref _Username, value);
+        }
 
         public CreateAccountViewModel(DialogSession dialogSession)
         {
@@ -18,7 +25,10 @@ namespace DialogHost.ChangingContent.MVVM.ViewModel
 
         private void OnBack(object _)
         {
-            DialogSession.UpdateContent(new LoginViewModel());
+            DialogSession.UpdateContent(new LoginViewModel 
+            {
+                Username = Username
+            });
         }
     }
 }

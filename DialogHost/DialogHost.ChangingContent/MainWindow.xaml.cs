@@ -16,7 +16,7 @@ namespace DialogHost.ChangingContent
 
         private async void CodeBehind_Click(object sender, RoutedEventArgs e)
         {
-            var loginControl = new LoginControl(RootDialogHost);
+            var loginControl = new LoginControl(RootDialogHost, "");
 
             object result = await MaterialDesignThemes.Wpf.DialogHost.Show(loginControl, RootDialogHost.Identifier);
 
