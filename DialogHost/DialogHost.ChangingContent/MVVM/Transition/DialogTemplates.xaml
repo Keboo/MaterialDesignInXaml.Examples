@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:DialogHost.ChangingContent.MVVM.ViewModel"
+                    xmlns:transition="clr-namespace:DialogHost.ChangingContent.MVVM.Transition"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <DataTemplate DataType="{x:Type vm:TransitionViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <transition:LoginControl />
+            <transition:CreateAccountControl />
+        </materialDesign:Transitioner>
+    </DataTemplate>
+</ResourceDictionary>

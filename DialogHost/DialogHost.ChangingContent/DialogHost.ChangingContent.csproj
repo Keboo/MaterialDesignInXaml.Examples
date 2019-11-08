@@ -12,6 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MVVM\Transition\CreateAccountControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Transition\LoginControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\View\CreateAccountControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,6 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="MVVM\Transition\CreateAccountControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Transition\DialogTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Transition\LoginControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\View\CreateAccountControl.xaml">
       <SubType>Designer</SubType>
     </Page>

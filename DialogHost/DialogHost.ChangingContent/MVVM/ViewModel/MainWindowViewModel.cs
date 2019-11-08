@@ -10,9 +10,17 @@ namespace DialogHost.ChangingContent.MVVM.ViewModel
 
         public ICommand ShowLoginDialog { get; }
 
+        public ICommand ShowTransitionLoginDialog { get; }
+
         public MainWindowViewModel()
         {
             ShowLoginDialog = new DelegateCommand(OnShowLoginDialog);
+            ShowTransitionLoginDialog = new DelegateCommand(OnShowTransitionLoginDialog);
+        }
+
+        private async void OnShowTransitionLoginDialog(object _)
+        {
+            await MaterialDesignThemes.Wpf.DialogHost.Show(new TransitionViewModel(), DialogHostId);
         }
 
         private async void OnShowLoginDialog(object _)
