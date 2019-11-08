@@ -4,16 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mvvm="clr-namespace:DialogHost.ChangingContent.MVVM.ViewModel"
         mc:Ignorable="d"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <mvvm:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MVVM/View/DialogTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <md:DialogHost x:Name="RootDialogHost" Identifier="RootDialogHostId">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Content="Code Behind" Click="CodeBehind_Click" />
             <Button Content="Code Behind with transition" Margin="0,10,0,0"/>
             
-            <Button Content="MVVM" Margin="0,30,0,0"/>
+            <Button Content="MVVM" Margin="0,30,0,0" Command="{Binding ShowLoginDialog}" />
             <Button Content="MVVM with transition" Margin="0,10,0,0"/>
         </StackPanel>
     </md:DialogHost>

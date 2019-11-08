@@ -11,4 +11,22 @@
     <PackageReference Include="MaterialDesignThemes" Version="3.0.0-ci699" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="MVVM\View\CreateAccountControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\View\LoginControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MVVM\View\CreateAccountControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\LoginControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Controls;
 
-namespace DialogHost.ChangingContent
+namespace DialogHost.ChangingContent.CodeBehind
 {
     /// <summary>
     /// Interaction logic for CreateAccountControl.xaml

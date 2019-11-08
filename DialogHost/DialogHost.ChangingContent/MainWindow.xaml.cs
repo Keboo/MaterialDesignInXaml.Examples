@@ -1,4 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using DialogHost.ChangingContent.CodeBehind;
 using System.Diagnostics;
 using System.Windows;
 
