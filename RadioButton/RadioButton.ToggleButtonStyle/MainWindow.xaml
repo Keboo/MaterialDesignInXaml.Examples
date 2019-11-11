@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioButton.ToggleButtonStyle"
         xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="MaterialDesignActionRadioButton" TargetType="{x:Type RadioButton}">
             <Style.Resources>
-                <ResourceDictionary>
-                    <Style TargetType="wpf:PackIcon" BasedOn="{StaticResource {x:Type wpf:PackIcon}}">
-                        <Setter Property="Width" Value="20" />
-                        <Setter Property="Height" Value="20" />
-                    </Style>
-                </ResourceDictionary>
+                <Style TargetType="wpf:PackIcon" BasedOn="{StaticResource {x:Type wpf:PackIcon}}">
+                    <Setter Property="Width" Value="20" />
+                    <Setter Property="Height" Value="20" />
+                </Style>
             </Style.Resources>
             <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
             <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}"/>
@@ -31,7 +30,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Grid>
+                        <Grid Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ShadowAssist.ShadowDepth), Converter={x:Static converters:ShadowConverter.Instance}}">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Normal"/>
