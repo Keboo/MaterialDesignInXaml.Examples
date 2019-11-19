@@ -24,6 +24,9 @@
 
                 <!--Selected day button, text color -->
                 <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="DarkGreen" />
+                
+                <!-- Calendar button text color -->
+                <SolidColorBrush x:Key="MaterialDesignBody" Color="Gold" />
             </DatePicker.Resources>
         </DatePicker>
     </Grid>
