@@ -10,11 +10,17 @@ namespace Utilities
         public string TemplatePartName { get; set; }
         public override void Apply(DependencyObject target)
         {
-            if (target is FrameworkElement element &&
-                target.GetValue(Control.TemplateProperty) is ControlTemplate template &&
-                template.FindName(TemplatePartName, element) is DependencyObject templatePart)
+            if (target is FrameworkElement element && Property is DependencyProperty property)
             {
-                templatePart.SetCurrentValue(Property, Value);
+                if (target.GetValue(Control.TemplateProperty) is ControlTemplate template &&
+                    template.FindName(TemplatePartName, element) is DependencyObject templatePart)
+                {
+                    templatePart.SetCurrentValue(property, Value);
+                }
+                else if (element.FindName(TemplatePartName) is DependencyObject childElement)
+                {
+                    childElement.SetValue(property, Value);
+                }
             }
         }
     }
