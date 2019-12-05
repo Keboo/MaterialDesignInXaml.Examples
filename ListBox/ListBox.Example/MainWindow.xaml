@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
         <ListBox ItemsSource="{Binding Items}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type local:ItemViewModel}">
@@ -14,5 +19,28 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!-- Simulate a list box without selection -->
+        <ScrollViewer Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:ItemViewModel}">
+                        <Border x:Name="Border" Padding="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsChecked}"/>
+                                <StackPanel Margin="8 0 0 0" Grid.Column="1">
+                                    <TextBlock FontWeight="Bold" Text="{Binding Title}" />
+                                    <TextBlock Text="Extra description" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
