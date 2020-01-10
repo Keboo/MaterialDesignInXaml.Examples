@@ -280,7 +280,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioButton.ToggleButtonSty
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DialogHost.CornerRadius", "DialogHost\DialogHost.CornerRadius\DialogHost.CornerRadius.csproj", "{A550CCA6-D172-4849-BDF0-38CFEBFFFA84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBox.Example", "ListBox\ListBox.Example\ListBox.Example.csproj", "{BB890D5B-96DB-485B-B95C-051F1F82576E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBox.Example", "ListBox\ListBox.Example\ListBox.Example.csproj", "{BB890D5B-96DB-485B-B95C-051F1F82576E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.CommandLine", "System.CommandLine", "{C7C6682D-6852-496D-9E3F-57D6BF6B4535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.CommandLine.Example", "System.CommandLine\System.CommandLine.Example\System.CommandLine.Example.csproj", "{6641CC69-EE7C-4DB0-A340-40F8F8D20030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -640,6 +644,10 @@ Global
 		{BB890D5B-96DB-485B-B95C-051F1F82576E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB890D5B-96DB-485B-B95C-051F1F82576E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB890D5B-96DB-485B-B95C-051F1F82576E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6641CC69-EE7C-4DB0-A340-40F8F8D20030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6641CC69-EE7C-4DB0-A340-40F8F8D20030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6641CC69-EE7C-4DB0-A340-40F8F8D20030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6641CC69-EE7C-4DB0-A340-40F8F8D20030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -744,6 +752,7 @@ Global
 		{7326858C-AB73-44BB-911B-E5AAF277B6E4} = {9A538FDF-1B62-4D42-B8D7-E17FCBB3DBF4}
 		{A550CCA6-D172-4849-BDF0-38CFEBFFFA84} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 		{BB890D5B-96DB-485B-B95C-051F1F82576E} = {8CE9B108-E613-4777-A6DC-2559ABEDFD45}
+		{6641CC69-EE7C-4DB0-A340-40F8F8D20030} = {C7C6682D-6852-496D-9E3F-57D6BF6B4535}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "System.CommandLine.Example": {
+      "commandName": "Project",
+      "commandLineArgs": "--message \"This is a test message\""
+    }
+  }
+}

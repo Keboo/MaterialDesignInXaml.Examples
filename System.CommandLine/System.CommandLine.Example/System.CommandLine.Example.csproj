@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <!--This needs to be Exe (Console Application) not WinExe (Windows Application) so you have a console to work with -->
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- Just setting the version so there is something fun to output -->
+    <Version>1.2.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="0.3.0-alpha.20054.1" />
+  </ItemGroup>
+
+</Project>
