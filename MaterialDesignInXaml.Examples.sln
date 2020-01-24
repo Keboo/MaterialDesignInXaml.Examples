@@ -284,7 +284,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBox.Example", "ListBox\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.CommandLine", "System.CommandLine", "{C7C6682D-6852-496D-9E3F-57D6BF6B4535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.CommandLine.Example", "System.CommandLine\System.CommandLine.Example\System.CommandLine.Example.csproj", "{6641CC69-EE7C-4DB0-A340-40F8F8D20030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.CommandLine.Example", "System.CommandLine\System.CommandLine.Example\System.CommandLine.Example.csproj", "{6641CC69-EE7C-4DB0-A340-40F8F8D20030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
