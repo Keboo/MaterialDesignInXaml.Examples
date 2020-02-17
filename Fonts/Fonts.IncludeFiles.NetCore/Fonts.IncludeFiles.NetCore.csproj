@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- These are needed to include the font files -->
+    <IncludeMaterialDesignFont>True</IncludeMaterialDesignFont>
+    <MaterialDesignFontDirectory>Resources\Roboto\</MaterialDesignFontDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>
