@@ -296,7 +296,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snackbar.AdjustTiming", "Sn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expander.ItemsControl", "Expander\Expander.ItemsControl\Expander.ItemsControl.csproj", "{88217AD5-9C78-4216-8A33-40490FF0B83D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioButton.Colors", "RadioButton\RadioButton.Colors\RadioButton.Colors.csproj", "{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioButton.Colors", "RadioButton\RadioButton.Colors\RadioButton.Colors.csproj", "{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
