@@ -33,10 +33,9 @@
 
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <mahControls:ToggleSwitch IsChecked="{Binding IsLightTheme}" OffLabel="Dark Theme" OnLabel="Light Theme"
+                <mahControls:ToggleSwitch IsOn="{Binding IsLightTheme}" OffContent="Dark Theme" OnContent="Light Theme"
                                           Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"/>
             </StackPanel>
-
 
             <ItemsControl ItemsSource="{Binding ThemeColors}" Grid.Row="1">
                 <ItemsControl.ItemsPanel>
