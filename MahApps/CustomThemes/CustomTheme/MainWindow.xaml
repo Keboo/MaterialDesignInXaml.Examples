@@ -11,14 +11,13 @@
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        GlowBrush="{DynamicResource AccentColorBrush}"
+        GlowBrush="{DynamicResource PrimaryHueMidBrush}"
         Title="MainWindow" Height="600" Width="525">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/themes/materialdesigntheme.togglebutton.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <local:SolidBrushConverter x:Key="SolidBrushConverter" />
@@ -33,8 +32,7 @@
 
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <mahControls:ToggleSwitch IsOn="{Binding IsLightTheme}" OffContent="Dark Theme" OnContent="Light Theme"
-                                          Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"/>
+                <mahControls:ToggleSwitch IsOn="{Binding IsLightTheme}" OffContent="Dark Theme" OnContent="Light Theme"/>
             </StackPanel>
 
             <ItemsControl ItemsSource="{Binding ThemeColors}" Grid.Row="1">
