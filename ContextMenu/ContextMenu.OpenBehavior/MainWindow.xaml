@@ -1,0 +1,29 @@
+﻿<Window x:Class="ContextMenu.OpenBehavior.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
+        xmlns:local="clr-namespace:ContextMenu.OpenBehavior"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Hover Over Me"
+                x:Name="Button">
+            <b:Interaction.Behaviors>
+                <local:OpenContextMenuBehavior OpenContextMenu="{Binding IsMouseOver, ElementName=Button}" />
+            </b:Interaction.Behaviors>
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Item 1" />
+                    <MenuItem Header="Item 2" />
+                    <MenuItem Header="Item 3" />
+                    <MenuItem Header="Item 4" />
+                    <MenuItem Header="Item 5" />
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+    </Grid>
+</Window>

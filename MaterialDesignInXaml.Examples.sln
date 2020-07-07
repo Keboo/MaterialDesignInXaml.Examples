@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MahApps", "MahApps", "{7D5D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic", "Basic", "{D7BFAECC-D11D-462F-99FC-3557F50FD4C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MahApps.Basic", "MahApps\MahApps.Basic\MahApps.Basic.csproj", "{CEAC25C3-9642-41A3-9562-37EA488DBB2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MahApps.Basic", "MahApps\MahApps.Basic\MahApps.Basic.csproj", "{CEAC25C3-9642-41A3-9562-37EA488DBB2C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVVM", "MVVM", "{845143B2-9C9B-4CBB-84C6-F3F16F6EF3A3}"
 EndProject
@@ -297,6 +297,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expander.ItemsControl", "Expander\Expander.ItemsControl\Expander.ItemsControl.csproj", "{88217AD5-9C78-4216-8A33-40490FF0B83D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioButton.Colors", "RadioButton\RadioButton.Colors\RadioButton.Colors.csproj", "{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContextMenu", "ContextMenu", "{417AE361-8C0C-4E2C-8159-D80706A20B30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenu.OpenBehavior", "ContextMenu\ContextMenu.OpenBehavior\ContextMenu.OpenBehavior.csproj", "{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -680,6 +684,10 @@ Global
 		{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1340472D-34DA-4A8E-9A51-D6BD6D5401F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -790,6 +798,7 @@ Global
 		{305A2F96-401C-45AD-A16A-36C19E11432C} = {28A34DA9-6DAF-47E3-B7B1-EB0C255BDBC5}
 		{88217AD5-9C78-4216-8A33-40490FF0B83D} = {7E081963-D5E1-4B19-ADB3-16465F950FD1}
 		{1340472D-34DA-4A8E-9A51-D6BD6D5401F7} = {9A538FDF-1B62-4D42-B8D7-E17FCBB3DBF4}
+		{DEF6C75A-E4F5-4577-BA93-540D3B0D07AE} = {417AE361-8C0C-4E2C-8159-D80706A20B30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
