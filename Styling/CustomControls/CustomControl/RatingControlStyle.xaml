@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CustomControl">
+
+    <local:StringConverter x:Key="StringConverter" />
+
+    <ControlTemplate x:Key="TextStarRatingTemplate" TargetType="{x:Type local:StarRating}">
+        <Grid Background="{TemplateBinding Background}" x:Name="PART_Content">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="RatingStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition To="ScaryRed">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="TextContent"
+                                                Storyboard.TargetProperty="Foreground.Color"
+                                                To="Fuchsia" />
+                            </Storyboard>
+                        </VisualTransition>
+                        <VisualTransition To="HappyGreen">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="TextContent"
+                                                Storyboard.TargetProperty="Foreground.Color"
+                                                To="Lime"/>
+                            </Storyboard>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="ScaryRed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TextContent" Storyboard.TargetProperty="FontSize"
+                                             To="24" Duration="0"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TextContent" Storyboard.TargetProperty="FontSize"
+                                             To="12" Duration="0"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="HappyGreen">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TextContent" Storyboard.TargetProperty="FontSize"
+                                             To="40" Duration="0"/>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+            <TextBlock Text="{TemplateBinding Value, Converter={StaticResource StringConverter}}"
+                       x:Name="TextContent" 
+                       Foreground="Black"
+                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="TextStarRating" TargetType="{x:Type local:StarRating}">
+        <Setter Property="Template" Value="{StaticResource TextStarRatingTemplate}" />
+    </Style>
+
+    <Style TargetType="{x:Type local:StarRating}" BasedOn="{StaticResource TextStarRating}"/>
+
+</ResourceDictionary>
