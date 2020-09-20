@@ -3,9 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProgressBar.BackgroundProcessing"
+        xmlns:local="clr-namespace:ProgressBar.BackgroundProcessing" 
+        xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{wpf:MaterialDesignFont}" 
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+
+<Style TargetType="{x:Type TabItem}">
+    <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SecondaryAccentBrush}"/>
+    <Setter Property="Padding" Value="16 4 16 4"/>
+    <Setter Property="Height" Value="32" />
+    <Setter Property="MinWidth" Value="90" />
+    <Setter Property="wpf:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignFlatButtonRipple}" />
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type TabItem}">
+                <Grid x:Name="Root" SnapsToDevicePixels="True">
+                    <Border Background="{TemplateBinding Background}" Grid.RowSpan="2">
+                        <wpf:Ripple Focusable="False"
+                            Content="{TemplateBinding Header}" 
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            x:Name="contentPresenter"
+                            Opacity=".82"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            Margin="0,0,0,0" />
+
+                    </Border>
+                    <Border x:Name="SelectionHighlightBorder" Background="{TemplateBinding BorderBrush}" Height="2"
+                            Grid.Row="1"
+                            VerticalAlignment="Bottom"
+                            Visibility="Hidden" />
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter TargetName="contentPresenter" Property="Opacity" Value="1"/>
+                        <Setter TargetName="SelectionHighlightBorder" Property="Visibility" Value="Visible" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.23"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+    </Window.Resources>
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -15,8 +71,15 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ProgressBar Minimum="0" Maximum="100" Value="{Binding Progress}"
-                     VerticalAlignment="Center" Margin="20"/>
+        <TabControl>
+            <TabItem Header="Tab 1" FontSize="14" />
+            <TabItem Header="Tab 2" />
+        </TabControl>
+
+        <RadioButton Content="Tab 1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8,8,0,0"/>
+
+        <!--<ProgressBar Minimum="0" Maximum="100" Value="{Binding Progress}"
+                     VerticalAlignment="Center" Margin="20"/>-->
 
         <Button Content="Retrieve Data" 
                 VerticalAlignment="Center"

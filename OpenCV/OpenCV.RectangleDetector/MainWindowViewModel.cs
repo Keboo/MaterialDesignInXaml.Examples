@@ -2,17 +2,16 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using Microsoft.Win32;
 using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using OpenCvSharp.WpfExtensions;
 using Point = OpenCvSharp.Point;
 using Size = OpenCvSharp.Size;
 
