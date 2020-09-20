@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DialogHost.Example"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:controlzEx="clr-namespace:ControlzEx;assembly=MaterialDesignThemes.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
@@ -20,20 +19,6 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <md:DialogHost>
-        <md:DialogHost.Resources>
-        </md:DialogHost.Resources>
-        <md:DialogHost.PopupStyle>
-            <Style BasedOn="{StaticResource MaterialDesignDialogHostPopup}" TargetType="{x:Type controlzEx:PopupEx}">
-                <Style.Resources>
-                    <SolidColorBrush x:Key="MaterialDesignCardBackground">Red</SolidColorBrush>
-
-                </Style.Resources>
-                <Setter Property="StaysOpen" Value="True" />
-                <Setter Property="AllowsTransparency" Value="True" />
-                <Setter Property="PopupAnimation" Value="None" />
-                <Setter Property="Placement" Value="Center" />
-            </Style>
-        </md:DialogHost.PopupStyle>
         <md:DialogHost.DialogContentTemplate>
             <DataTemplate DataType="local:LoginViewModel">
                 <StackPanel Margin="20" MinWidth="300">
