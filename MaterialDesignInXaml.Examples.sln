@@ -308,7 +308,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomControls", "CustomCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControl", "Styling\CustomControls\CustomControl\CustomControl.csproj", "{5F243682-4C13-41BA-AE73-0746B3FF0175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogHost.EmbeddedFill", "DialogHost\DialogHost.EmbeddedFill\DialogHost.EmbeddedFill.csproj", "{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DialogHost.EmbeddedFill", "DialogHost\DialogHost.EmbeddedFill\DialogHost.EmbeddedFill.csproj", "{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid.SelectedRow", "DataGrid\DataGrid.SelectedRow\DataGrid.SelectedRow.csproj", "{30A27E30-080A-4D1D-9C73-566FA07883CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -708,6 +710,10 @@ Global
 		{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -823,6 +829,7 @@ Global
 		{731021B9-FFEF-4ECE-AB45-24BDFE500727} = {79522AC3-05A6-4374-B157-7F12A58FF5A5}
 		{5F243682-4C13-41BA-AE73-0746B3FF0175} = {731021B9-FFEF-4ECE-AB45-24BDFE500727}
 		{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
+		{30A27E30-080A-4D1D-9C73-566FA07883CE} = {FD14663A-6018-41F4-A1DC-255AC9780021}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
