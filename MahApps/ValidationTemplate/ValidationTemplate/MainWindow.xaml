@@ -12,13 +12,13 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/ValidationErrorTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ValidationError.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="250"
-                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}">
+                 Validation.ErrorTemplate="{StaticResource MahApps.Templates.ValidationError}">
             <TextBox.Text>
                 <Binding Path="NotEmpty" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
