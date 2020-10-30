@@ -11,7 +11,7 @@
         <local:Page1ViewModel />
     </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Page 1" Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" />
+        <TextBlock Text="Page 1" Style="{StaticResource MaterialDesignHeadline6TextBlock}" HorizontalAlignment="Center" />
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="First Name" />
