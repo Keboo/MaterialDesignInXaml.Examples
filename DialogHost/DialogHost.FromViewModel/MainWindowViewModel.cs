@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace DialogHost.FromViewModel
@@ -8,6 +9,7 @@ namespace DialogHost.FromViewModel
         private const string DialogIdentifier = "RootDialogHost";
 
         public ICommand ShowLoginCommand { get; }
+        public ICommand ShowCustomLoginCommand { get; }
 
         public ICommand ShowMessageCommand { get; }
 
@@ -15,6 +17,7 @@ namespace DialogHost.FromViewModel
         {
             ShowLoginCommand = new RelayCommand(OnShowLogin);
             ShowMessageCommand = new RelayCommand<string>(OnShowMessage);
+            ShowCustomLoginCommand = new RelayCommand(OnShowCustomLogin);
         }
 
         private async void OnShowLogin()
@@ -39,6 +42,20 @@ namespace DialogHost.FromViewModel
             await MaterialDesignThemes.Wpf.DialogHost.Show(vm, DialogIdentifier);
         }
 
-        
+        private async void OnShowCustomLogin()
+        {
+            var vm = new CustomLoginViewModel();
+            object dialogResult = await MaterialDesignThemes.Wpf.DialogHost.Show(vm, DialogIdentifier);
+            if (dialogResult is bool boolResult && boolResult)
+            {
+                string username = vm.Username;
+                string password = vm.Password;
+                //TODO: Do login stuff
+            }
+            else
+            {
+                //TODO: Do login canceled stuff
+            }
+        }
     }
 }

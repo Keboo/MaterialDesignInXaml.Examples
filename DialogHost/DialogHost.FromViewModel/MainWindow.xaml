@@ -8,6 +8,18 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- 
+        The custom login dialog is referenced implicity using the DataType property
+        Details here: https://docs.microsoft.com/dotnet/desktop/wpf/data/data-templating-overview?view=netframeworkdesktop-4.8#the-datatype-property
+        -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CustomLoginDialogTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -58,16 +70,24 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <Button Content="Show Login Dialog" Command="{Binding ShowLoginCommand}" 
                     VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBox x:Name="Message" MinWidth="200" md:HintAssist.Hint="Enter message here" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="Message" MinWidth="200" md:HintAssist.Hint="Enter message here" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0,0,5,5"/>
                 <Button Content="Show Message Dialog" Command="{Binding ShowMessageCommand}" 
                         CommandParameter="{Binding Text, ElementName=Message}" HorizontalAlignment="Left" />
             </StackPanel>
+
+            <Button Content="Show Custom Login Dialog" 
+                    Command="{Binding ShowCustomLoginCommand}" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Grid.Column="2" />
 
         </Grid>
     </md:DialogHost>
