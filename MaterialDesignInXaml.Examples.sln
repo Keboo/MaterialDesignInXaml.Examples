@@ -310,7 +310,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControl", "Styling\Cu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DialogHost.EmbeddedFill", "DialogHost\DialogHost.EmbeddedFill\DialogHost.EmbeddedFill.csproj", "{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid.SelectedRow", "DataGrid\DataGrid.SelectedRow\DataGrid.SelectedRow.csproj", "{30A27E30-080A-4D1D-9C73-566FA07883CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGrid.SelectedRow", "DataGrid\DataGrid.SelectedRow\DataGrid.SelectedRow.csproj", "{30A27E30-080A-4D1D-9C73-566FA07883CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBox.MultiSelectItems", "ListBox\ListBox.MultiSelectItems\ListBox.MultiSelectItems.csproj", "{BCC14E24-E00C-4114-9F7A-8196604635A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -714,6 +716,10 @@ Global
 		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A27E30-080A-4D1D-9C73-566FA07883CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC14E24-E00C-4114-9F7A-8196604635A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC14E24-E00C-4114-9F7A-8196604635A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC14E24-E00C-4114-9F7A-8196604635A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC14E24-E00C-4114-9F7A-8196604635A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -830,6 +836,7 @@ Global
 		{5F243682-4C13-41BA-AE73-0746B3FF0175} = {731021B9-FFEF-4ECE-AB45-24BDFE500727}
 		{AB7DC2BB-4C9B-4F03-93A2-97F1F52E940F} = {6C87EA53-3FFE-4BE4-9A4A-449C6C3E7308}
 		{30A27E30-080A-4D1D-9C73-566FA07883CE} = {FD14663A-6018-41F4-A1DC-255AC9780021}
+		{BCC14E24-E00C-4114-9F7A-8196604635A2} = {8CE9B108-E613-4777-A6DC-2559ABEDFD45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
