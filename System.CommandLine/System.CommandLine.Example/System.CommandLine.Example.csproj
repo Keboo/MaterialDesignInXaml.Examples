@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PInvoke.Kernel32" Version="0.7.78" />
     <PackageReference Include="System.CommandLine" Version="0.3.0-alpha.20054.1" />
   </ItemGroup>
 

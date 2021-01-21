@@ -1,4 +1,5 @@
-﻿using System.CommandLine.Builder;
+﻿using PInvoke;
+using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
 using System.Windows;
 
@@ -12,6 +13,7 @@ namespace System.CommandLine.Example
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+
             /*
              * Some sample invocations to try:
              *
@@ -54,8 +56,9 @@ namespace System.CommandLine.Example
             Parser parser = builder.Build();
 
             ParseResult parseResult = parser.Parse(e.Args);
+            Kernel32.AttachConsole(-1);
             int result = parser.Invoke(parseResult);
-
+            Kernel32.FreeConsole();
 
             if (result != 0 || wasHandled)
             {
