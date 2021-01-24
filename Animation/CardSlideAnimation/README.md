@@ -1,6 +1,6 @@
 ﻿# CardSlideAnimation
 
-CardSlideAnimation is an example project to animate a `MaterialDesignThemes.Wpf.Card` control with a code-behind `StoryBoard`.
+CardSlideAnimation is an example project to animate a `MaterialDesignThemes.Wpf.Card` control with a code-behind `Storyboard`.
 
 ## Controls
 
