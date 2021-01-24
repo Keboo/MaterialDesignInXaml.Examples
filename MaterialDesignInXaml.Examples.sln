@@ -314,7 +314,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGrid.SelectedRow", "Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBox.MultiSelectItems", "ListBox\ListBox.MultiSelectItems\ListBox.MultiSelectItems.csproj", "{BCC14E24-E00C-4114-9F7A-8196604635A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendTextBoxTemplate", "Styling\ExtendTextBoxTemplate\ExtendTextBoxTemplate.csproj", "{E5F8E890-55AE-431D-AA88-C5B4F319D030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtendTextBoxTemplate", "Styling\ExtendTextBoxTemplate\ExtendTextBoxTemplate.csproj", "{E5F8E890-55AE-431D-AA88-C5B4F319D030}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtendTextBoxTemplate", "ExtendTextBoxTemplate", "{CA211AA0-4680-4B71-88B6-D5688C9F4D4C}"
 EndProject
