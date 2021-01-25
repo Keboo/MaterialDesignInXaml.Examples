@@ -1,11 +1,10 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
-using MaterialDesignThemes.Wpf;
 
 namespace ShadowAnimation
 {
@@ -33,7 +32,7 @@ namespace ShadowAnimation
             };
             RenderOptions.SetClearTypeHint((Grid)card.Content, ClearTypeHint.Enabled);
 
-            //Turn off the shadow (it defaults to Depth2) - we will do our own so we ca annimate it
+            //Turn off the shadow (it defaults to Depth2) - we will do our own so we can animate it
             ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth0);
 
             var shadow1 = (DropShadowEffect)FindResource("MaterialDesignShadowDepth1");
