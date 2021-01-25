@@ -17,7 +17,7 @@ This is implemented in 2 ways:
 
 ## Code documentation
 
-Both implementation achieve the same result.
+Both implementations achieve the same result.
 
 ### XAML
 
