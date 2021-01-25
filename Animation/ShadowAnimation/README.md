@@ -14,6 +14,7 @@ This is implemented in 2 ways:
 ## Visual
 
 ![Animated GIF of project output](Assets/ShadowAnimation.gif)
+> Note: This GIF has compression artifacts
 
 ## Code documentation
 
