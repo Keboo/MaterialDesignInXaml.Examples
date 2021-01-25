@@ -9,7 +9,7 @@ This is implemented in 2 ways:
 
 |Type|Class name|
 |----|----|
-|Card|MaterialDesignThemes.Wpf.Card|
+|Card|[MaterialDesignThemes.Wpf.Card](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/blob/master/MaterialDesignThemes.Wpf/Card.cs)|
 
 ## Visual
 
