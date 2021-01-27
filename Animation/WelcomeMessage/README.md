@@ -7,6 +7,8 @@ WelcomeMessage is an example project which shows how to animate a control with a
 ![Animated GIF of project output](Assets/WelcomeMessage.gif)
 > Note: This GIF has compression artifacts
 
+## Code documentation
+
 ### XAML
 
 The style with key 'FadeAfterTenSeconds' is defined in the resources of the window. The effect is started on the `Loaded` event of a `FrameworkElement`-control.
