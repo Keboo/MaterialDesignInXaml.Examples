@@ -1,0 +1,47 @@
+﻿<Window x:Class="MVVM.Async.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM.Async"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Each of the following show different ways to handle running async code from a property changed. Typically it is best to try and design so you don't need to invoke an async method from a property, however sometime it is unavoidable. Try toggling the check boxes very rapidly to see the different results." 
+                   Margin="10"
+                   TextWrapping="Wrap"
+                   Grid.ColumnSpan="3"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel.DataContext>
+                <local:BlockingViewModel />
+            </StackPanel.DataContext>
+            <TextBlock Text="Block and run one at a time." TextWrapping="Wrap" />
+            <CheckBox Content="Toggle Me" IsChecked="{Binding IsChecked}" Margin="3"/>
+            <TextBlock Text="{Binding Data}" />
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
+            <StackPanel.DataContext>
+                <local:DebounceViewModel />
+            </StackPanel.DataContext>
+            <TextBlock Text="Debounce, ignore subsequent request until the first completes" TextWrapping="Wrap"/>
+            <CheckBox Content="Toggle Me" IsChecked="{Binding IsChecked}" Margin="3"/>
+            <TextBlock Text="{Binding Data}" />
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2">
+            <StackPanel.DataContext>
+                <local:LatestViewModel />
+            </StackPanel.DataContext>
+            <TextBlock Text="Cancel existing and only run the latest" TextWrapping="Wrap"/>
+            <CheckBox Content="Toggle Me" IsChecked="{Binding IsChecked}" Margin="3"/>
+            <TextBlock Text="{Binding Data}" />
+        </StackPanel>
+    </Grid>
+</Window>
