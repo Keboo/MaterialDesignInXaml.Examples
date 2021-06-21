@@ -1,0 +1,32 @@
+﻿<Window x:Class="TextBox.Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextBox.Colors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Style="{StaticResource MaterialDesignWindow}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Width="300"
+                Foreground="Red"
+                materialDesign:HintAssist.Foreground="Blue" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                materialDesign:TextFieldAssist.UnderlineBrush="Green">
+            <TextBox.Resources>
+                <!-- This controls the underline color when the text box does not have focus -->
+                <SolidColorBrush x:Key="MaterialDesignTextBoxBorder" Color="Cyan" />
+            </TextBox.Resources>
+            <materialDesign:HintAssist.Hint>
+                <!-- The hint can be any arbitrary content, giving you completely control over it -->
+                <!-- If you remove the explicit purple color the HintAssist.Foreground brush will be applied when the TextBox gets focus -->
+                <TextBlock Text="First name" Foreground="Purple"/>
+            </materialDesign:HintAssist.Hint>
+        </TextBox>
+
+        <Button Content="Button" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
