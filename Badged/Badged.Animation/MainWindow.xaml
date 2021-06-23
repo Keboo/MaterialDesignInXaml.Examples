@@ -1,0 +1,46 @@
+﻿<Window x:Class="Badged.Animation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Badged.Animation" 
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <md:Badged BadgeColorZoneMode="SecondaryMid"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center">
+            <md:Badged.Style>
+                <Style TargetType="md:Badged" BasedOn="{StaticResource {x:Type md:Badged}}">
+                    <Setter Property="Badge" Value="{md:PackIcon Kind=Check}" />
+                    <Style.Triggers>
+                        <Trigger Property="Tag" Value="{x:Null}">
+                            <Setter Property="Badge" Value="{x:Null}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </md:Badged.Style>
+            <md:Badged.Triggers>
+                <EventTrigger RoutedEvent="{x:Static Button.ClickEvent}" SourceName="MyButton">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Tag">
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="1" />
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="{x:Null}" />
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </md:Badged.Triggers>
+            <Button Content="COPY RESULTS"
+                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                    ToolTip="Copy results to the clipboard"
+                    x:Name="MyButton">
+            </Button>
+        </md:Badged>
+    </Grid>
+</Window>
