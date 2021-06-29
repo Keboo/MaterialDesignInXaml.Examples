@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Utilities
@@ -15,7 +16,8 @@ namespace Utilities
                 if (target.GetValue(Control.TemplateProperty) is ControlTemplate template &&
                     template.FindName(TemplatePartName, element) is DependencyObject templatePart)
                 {
-                    templatePart.SetCurrentValue(property, Value);
+                    var converter = TypeDescriptor.GetConverter(property.PropertyType);
+                    templatePart.SetCurrentValue(property, converter.ConvertFrom(Value));
                 }
                 else if (element.FindName(TemplatePartName) is DependencyObject childElement)
                 {
