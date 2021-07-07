@@ -9,29 +9,40 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Title="MainWindow" Height="450" Width="800">
-    <materialDesign:DialogHost>
-        <materialDesign:DialogHost.DialogContent>
-            <StackPanel Margin="15">
-                <StackPanel.CommandBindings>
-                    <CommandBinding Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <materialDesign:DialogHost x:Name="MyDialogHost">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="15">
+                    <StackPanel.CommandBindings>
+                        <CommandBinding Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                                     CanExecute="CommandBinding_OnCanExecute" />
-                </StackPanel.CommandBindings>
+                    </StackPanel.CommandBindings>
 
-                <TextBlock Text="Is this ok?" />
-                <CheckBox Content="Check me" x:Name="CheckBox"/>
+                    <TextBlock Text="Is this ok?" />
+                    <CheckBox Content="Check me" x:Name="CheckBox"/>
 
-                <Button Content="Close" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" />
+                    <Button Content="Close" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" />
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Show Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Margin="0,0,0,10"/>
+                <Button Content="Show Other Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                    <Button.CommandParameter>
+                        <local:SimpleDialog />
+                    </Button.CommandParameter>
+                </Button>
             </StackPanel>
-        </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Show Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Margin="0,0,0,10"/>
-            <Button Content="Show Other Dialog" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
-                <Button.CommandParameter>
-                    <local:SimpleDialog />
-                </Button.CommandParameter>
-            </Button>
-        </StackPanel>
-        
-    </materialDesign:DialogHost>
+        <Button Content="Show Dialog (using CommandTarget)" 
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                CommandTarget="{Binding ElementName=MyDialogHost}"
+                Margin="0,0,0,10" Grid.Row="1"/>
+
+    </Grid>
 </Window>
