@@ -1,0 +1,85 @@
+﻿<Window x:Class="MVVM.HamburgerNavigation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM.HamburgerNavigation" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:views="clr-namespace:MVVM.HamburgerNavigation.Views"
+        xmlns:vms="clr-namespace:MVVM.HamburgerNavigation.ViewModels"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- This provides a link between the view models and views -->
+        <DataTemplate DataType="{x:Type vms:AnimalsViewModel}">
+            <views:AnimalsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:FoodViewModel}">
+            <views:FoodView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:HomeViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:PlacesViewModel}">
+            <views:PlacesView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:RandomViewModel}">
+            <views:RandomView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ThingsViewModel}">
+            <views:ThingsView />
+        </DataTemplate>
+    </Window.Resources>
+    <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsMenuOpen}">
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel MinWidth="220">
+                <ToggleButton 
+                        Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Right" 
+                        Margin="16"
+                        IsChecked="{Binding IsMenuOpen}"/>
+
+                <ListBox 
+                        Margin="0 16 0 16"
+                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding MenuItems}"
+                        Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
+                    <ListBox.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
+                    </ListBox.Resources>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="local:IMenuItem">
+                            <TextBlock Text="{Binding Title}" Margin="24 4 0 4" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </materialDesign:DrawerHost.LeftDrawerContent>
+
+        <DockPanel>
+            <materialDesign:ColorZone
+                    Padding="16"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid"
+                    DockPanel.Dock="Top">
+                <Grid>
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                  HorizontalAlignment="Left"
+                                  IsChecked="{Binding IsMenuOpen}"/>
+
+                    <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="22"
+                            Text="Navigation Example"/>
+                </Grid>
+            </materialDesign:ColorZone>
+
+            <!-- The default behavior of the DockPanel is to have the last child fill the middle -->
+            <ContentControl Content="{Binding SelectedItem}"/>
+        </DockPanel>
+    </materialDesign:DrawerHost>
+</Window>
