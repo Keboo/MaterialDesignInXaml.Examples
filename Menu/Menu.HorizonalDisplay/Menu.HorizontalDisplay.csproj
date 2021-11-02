@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FEC452DC-6DC0-436C-BDD0-4ECC88745CA4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Menu.HorizonalDisplay</RootNamespace>
-    <AssemblyName>Menu.HorizonalDisplay</AssemblyName>
+    <RootNamespace>Menu.HorizontalDisplay</RootNamespace>
+    <AssemblyName>Menu.HorizontalDisplay</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -98,6 +98,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -107,6 +108,10 @@
       <Project>{74df32f3-6257-46b1-8593-a915b778e4be}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\MenuHorizontalDisplay.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

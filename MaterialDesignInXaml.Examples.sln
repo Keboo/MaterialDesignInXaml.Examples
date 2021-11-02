@@ -88,7 +88,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopupBox.Simple", "PopupBox
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{4DF136DF-8B12-4747-A9A8-DD416A4522B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.HorizonalDisplay", "Menu\Menu.HorizonalDisplay\Menu.HorizonalDisplay.csproj", "{FEC452DC-6DC0-436C-BDD0-4ECC88745CA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.HorizontalDisplay", "Menu\Menu.HorizonalDisplay\Menu.HorizontalDisplay.csproj", "{FEC452DC-6DC0-436C-BDD0-4ECC88745CA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{A75D9228-5E94-4216-862C-0297752856A6}"
 EndProject
@@ -333,7 +333,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBar.CustomCircularT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM.DetailsView", "MVVM\MVVM.DetailsView\MVVM.DetailsView.csproj", "{A1F70E73-F8B4-4867-BA07-BE18DB577BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.HamburgerNavigation", "MVVM\MVVM.HamburgerNavigation\MVVM.HamburgerNavigation.csproj", "{CB2A1ADE-AB75-4B28-8315-7C96C96E1722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM.HamburgerNavigation", "MVVM\MVVM.HamburgerNavigation\MVVM.HamburgerNavigation.csproj", "{CB2A1ADE-AB75-4B28-8315-7C96C96E1722}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
