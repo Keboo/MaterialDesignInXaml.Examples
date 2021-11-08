@@ -10,21 +10,39 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBox VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Width="300"
-                Foreground="Red"
-                materialDesign:HintAssist.Foreground="Blue" 
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                materialDesign:TextFieldAssist.UnderlineBrush="Green">
+                 HorizontalAlignment="Center"
+                 Width="300"
+                 materialDesign:HintAssist.Foreground="Blue" 
+                 materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                 materialDesign:HintAssist.Hint="First name"
+                 >
             <TextBox.Resources>
                 <!-- This controls the underline color when the text box does not have focus -->
                 <SolidColorBrush x:Key="MaterialDesignTextBoxBorder" Color="Cyan" />
             </TextBox.Resources>
-            <materialDesign:HintAssist.Hint>
-                <!-- The hint can be any arbitrary content, giving you completely control over it -->
-                <!-- If you remove the explicit purple color the HintAssist.Foreground brush will be applied when the TextBox gets focus -->
+            
+            <!-- Rather than using a string for the hint (as done above), remove that and uncomment the following block to take full control of the hint -->
+            <!--<materialDesign:HintAssist.Hint>
+                --><!-- The hint can be any arbitrary content, giving you completely control over it -->
+                <!-- If you remove the explicit purple color the HintAssist.Foreground brush will be applied when the TextBox gets focus --><!--
                 <TextBlock Text="First name" Foreground="Purple"/>
-            </materialDesign:HintAssist.Hint>
+            </materialDesign:HintAssist.Hint>-->
+            <TextBox.Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <!-- To make the trigger below work, the foreground must be set here not directly on the TextBox -->
+                    <Setter Property="Foreground" Value="Red" />
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value="" />
+                                <Condition Property="IsKeyboardFocused" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <!-- Set the hint color when the text box is empty and does not have focus -->
+                            <Setter Property="Foreground" Value="Yellow" />
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
         </TextBox>
 
         <Button Content="Button" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
