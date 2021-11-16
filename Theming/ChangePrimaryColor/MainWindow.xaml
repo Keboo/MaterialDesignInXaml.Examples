@@ -1,0 +1,28 @@
+﻿<Window x:Class="ChangePrimaryColor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChangePrimaryColor"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="800">
+
+    <GroupBox Header="Change Theme Example">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Purple"
+                    Background="MediumPurple"
+                    Margin="5" Click="Purple_Click"/>
+            
+            <Button Content="Green" 
+                    Background="LightGreen"
+                    Margin="5"
+                    Grid.Column="1" Click="Green_Click" />
+        </Grid>
+    </GroupBox>
+</Window>
