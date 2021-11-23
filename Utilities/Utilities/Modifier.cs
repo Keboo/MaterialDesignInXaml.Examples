@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace Utilities
 {
@@ -10,6 +9,8 @@ namespace Utilities
         public DependencyProperty Property { get; set; }
         public object Value { get; set; }
         public string TemplatePartName { get; set; }
+        public string VisualElementName { get; set; }
+
         public override void Apply(DependencyObject target)
         {
             if (target is FrameworkElement element && Property is DependencyProperty property)
@@ -17,7 +18,7 @@ namespace Utilities
                 if (target.GetValue(Control.TemplateProperty) is ControlTemplate template &&
                     template.FindName(TemplatePartName, element) is DependencyObject templatePart)
                 {
-                    if (Value?.GetType() == property.PropertyType)
+                    if (Value?.GetType().IsSubclassOf(property.PropertyType) == true)
                     {
                         templatePart.SetCurrentValue(property, Value);
                     }
