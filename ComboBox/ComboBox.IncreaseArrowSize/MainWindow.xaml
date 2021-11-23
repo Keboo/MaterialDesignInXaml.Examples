@@ -1,0 +1,30 @@
+﻿<Window x:Class="ComboBox.IncreaseArrowSize.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:utilities="clr-namespace:Utilities;assembly=Utilities"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Grid>
+    <ComboBox materialDesign:HintAssist.Hint="OS" 
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Width="200">
+      <utilities:TreeHelpers.Modifiers>
+        <utilities:ModifierCollection>
+          <utilities:Modifier TemplatePartName="toggleButton" Property="{x:Static Control.LayoutTransformProperty}">
+            <utilities:Modifier.Value>
+              <ScaleTransform ScaleX="2" ScaleY="2" />
+            </utilities:Modifier.Value>
+          </utilities:Modifier>
+        </utilities:ModifierCollection>
+      </utilities:TreeHelpers.Modifiers>
+      <ComboBoxItem Content="Android"/>
+      <ComboBoxItem Content="iOS"/>
+      <ComboBoxItem Content="Linux"/>
+      <ComboBoxItem Content="Windows"/>
+    </ComboBox>
+  </Grid>
+</Window>
