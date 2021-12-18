@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using GalaSoft.MvvmLight;
 
 namespace MVVM.Validation
 {
     //A simple class that uses the DataAnnotations for validation
     //You will need to add a reference to System.ComponentModel.DataAnnotations for this class to work
-    public abstract class AnnotationValidationViewModel : ViewModelBase, INotifyDataErrorInfo
+    public abstract class AnnotationValidationViewModel : ObservableObject, INotifyDataErrorInfo
     {
         private readonly Dictionary<string, PropertyInfo> _Properties;
         private readonly Dictionary<string, List<object>> _ValidationErrorsByProperty =
@@ -22,10 +22,10 @@ namespace MVVM.Validation
             _Properties = GetType().GetProperties().ToDictionary(x => x.Name);
         }
 
-        public override void RaisePropertyChanged(string propertyName = null)
+        protected override void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            base.RaisePropertyChanged(propertyName);
-            ValidateProperty(propertyName);
+            base.OnPropertyChanged(e);
+            ValidateProperty(e.PropertyName);
         }
 
         public bool ValidateModel()

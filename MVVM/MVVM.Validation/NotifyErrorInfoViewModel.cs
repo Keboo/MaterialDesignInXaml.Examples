@@ -1,28 +1,28 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 
 namespace MVVM.Validation
 {
-    public class NotifyErrorInfoViewModel : ViewModelBase, INotifyDataErrorInfo
+    public class NotifyErrorInfoViewModel : ObservableObject, INotifyDataErrorInfo
     {
         private string _FirstName;
         public string FirstName
         {
             get => _FirstName;
-            set => Set(ref _FirstName, value);
+            set => SetProperty(ref _FirstName, value);
         }
 
         private string _LastName;
         public string LastName
         {
             get => _LastName;
-            set => Set(ref _LastName, value);
+            set => SetProperty(ref _LastName, value);
         }
         
         public RelayCommand SubmitCommand { get; }
@@ -47,10 +47,10 @@ namespace MVVM.Validation
             Debug.WriteLine("Form Submitted");
         }
 
-        public override void RaisePropertyChanged(string propertyName = null)
+        protected override void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            base.RaisePropertyChanged(propertyName);
-            Validate(propertyName);
+            base.OnPropertyChanged(e);
+            Validate(e.PropertyName);
         }
 
         private void Validate(string changedPropertyName)
@@ -84,7 +84,7 @@ namespace MVVM.Validation
             }
 
             //Notify the command that it needs to invoke its CanExecute method (in this case CanSubmit).
-            SubmitCommand.RaiseCanExecuteChanged();
+            SubmitCommand.NotifyCanExecuteChanged();
         }
 
         public IEnumerable GetErrors(string propertyName)

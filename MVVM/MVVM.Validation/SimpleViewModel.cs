@@ -1,23 +1,23 @@
-﻿using System.Diagnostics;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using System.Diagnostics;
 
 namespace MVVM.Validation
 {
-    public class SimpleViewModel : ViewModelBase
+    public class SimpleViewModel : ObservableObject
     {
         private string _FirstName;
         public string FirstName
         {
             get => _FirstName;
-            set => Set(ref _FirstName, value);
+            set => SetProperty(ref _FirstName, value);
         }
 
         private string _LastName;
         public string LastName
         {
             get => _LastName;
-            set => Set(ref _LastName, value);
+            set => SetProperty(ref _LastName, value);
         }
 
         

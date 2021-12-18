@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Toolkit.Mvvm.Input;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using GalaSoft.MvvmLight.CommandWpf;
 
 namespace MVVM.Validation
 {
@@ -12,7 +12,7 @@ namespace MVVM.Validation
         public string FirstName
         {
             get => _FirstName;
-            set => Set(ref _FirstName, value);
+            set => SetProperty(ref _FirstName, value);
         }
 
         private string _LastName;
@@ -20,7 +20,7 @@ namespace MVVM.Validation
         public string LastName
         {
             get => _LastName;
-            set => Set(ref _LastName, value);
+            set => SetProperty(ref _LastName, value);
         }
 
         public RelayCommand SubmitCommand { get; }
