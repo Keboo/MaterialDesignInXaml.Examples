@@ -1,0 +1,30 @@
+﻿<Window x:Class="DefaultTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" 
+        xmlns:local="clr-namespace:DefaultTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Window.Resources>
+    <Style x:Key="AvalonTextEditorXamlDisplay"
+           TargetType="avalonEdit:TextEditor"
+           BasedOn="{StaticResource {x:Type avalonEdit:TextEditor}}">
+      <Setter Property="SyntaxHighlighting" Value="XML" />
+      <Setter Property="FontFamily" Value="Consolas" />
+      <Setter Property="IsReadOnly" Value="True" />
+      <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+      <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <ComboBox x:Name="ComboBox" SelectionChanged="ComboBox_SelectionChanged" />
+    <avalonEdit:TextEditor x:Name="TextEditor" Style="{StaticResource AvalonTextEditorXamlDisplay}" Grid.Row="1"/>
+  </Grid>
+</Window>
