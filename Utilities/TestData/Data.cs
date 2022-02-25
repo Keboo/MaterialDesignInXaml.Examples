@@ -1,10 +1,21 @@
-﻿using System.Collections.Generic;
-using Bogus;
+﻿using Bogus;
+using System.Collections.Generic;
 
 namespace TestData
 {
+
     public static class Data
     {
+        public static IList<Team> GenerateTeams(int count, int memberCount)
+        {
+            Faker<Team> teamGenerator = new Faker<Team>()
+                .StrictMode(true)
+                .RuleFor(x => x.Name, f => f.Name.JobDescriptor())
+                .RuleFor(x => x.Members, _ => GeneratePeople(memberCount));
+
+            return teamGenerator.Generate(count);
+        }
+
         public static IList<Person> GeneratePeople(int count)
         {
             Faker<Person> generator = new Faker<Person>()
