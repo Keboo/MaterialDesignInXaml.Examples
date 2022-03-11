@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using System.Diagnostics;
 
 namespace Snackbar.MVVM
 {
@@ -17,7 +18,9 @@ namespace Snackbar.MVVM
 
         private void OnShowMessage(ShowMessage message)
         {
-            Snackbar.MessageQueue.Enqueue(message.Message);
+            Snackbar.MessageQueue.Enqueue(message.Message, "Close", () => {
+                Debug.WriteLine("Close clicked");
+            });
         }
     }
 }

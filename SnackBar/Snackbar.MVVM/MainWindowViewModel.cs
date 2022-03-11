@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using MaterialDesignThemes.Wpf;
+using System.Diagnostics;
 
 namespace Snackbar.MVVM
 {
@@ -25,7 +26,10 @@ namespace Snackbar.MVVM
 
         private void OnSendMessage(string message)
         {
-            BoundMessageQueue.Enqueue(message);
+            BoundMessageQueue.Enqueue(message, "Close", () =>
+            {
+                Debug.WriteLine("Close clicked");
+            });
         }
     }
 
