@@ -345,9 +345,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultTemplate", "Styling\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBox.ModifyDefaultTemplate", "ComboBox\ComboBox.ModifyDefaultTemplate\ComboBox.ModifyDefaultTemplate.csproj", "{7EF7C1B9-121C-44D6-8337-9FE430544711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.ComboBoxWithClear", "MVVM\MVVM.ComboBoxWithClear\MVVM.ComboBoxWithClear.csproj", "{3CF57C3F-0535-417D-A703-C747BF8FC0B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM.ComboBoxWithClear", "MVVM\MVVM.ComboBoxWithClear\MVVM.ComboBoxWithClear.csproj", "{3CF57C3F-0535-417D-A703-C747BF8FC0B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBox.NestedListBoxes", "ListBox\ListBox.NestedListBoxes\ListBox.NestedListBoxes.csproj", "{1467B617-1EFB-40CC-8BE6-9CB13175C06F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBox.NestedListBoxes", "ListBox\ListBox.NestedListBoxes\ListBox.NestedListBoxes.csproj", "{1467B617-1EFB-40CC-8BE6-9CB13175C06F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.DependencyInjection", "EntityFramework\EFCore.DependencyInjection\EFCore.DependencyInjection.csproj", "{401C1A51-1C24-483D-8F1A-BB02E7B311D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -811,6 +813,10 @@ Global
 		{1467B617-1EFB-40CC-8BE6-9CB13175C06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1467B617-1EFB-40CC-8BE6-9CB13175C06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1467B617-1EFB-40CC-8BE6-9CB13175C06F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401C1A51-1C24-483D-8F1A-BB02E7B311D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401C1A51-1C24-483D-8F1A-BB02E7B311D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401C1A51-1C24-483D-8F1A-BB02E7B311D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401C1A51-1C24-483D-8F1A-BB02E7B311D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -944,6 +950,7 @@ Global
 		{7EF7C1B9-121C-44D6-8337-9FE430544711} = {C3159A87-4110-4C15-A9E8-F32277B7F999}
 		{3CF57C3F-0535-417D-A703-C747BF8FC0B5} = {845143B2-9C9B-4CBB-84C6-F3F16F6EF3A3}
 		{1467B617-1EFB-40CC-8BE6-9CB13175C06F} = {8CE9B108-E613-4777-A6DC-2559ABEDFD45}
+		{401C1A51-1C24-483D-8F1A-BB02E7B311D9} = {47D6FB63-20E8-479F-900C-493ACA6FB67F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
