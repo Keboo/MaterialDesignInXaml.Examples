@@ -1,0 +1,171 @@
+﻿<Window x:Class="ListBox.CustomStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListBox.CustomStyle" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="800">
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <Style TargetType="TextBlock" x:Key="DescriptionStyle">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Opacity" Value="0.6"/>
+      <Setter Property="Margin" Value="0,4,0,10"/>
+      <Setter Property="MaxHeight" Value="35"/>
+      <Setter Property="TextWrapping" Value="Wrap" />
+      <Setter Property="TextTrimming" Value="WordEllipsis"/>
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <ListBox ItemsSource="{Binding Items}" MaxWidth="350" HorizontalAlignment="Left" Margin="1,0,0,0">
+      <ListBox.ItemContainerStyle>
+        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+          <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Margin="{TemplateBinding Margin}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
+                  <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup Name="CommonStates">
+                      <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Normal">
+                          <VisualTransition.GeneratedEasingFunction>
+                            <CircleEase EasingMode="EaseOut"/>
+                          </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                      </VisualStateGroup.Transitions>
+                      <VisualState Name="Normal"/>
+                      <VisualState Name="MouseOver" />
+                      <VisualState Name="Disabled"/>
+                    </VisualStateGroup>
+                    <VisualStateGroup Name="SelectionStates">
+                      <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2"/>
+                      </VisualStateGroup.Transitions>
+                      <VisualState Name="Selected">
+                        <Storyboard>
+                          <DoubleAnimation Storyboard.TargetName="SelectedBorder"
+                                           Storyboard.TargetProperty="Opacity"
+                                           To="0.8" />
+                        </Storyboard>
+                      </VisualState>
+                      <VisualState Name="Unselected"/>
+                      <VisualState Name="SelectedUnfocused">
+                        <Storyboard>
+                          <DoubleAnimation Storyboard.TargetName="SelectedBorder"
+                                           Storyboard.TargetProperty="Opacity"
+                                           To="0.3"/>
+                        </Storyboard>
+                      </VisualState>
+                    </VisualStateGroup>
+                  </VisualStateManager.VisualStateGroups>
+                  <Grid>
+                    <ContentPresenter Margin="4,0,0,0"/>
+                    <Border Background="#2D7AF1" 
+                            Width="2"
+                            Opacity="0"
+                            x:Name="SelectedBorder"
+                            HorizontalAlignment="Left"/>
+                  </Grid>
+                </Border>
+                <ControlTemplate.Triggers>
+                  <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value=".56" />
+                  </Trigger>
+                </ControlTemplate.Triggers>
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </ListBox.ItemContainerStyle>
+      <ListBox.ItemTemplate>
+        <DataTemplate DataType="{x:Type local:Item}">
+          <Grid Margin="25,10,10,10">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Height="6" Width="6" CornerRadius="3" 
+                    Background="#2D7AF1" 
+                    Margin="-15,0,0,0" 
+                    HorizontalAlignment="Left"
+                    Visibility="{Binding ShowAsModified, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="0,5" Grid.ColumnSpan="2" />
+            <Border Grid.Column="3" Grid.Row="0" 
+                    Background="{DynamicResource SecondaryHueMidBrush}"
+                    CornerRadius="3"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+              <TextBlock Text="{Binding PostedAt, StringFormat='{}{0:%m}m ago'}" FontWeight="Bold" 
+                         Foreground="White"
+                         HorizontalAlignment="Center"
+                         Margin="4" />
+            </Border>
+
+            <TextBlock Text="{Binding Technology}"
+                       Margin="0,6" FontSize="14" Opacity="0.8"
+                       Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
+                       Style="{StaticResource DescriptionStyle}"
+                       Visibility="{Binding ShowAdditionalDetails, Converter={StaticResource BooleanToVisibilityConverter}}">
+              <Run Text="Additional Details" Foreground="{DynamicResource SecondaryHueMidBrush}" FontWeight="Bold" />
+              <Run Text="{Binding Description}" />
+            </TextBlock>
+
+            <TextBlock Text="{Binding Description}"
+                       Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource DescriptionStyle}">
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ShowAdditionalDetails}" Value="True">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+
+
+            <materialDesign:PackIcon Kind="MapMarker" Margin="0,0,5,0" 
+                                     Opacity="0.7"
+                                     Grid.Column="0" Grid.Row="3" />
+            <TextBlock Text="{Binding Location}" 
+                       Opacity="0.7"
+                       FontWeight="Bold" Grid.Column="1" Grid.Row="3" />
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" 
+                        Opacity="0.7">
+              <materialDesign:PackIcon Kind="AlphaCCircle" />
+              <TextBlock Text="{Binding NumberOfCredits, StringFormat='{}{0} credits'}" 
+                         Margin="5,0"
+                         FontWeight="Bold" Grid.Column="1" Grid.Row="3" />
+            </StackPanel>
+
+            <TextBlock Text="{Binding Reach, StringFormat='({0})'}"
+                       Opacity="0.6"
+                       Grid.Column="1" Grid.Row="4"/>
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </Grid>
+</Window>
