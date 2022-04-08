@@ -3,10 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EFCore.DependencyInjection"
+        xmlns:local="clr-namespace:EFCore.DependencyInjection" 
+        xmlns:data="clr-namespace:EFCore.DependencyInjection.Data" 
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+  <Grid>
+    <DataGrid ItemsSource="{Binding Customers}" AutoGenerateColumns="False"
+              CanUserReorderColumns="False"
+              CanUserResizeRows="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+        <DataGridTextColumn Header="DOB" Binding="{Binding DateOfBirth, StringFormat='d'}" />
+        <DataGridTextColumn Header="Order Submitted" Binding="{Binding Orders[0].SubmittedAt}" />
 
-    </Grid>
+        <DataGridTemplateColumn Header="Orders" IsReadOnly="True">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate DataType="{x:Type data:Person}">
+              
+              <ItemsControl ItemsSource="{Binding Orders}">
+                
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate DataType="{x:Type data:Order}">
+                    <TextBlock Text="{Binding Id}" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+              </ItemsControl>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
 </Window>
