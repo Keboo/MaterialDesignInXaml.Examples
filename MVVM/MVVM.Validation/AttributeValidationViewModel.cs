@@ -12,7 +12,11 @@ namespace MVVM.Validation
         public string FirstName
         {
             get => _FirstName;
-            set => SetProperty(ref _FirstName, value);
+            set
+            {
+                SetProperty(ref _FirstName, value);
+                SubmitCommand.NotifyCanExecuteChanged();
+            }
         }
 
         private string _LastName;
@@ -20,7 +24,11 @@ namespace MVVM.Validation
         public string LastName
         {
             get => _LastName;
-            set => SetProperty(ref _LastName, value);
+            set
+            {
+                SetProperty(ref _LastName, value);
+                SubmitCommand.NotifyCanExecuteChanged();
+            }
         }
 
         public RelayCommand SubmitCommand { get; }
