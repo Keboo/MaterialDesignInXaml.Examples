@@ -357,7 +357,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextBox.MaskedTextBox", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextBox.SelectAllOnDoubleClick", "TextBox\TextBox.SelectAllOnDoubleClick\TextBox.SelectAllOnDoubleClick.csproj", "{F2976826-65AA-4BFA-A7C6-DEDDAA36AB6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid.Selection", "DataGrid.Selection\DataGrid.Selection.csproj", "{241952CC-7F75-4BB1-8C8B-06DA2222D160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGrid.Selection", "DataGrid\DataGrid.Selection\DataGrid.Selection.csproj", "{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -837,10 +837,10 @@ Global
 		{F2976826-65AA-4BFA-A7C6-DEDDAA36AB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2976826-65AA-4BFA-A7C6-DEDDAA36AB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2976826-65AA-4BFA-A7C6-DEDDAA36AB6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{241952CC-7F75-4BB1-8C8B-06DA2222D160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{241952CC-7F75-4BB1-8C8B-06DA2222D160}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{241952CC-7F75-4BB1-8C8B-06DA2222D160}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{241952CC-7F75-4BB1-8C8B-06DA2222D160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -978,7 +978,7 @@ Global
 		{49D8940B-19DC-4A09-8E8C-922F902ED991} = {8CE9B108-E613-4777-A6DC-2559ABEDFD45}
 		{B123DBA6-9053-45EE-98F3-752B07C3AEF5} = {E4DDD289-8D53-4F08-88BD-E1B8E1C31E32}
 		{F2976826-65AA-4BFA-A7C6-DEDDAA36AB6C} = {E4DDD289-8D53-4F08-88BD-E1B8E1C31E32}
-		{241952CC-7F75-4BB1-8C8B-06DA2222D160} = {FD14663A-6018-41F4-A1DC-255AC9780021}
+		{6EDB2440-33D7-40CA-9DD6-C21A283ECDB3} = {FD14663A-6018-41F4-A1DC-255AC9780021}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA48512-26D4-441B-B361-E0803274AC9C}
