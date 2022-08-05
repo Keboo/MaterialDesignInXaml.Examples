@@ -1,0 +1,47 @@
+﻿<Window x:Class="RatingBar.SelectRatingCommand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RatingBar.SelectRatingCommand" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=netstandard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    
+    <materialDesign:RatingBar HorizontalAlignment="Center" 
+                              x:Name="RatingBar"
+                              Grid.ColumnSpan="2"
+                              ValueChanged="RatingBar_ValueChanged"/>
+
+    <Button Content="Clear" 
+            Command="{x:Static materialDesign:RatingBar.SelectRatingCommand}"
+            CommandTarget="{Binding ElementName=RatingBar}"
+            Margin="5"
+            Grid.Row="1" Grid.Column="0">
+      <Button.CommandParameter>
+        <system:Int32>0</system:Int32>
+      </Button.CommandParameter>
+    </Button>
+
+    <Button Content="5 Stars!" 
+            Command="{x:Static materialDesign:RatingBar.SelectRatingCommand}"
+            CommandTarget="{Binding ElementName=RatingBar}"
+            Margin="5"
+            Grid.Row="1" Grid.Column="1" >
+      <Button.CommandParameter>
+        <system:Int32>5</system:Int32>
+      </Button.CommandParameter>
+    </Button>
+
+    <TextBlock x:Name="Output" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+  </Grid>
+</Window>
