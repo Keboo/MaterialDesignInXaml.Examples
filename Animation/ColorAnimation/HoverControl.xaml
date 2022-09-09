@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ColorAnimation">
+  <!--<SolidColorBrush x:Key="HoverBrush" Color="Green" />
+  <SolidColorBrush x:Key="BackgroundBrush" Color="Red"  />-->
+
+  <ControlTemplate x:Key="HoverControlTemplate">
+    <Border x:Name="PART_Border"
+            CornerRadius="10" 
+            BorderThickness="2"
+            BorderBrush="Red"
+            Background="Blue">
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="HoverStates">
+          <VisualStateGroup.Transitions>
+            <VisualTransition From="Hover" To="Normal">
+              <Storyboard>
+                <ColorAnimation 
+                    Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                    Storyboard.TargetName="PART_Border"
+                    To="Blue"
+                    Duration="0:0:1"
+                    />
+              </Storyboard>
+            </VisualTransition>
+            <VisualTransition From="Normal" To="Hover">
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                  Storyboard.TargetName="PART_Border"
+                  To="Green"
+                  Duration="0:0:1"
+                  />
+              </Storyboard>
+            </VisualTransition>
+          </VisualStateGroup.Transitions>
+          <VisualState x:Name="Hover">
+            <Storyboard>
+              <ColorAnimation 
+                  Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                  Storyboard.TargetName="PART_Border"
+                  To="Green"
+                  Duration="0"
+                  />
+            </Storyboard>
+          </VisualState>
+          <VisualState x:Name="Normal">
+            <Storyboard>
+              <ColorAnimation 
+                  Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                  Storyboard.TargetName="PART_Border"
+                  To="Blue"
+                  Duration="0"
+                  />
+            </Storyboard>
+          </VisualState>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+
+    </Border>
+
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <!--<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource HoverBrush}" />-->
+        <!--<Trigger.EnterActions>
+          <BeginStoryboard>
+            <BeginStoryboard.Storyboard>
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                    Storyboard.TargetName="PART_Border"
+                    To="Green"
+                    Duration="0:0:5"
+                    />
+              </Storyboard>
+            </BeginStoryboard.Storyboard>
+          </BeginStoryboard>
+        </Trigger.EnterActions>-->
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style TargetType="local:CustomHoverControl" >
+    <Setter Property="Template" Value="{StaticResource HoverControlTemplate}" />
+    <Setter Property="MinWidth" Value="100" />
+    <Setter Property="MinHeight" Value="100" />
+    
+  </Style>
+</ResourceDictionary>
