@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBlock Text="{Binding Title}" />
+        <TextBlock x:Name="Title" Text="{Binding Title}" />
         <TextBlock x:Name="TextBlock" />
     </StackPanel>
 </UserControl>

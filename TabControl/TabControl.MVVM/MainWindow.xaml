@@ -11,22 +11,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="_New Tab" Command="{Binding NewTabCommand}"/>
         </Menu>
         <TabControl ItemsSource="{Binding Tabs}" Grid.Row="1">
-            <!--<TabControl.ItemContainerStyle>
-                <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
-                    <Setter Property="ContentTemplate">
-                        <Setter.Value>
-                            <DataTemplate DataType="{x:Type local:TabItemViewModel}">
-                                <local:UserControl1 />
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.ItemContainerStyle>-->
             <TabControl.ContentTemplate>
                 <DataTemplate DataType="{x:Type local:TabItemViewModel}">
                     <local:UserControl1 />
@@ -48,5 +39,28 @@
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
+
+        <TabControl ItemsSource="{Binding OtherTabs}" Grid.Row="2">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type local:Item1ViewModel}">
+                    <local:Item1UserControl />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:Item2ViewModel}">
+                    <local:Item2UserControl />
+                </DataTemplate>
+            </TabControl.Resources>
+        </TabControl>
+
+        <local:CachingTabControl ItemsSource="{Binding OtherTabs}" Grid.Row="3">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type local:Item1ViewModel}">
+                    <local:Item1UserControl />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:Item2ViewModel}">
+                    <local:Item2UserControl />
+                </DataTemplate>
+            </TabControl.Resources>
+            
+        </local:CachingTabControl>
     </Grid>
 </Window>

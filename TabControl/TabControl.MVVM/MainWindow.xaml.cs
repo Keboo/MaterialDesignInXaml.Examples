@@ -1,4 +1,6 @@
-﻿namespace TabControl.MVVM;
+﻿using System.Windows.Controls;
+
+namespace TabControl.MVVM;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

@@ -3,10 +3,7 @@
 namespace TabControl.MVVM;
 
 [ObservableObject]
-public partial class TabItemViewModel
+public partial class CustomItemViewModel
 {
 
-    [ObservableProperty]
-    private string? _Title;
-    
 }

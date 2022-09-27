@@ -8,12 +8,16 @@ namespace TabControl.MVVM;
 public partial class MainWindowViewModel
 {
     public ObservableCollection<TabItemViewModel> Tabs { get; } = new();
+    public ObservableCollection<CustomItemViewModel> OtherTabs { get; } = new();
 
     public MainWindowViewModel()
     {
         NewTab();
         NewTab();
         NewTab();
+
+        OtherTabs.Add(new Item1ViewModel());
+        OtherTabs.Add(new Item2ViewModel());
     }
 
     [RelayCommand]
