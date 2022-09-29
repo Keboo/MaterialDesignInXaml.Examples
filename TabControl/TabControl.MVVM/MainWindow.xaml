@@ -6,8 +6,68 @@
         xmlns:local="clr-namespace:TabControl.MVVM"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="_New Tab" Command="{Binding NewTabCommand}" />
+        </Menu>
+
+        <TabControl ItemsSource="{Binding Tabs}" Grid.Row="1">
+            <TabControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:TabItemViewModel}">
+                    <DockPanel MinWidth="100">
+                        <Button Content="X" DockPanel.Dock="Right" 
+                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=TabControl}}" 
+                                CommandParameter="{Binding}"/>
+                        <TextBlock Text="{Binding Title}" />
+                    </DockPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type local:TabItemViewModel}">
+                    <local:RefCountingControl />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+
+        <TabControl ItemsSource="{Binding Tabs}" Grid.Row="2">
+            <TabControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:TabItemViewModel}">
+                    <DockPanel MinWidth="100">
+                        <Button Content="X" DockPanel.Dock="Right" 
+                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=TabControl}}" 
+                                CommandParameter="{Binding}"/>
+                        <TextBlock Text="{Binding Title}" />
+                    </DockPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type local:TabItemViewModel}">
+                    <local:RefCountingControl Background="PaleTurquoise" />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:OtherTabViewModel}">
+                    <local:RefCountingControl Background="PaleGreen"/>
+                </DataTemplate>
+            </TabControl.Resources>
+        </TabControl>
+
+        <TabControl Grid.Row="3">
+            <TabItem Header="Item 1">
+                <local:RefCountingControl Background="Red" />
+            </TabItem>
+            <TabItem Header="Item 2">
+                <local:RefCountingControl Background="BlueViolet" />
+            </TabItem>
+            <TabItem Header="Item 3">
+                <local:RefCountingControl Background="Fuchsia" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
