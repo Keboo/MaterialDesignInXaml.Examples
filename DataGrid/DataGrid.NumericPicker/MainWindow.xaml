@@ -1,0 +1,30 @@
+﻿<Window x:Class="DataGrid.NumericPicker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGrid.NumericPicker"
+        xmlns:testData="clr-namespace:TestData;assembly=TestData" 
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        Title="MainWindow" Height="450" Width="800">
+    <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+            <DataGridTemplateColumn Header="Quantity" MinWidth="120">
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate DataType="{x:Type testData:Product}">
+                        <mahapps:NumericUpDown Value="{Binding Quantity}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate DataType="{x:Type testData:Product}">
+                        <TextBlock Text="{Binding Quantity}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}" />
+        </DataGrid.Columns>
+    </DataGrid>
+</Window>

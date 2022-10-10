@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace TestData
 {
-
     public static class Data
     {
         public static IList<Team> GenerateTeams(int count, int memberCount)
@@ -32,6 +31,17 @@ namespace TestData
         {
             Faker<Image> generator = new Faker<Image>();
             generator.RuleFor(x => x.Url, f => f.Image.PicsumUrl());
+            return generator.Generate(count);
+        }
+
+        public static IList<Product> GenerateProducts(int count)
+        {
+            Faker<Product> generator = new Faker<Product>()
+                .StrictMode(true)
+                .RuleFor(x => x.Name, f => f.Commerce.ProductName())
+                .RuleFor(x => x.Description, f => f.Commerce.ProductDescription())
+                .RuleFor(x => x.Quantity, f => f.Random.Int(1, 100));
+
             return generator.Generate(count);
         }
     }
