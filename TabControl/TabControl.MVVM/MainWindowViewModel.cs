@@ -9,6 +9,9 @@ public partial class MainWindowViewModel
 {
     private int _counter = 1;
     public ObservableCollection<TabItemViewModel> Tabs { get; } = new();
+ 
+    [ObservableProperty]
+    private string? _title = "Main_Title";
 
 	public MainWindowViewModel()
 	{
