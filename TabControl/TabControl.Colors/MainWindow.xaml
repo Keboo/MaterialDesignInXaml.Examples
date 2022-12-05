@@ -1,0 +1,50 @@
+﻿<Window x:Class="TabControl.Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TabControl.Colors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl BorderThickness="0" 
+                    Grid.Row="0"
+                    Margin="5,10,0,0"
+                    Style="{StaticResource MaterialDesignFilledTabControl}"
+                    materialDesign:ColorZoneAssist.Mode="Custom"
+                    materialDesign:ColorZoneAssist.Foreground="#ff5a08"
+                    materialDesign:ColorZoneAssist.Background="#1f2c44"
+                    Padding="5,15,0,0">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem" BasedOn="{StaticResource MaterialDesignTabItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="materialDesign:ColorZoneAssist.Foreground" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.ItemContainerStyle>
+            <TabItem Header="Summary">
+                <TextBlock Text="Summary Information" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontSize="40"/>
+            </TabItem>
+            <TabItem Header="Cooling" >
+                <TextBlock Text="Cooling Information" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontSize="40"/>
+            </TabItem>
+            <TabItem Header="Process Entry" >
+                <TextBlock Text="Process Entry stuff" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontSize="40"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
