@@ -1,0 +1,15 @@
+﻿<Window x:Class="MVVM.Lib.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MVVM.Lib" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shared="clr-namespace:MVVM.Lib.Shared;assembly=MVVM.Lib.Shared"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=shared:SharedViewModel}"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="300">
+        <TextBlock Text="{Binding Count, StringFormat='Count: {0}'}" Margin="0,20"/>
+        <Button Content="Add 1" Command="{Binding IncrementCommand}"/>
+    </StackPanel>
+</Window>
