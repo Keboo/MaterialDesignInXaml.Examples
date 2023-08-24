@@ -1,0 +1,22 @@
+<Application
+  x:Class="MVVM.TextEditor.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:converters="clr-namespace:MVVM.TextEditor.Converters"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <materialDesign:BundledTheme
+          BaseTheme="Inherit"
+          PrimaryColor="BlueGrey"
+          SecondaryColor="LightGreen" />
+
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+
+      </ResourceDictionary.MergedDictionaries>
+
+      <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
