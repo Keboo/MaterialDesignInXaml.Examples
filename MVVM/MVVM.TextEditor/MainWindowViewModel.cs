@@ -44,10 +44,7 @@ public partial class MainWindowViewModel : ObservableObject, IRecipient<RequestT
     {
         if (GetFile() is { } file)
         {
-            var tab = new TabViewModel(Messenger)
-            {
-                Title = "Tab " + Tabs.Count,
-            };
+            var tab = new TabViewModel(Messenger);
             Tabs.Add(tab);
             SelectedTab = tab;
             await tab.LoadFileAsync(file);
