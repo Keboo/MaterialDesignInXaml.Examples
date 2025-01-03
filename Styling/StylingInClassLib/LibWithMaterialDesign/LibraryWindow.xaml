@@ -1,0 +1,35 @@
+﻿<Window x:Class="LibWithMaterialDesign.LibraryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibWithMaterialDesign"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:LibraryWindowViewModel, IsDesignTimeCreatable=False}"
+        Title="LibraryWindow" Height="450" Width="800">
+  <Window.Resources>
+    <!--
+    Setup the root window in a similar manner to the App.xaml from a regular WPF app.
+    Following the Material Design in XAML Getting Started guide.
+    https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Getting-Started
+    -->
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <!-- In order to style the window, we need to set the Window's style AFTER importing Material Design. -->
+  <Window.Style>
+    <StaticResource ResourceKey="MaterialDesignWindow" />
+  </Window.Style>
+  
+  <materialDesign:Card Padding="80" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel>
+      <Button Content="Toggle Theme" Click="ToggleThemeClick"/>
+      <Button Content="Change Primary Color" Command="{Binding ChangePrimaryColorCommand}" Margin="0,20,0,0" />
+    </StackPanel>
+  </materialDesign:Card>
+</Window>
